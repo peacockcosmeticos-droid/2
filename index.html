@@ -240,6 +240,277 @@
             }
         }
 
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Header mobile adjustments */
+            header nav {
+                display: none !important;
+            }
+            
+            header .max-w-7xl {
+                padding: 0 16px !important;
+            }
+            
+            header div[style*="height: 60px"] {
+                height: 50px !important;
+            }
+            
+            header img[style*="height: 40px"] {
+                height: 32px !important;
+            }
+            
+            /* Banner promocional mobile */
+            div[style*="background: linear-gradient"] {
+                font-size: 10px !important;
+                padding: 0 8px !important;
+                height: 24px !important;
+            }
+            
+            /* Main container mobile */
+            main {
+                padding: 16px 0 !important;
+            }
+            
+            .container.mx-auto {
+                padding: 0 16px !important;
+            }
+            
+            /* Product layout mobile */
+            .flex.flex-col.md\:flex-row {
+                gap: 24px !important;
+            }
+            
+            /* Product title mobile */
+            h1[style*="font-size: 44px"] {
+                font-size: 28px !important;
+                line-height: 1.1 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            /* Product subtitle mobile */
+            p[style*="font-size: 16px;color: #6B7280"] {
+                font-size: 14px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            /* Price section mobile */
+            div[style*="display: flex; align-items: center; margin-bottom: 12px"] {
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            span[style*="font-size: 24px"] {
+                font-size: 20px !important;
+            }
+            
+            span[style*="background-color: #FCE7F3"] {
+                font-size: 12px !important;
+                padding: 4px 8px !important;
+            }
+            
+            /* Badges mobile */
+            div[style*="display: flex; align-items: center; justify-content: flex-start; gap: 16px"] {
+                gap: 8px !important;
+                margin-bottom: 12px !important;
+            }
+            
+            div[style*="display: flex; align-items: center; justify-content: flex-start; gap: 16px"] img {
+                height: 50px !important;
+            }
+            
+            /* Benefits text mobile */
+            div[style*="margin-bottom: 16px"] p {
+                font-size: 14px !important;
+                line-height: 1.5 !important;
+                margin-bottom: 8px !important;
+            }
+            
+            /* Gallery thumbnails mobile */
+            .thumbnail {
+                width: 60px !important;
+                height: 60px !important;
+            }
+            
+            /* Swatch options mobile */
+            .swatch-option {
+                padding: 12px !important;
+            }
+            
+            .swatch-option__left-image img {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            
+            .swatch-option__left-name {
+                font-size: 14px !important;
+            }
+            
+            .swatch-option__center {
+                font-size: 10px !important;
+                padding: 3px 8px !important;
+            }
+            
+            .swatch-option__right {
+                min-width: 80px !important;
+            }
+            
+            .swatch-option__right-price {
+                font-size: 14px !important;
+            }
+            
+            .swatch-options__savings {
+                font-size: 12px !important;
+            }
+            
+            /* CTA Button mobile */
+            button[id="add-to-cart-btn"] {
+                height: 50px !important;
+                font-size: 16px !important;
+                margin-bottom: 16px !important;
+            }
+            
+            /* Shop Pay button mobile */
+            button[style*="background-color: #5A31FF"] {
+                height: 50px !important;
+                font-size: 14px !important;
+            }
+            
+            /* Guarantee section mobile */
+            div[style*="display: flex; align-items: center; text-align: center"] h5 {
+                font-size: 12px !important;
+            }
+            
+            div[style*="display: flex; align-items: center; text-align: center"] p {
+                font-size: 12px !important;
+            }
+            
+            /* Product image gallery mobile */
+            .product-image-gallery {
+                margin-bottom: 8px !important;
+                position: relative !important;
+            }
+            
+            .product-image-gallery img {
+                border-radius: 8px !important;
+                width: 100% !important;
+                height: auto !important;
+                max-height: 400px !important;
+                object-fit: cover !important;
+            }
+            
+            /* Thumbnail gallery mobile - mais próximo ao topo */
+            .thumbnail-gallery {
+                gap: 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 16px !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+            }
+            
+            /* Slider arrows mobile */
+            .slider-arrow {
+                position: absolute !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                background: rgba(255, 255, 255, 0.9) !important;
+                border: none !important;
+                border-radius: 50% !important;
+                width: 40px !important;
+                height: 40px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                cursor: pointer !important;
+                z-index: 10 !important;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+            }
+            
+            .slider-arrow-left {
+                left: 12px !important;
+            }
+            
+            .slider-arrow-right {
+                right: 12px !important;
+            }
+            
+            .slider-arrow:hover {
+                background: rgba(255, 255, 255, 1) !important;
+            }
+            
+            /* Product info section mobile */
+            .product-info {
+                padding: 0 !important;
+            }
+            
+            /* Payment icons mobile */
+            .payment-icons {
+                justify-content: center !important;
+                margin: 16px 0 !important;
+            }
+            
+            .payment-icons img {
+                height: 24px !important;
+            }
+            
+            /* Fixed mobile cart adjustments */
+            .fixed-mobile-cart {
+                padding: 12px 16px !important;
+                box-shadow: 0 -4px 12px rgba(0,0,0,0.15) !important;
+            }
+            
+            .fixed-mobile-cart .current-price {
+                font-size: 18px !important;
+            }
+            
+            .fixed-mobile-cart .compare-price {
+                font-size: 14px !important;
+            }
+            
+            .fixed-mobile-cart button {
+                height: 44px !important;
+                font-size: 14px !important;
+                min-width: 140px !important;
+            }
+            
+            /* Responsive spacing adjustments */
+            .mb-4 {
+                margin-bottom: 12px !important;
+            }
+            
+            .mb-6 {
+                margin-bottom: 16px !important;
+            }
+            
+            .mb-8 {
+                margin-bottom: 20px !important;
+            }
+            
+            /* Text content mobile */
+            .text-sm {
+                font-size: 12px !important;
+            }
+            
+            .text-base {
+                font-size: 14px !important;
+            }
+            
+            .text-lg {
+                font-size: 16px !important;
+            }
+            
+            /* Button spacing mobile */
+            .space-y-4 > * + * {
+                margin-top: 12px !important;
+            }
+            
+            /* Grid adjustments mobile */
+            .grid {
+                gap: 12px !important;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-white font-sans">
@@ -367,9 +638,22 @@
 <div class="flex flex-col md:flex-row gap-12">
 <div class="md:w-1/2">
 <!-- Imagem principal da galeria -->
+<div class="product-image-gallery relative">
 <img id="mainImage" alt="Produto Ativador de Vínculo de Cílios" class="w-full rounded-lg transition-opacity duration-300" src="./imagens/1.jpg"/>
+<!-- Setas de navegação -->
+<button class="slider-arrow slider-arrow-left" onclick="previousImage()">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<polyline points="15,18 9,12 15,6"></polyline>
+</svg>
+</button>
+<button class="slider-arrow slider-arrow-right" onclick="nextImage()">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<polyline points="9,18 15,12 9,6"></polyline>
+</svg>
+</button>
+</div>
 <!-- Miniaturas da galeria -->
-<div class="flex space-x-2 mt-4 justify-center">
+<div class="thumbnail-gallery flex space-x-2 mt-4 justify-center">
 <img alt="Miniatura do produto 1" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-pink-500 transition-all duration-200 hover:scale-105" src="./imagens/1.jpg" data-main="./imagens/1.jpg"/>
 <img alt="Miniatura do produto 2" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/2.jpg" data-main="./imagens/2.jpg"/>
 <img alt="Miniatura do produto 3" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/3.jpg" data-main="./imagens/3.jpg"/>
@@ -1473,6 +1757,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Funções de navegação do slider
+let currentImageIndex = 0;
+const images = [
+    './imagens/1.jpg',
+    './imagens/2.jpg',
+    './imagens/3.jpg',
+    './imagens/4.jpg',
+    './imagens/5.jpg',
+    './imagens/6.jpg'
+];
+
+function previousImage() {
+    currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : images.length - 1;
+    updateMainImage();
+}
+
+function nextImage() {
+    currentImageIndex = currentImageIndex < images.length - 1 ? currentImageIndex + 1 : 0;
+    updateMainImage();
+}
+
+function updateMainImage() {
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
+    // Efeito de fade
+    mainImage.style.opacity = '0.5';
+    
+    setTimeout(function() {
+        mainImage.src = images[currentImageIndex];
+        mainImage.style.opacity = '1';
+        
+        // Atualizar bordas das miniaturas
+        thumbnails.forEach(function(thumb, index) {
+            thumb.classList.remove('border-pink-500');
+            thumb.classList.add('border-gray-200');
+            
+            if (index === currentImageIndex) {
+                thumb.classList.remove('border-gray-200');
+                thumb.classList.add('border-pink-500');
+            }
+        });
+    }, 150);
+}
 
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
