@@ -8,8 +8,85 @@
   })(window,document,'script','dataLayer','GTM-NP35CF5S');</script>
   <!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Ativador de Vínculo de Cílios</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- Favicon -->
+<link rel="icon" href="./fav.png" type="image/png"/>
+<link rel="apple-touch-icon" href="./fav.png"/>
+<meta name="theme-color" content="#D5647C"/>
+
+<!-- SEO Básico -->
+<title>Ativador de Vínculo de Cílios | Peacock Cosméticos</title>
+<meta name="description" content="Ativador de Vínculo de Cílios da Peacock: crescimento visível, fortalecimento e fios mais longos e volumosos. Ingredientes seguros e testados, resultados reais."/>
+<meta name="robots" content="index,follow"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:type" content="product"/>
+<meta property="og:site_name" content="Peacock Cosméticos"/>
+<meta property="og:title" content="Ativador de Vínculo de Cílios | Peacock Cosméticos"/>
+<meta property="og:description" content="Crescimento visível e fortalecimento dos cílios. Resultados reais com segurança."/>
+<meta property="og:image" content="/imagens/1.jpg"/>
+<meta property="og:url" content=""/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Ativador de Vínculo de Cílios | Peacock Cosméticos"/>
+<meta name="twitter:description" content="Crescimento visível e fortalecimento dos cílios. Resultados reais com segurança."/>
+<meta name="twitter:image" content="/imagens/1.jpg"/>
+<meta name="twitter:url" content=""/>
+<link rel="canonical" href=""/>
+
+<!-- JSON-LD Produto -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Ativador de Vínculo de Cílios",
+  "brand": {"@type": "Brand", "name": "Peacock"},
+  "image": [
+    "/imagens/1.jpg",
+    "/imagens/2.jpg",
+    "/imagens/3.jpg"
+  ],
+  "description": "Sérum avançado para crescimento e fortalecimento dos cílios com resultados visíveis.",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "BRL",
+    "price": "157.90",
+    "availability": "https://schema.org/InStock",
+    "url": ""
+  }
+}
+</script>
+
+<!-- Ajusta URLs dinâmicas para compartilhamento/SEO quando em diferentes domínios -->
+<script>
+(function(){
+  try {
+    var origin = window.location.origin || '';
+    var currentUrl = window.location.href;
+    function setMeta(selector, content){ var m = document.querySelector(selector); if(m && content) m.setAttribute('content', content); }
+    // Atualiza og:url e twitter:url
+    setMeta('meta[property="og:url"]', currentUrl);
+    setMeta('meta[name="twitter:url"]', currentUrl);
+    // Garante og:image e twitter:image absolutas
+    var imgPath = '/imagens/1.jpg';
+    var abs = origin ? origin + imgPath : imgPath;
+    setMeta('meta[property="og:image"]', abs);
+    setMeta('meta[name="twitter:image"]', abs);
+    // Atualiza JSON-LD URL absoluta
+    var ld = document.querySelector('script[type="application/ld+json"]');
+    if(ld){
+      var data = JSON.parse(ld.textContent || '{}');
+      if(Array.isArray(data.image)) data.image = data.image.map(function(p){return origin ? origin + p : p;});
+      if(data.offers) data.offers.url = currentUrl;
+      ld.textContent = JSON.stringify(data);
+    }
+  } catch (e) { /* fail silently */ }
+})();
+</script>
+
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -1651,7 +1728,7 @@
       <!-- Imagem da tabela à direita -->
       <div class="lg:w-1/2">
         <div class=" rounded-2xl ">
-          <img src="./imagens/tabela.png" alt="Comparação: Peacock vs Tratamentos de Salão vs Alternativa com Receita" class="w-full h-auto rounded-lg">
+          <img src="./imagens/tabela.webp" alt="Comparação: Peacock vs Tratamentos de Salão vs Alternativa com Receita" class="w-full h-auto rounded-lg">
         </div>
       </div>
     </div>
