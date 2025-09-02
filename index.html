@@ -387,27 +387,31 @@
             
             /* Product image gallery mobile */
             .product-image-gallery {
-                margin-bottom: 8px !important;
+                margin: 0 !important;
                 position: relative !important;
+                width: 100vw !important;
+                left: 50% !important;
+                right: 50% !important;
+                margin-left: -50vw !important;
+                margin-right: -50vw !important;
             }
             
             .product-image-gallery img {
-                border-radius: 8px !important;
-                width: 100% !important;
-                height: auto !important;
-                max-height: 400px !important;
+                border-radius: 0 !important;
+                width: 100vw !important;
+                height: 320px !important;
+                max-height: none !important;
                 object-fit: cover !important;
+                display: block !important;
             }
             
-            /* Thumbnail gallery mobile - mais próximo ao topo */
+            /* Thumbnail gallery mobile - ocultar no mobile */
             .thumbnail-gallery {
-                gap: 6px !important;
-                margin-top: 8px !important;
-                margin-bottom: 16px !important;
-                display: flex !important;
-                flex-wrap: wrap !important;
-                justify-content: center !important;
+                display: none !important;
             }
+            
+            /* Remover padding superior do main para alinhar com a faixa */
+            main.py-8 { padding-top: 0 !important; }
             
             /* Slider arrows mobile */
             .slider-arrow {
@@ -417,14 +421,14 @@
                 background: rgba(255, 255, 255, 0.9) !important;
                 border: none !important;
                 border-radius: 50% !important;
-                width: 40px !important;
-                height: 40px !important;
+                width: 36px !important;
+                height: 36px !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
                 cursor: pointer !important;
                 z-index: 10 !important;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+                box-shadow: none !important;
             }
             
             .slider-arrow-left {
@@ -634,8 +638,8 @@
   </style>
 </div>
 <main class="py-8">
-<div class="container mx-auto" style="padding: 0 12px;">
-<div class="flex flex-col md:flex-row gap-12">
+<div class="container mx-auto" style="padding: 0;">
+<div class="flex flex-col md:flex-row gap-12" style="margin-top:0 !important;">
 <div class="md:w-1/2">
 <!-- Imagem principal da galeria -->
 <div class="product-image-gallery relative">
@@ -1760,14 +1764,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Funções de navegação do slider
 let currentImageIndex = 0;
-const images = [
-    './imagens/1.jpg',
-    './imagens/2.jpg',
-    './imagens/3.jpg',
-    './imagens/4.jpg',
-    './imagens/5.jpg',
-    './imagens/6.jpg'
-];
+// Construir dinamicamente a lista de imagens a partir das miniaturas existentes (ou fallback para padrão)
+let images = Array.from(document.querySelectorAll('.thumbnail'))
+    .map(t => t.getAttribute('data-main'))
+    .filter(Boolean);
+if (images.length === 0) {
+    images = [
+        './imagens/1.jpg',
+        './imagens/2.jpg',
+        './imagens/3.jpg',
+        './imagens/4.jpg',
+        './imagens/5.jpg',
+        './imagens/6.jpg'
+    ];
+}
 
 function previousImage() {
     currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : images.length - 1;
