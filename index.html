@@ -202,6 +202,41 @@
             font-size: clamp(16px, 3vw, 18px);
         }
         
+        /* Navegação por arraste na imagem principal */
+        /* Estilos de cursor removidos - agora gerenciados pelo Swiper */
+        
+        /* Estilos para o Swiper da galeria de produtos */
+        .product-swiper .swiper-button-next,
+        .product-swiper .swiper-button-prev {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: -22px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .product-swiper .swiper-button-next:after,
+        .product-swiper .swiper-button-prev:after {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .product-swiper .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.5;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .product-swiper .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: white;
+        }
+        
         /* Estilos para o slider de avaliações */
         .testimonials-swiper {
             padding: 0 50px;
@@ -401,7 +436,7 @@
                 right: 50% !important;
                 margin-left: -50vw !important;
                 margin-right: -50vw !important;
-                height: 480px !important;
+                
             }
             
             .product-image-gallery #mainImage {
@@ -727,18 +762,33 @@
 <div class="md:w-1/2">
 <!-- Imagem principal da galeria -->
 <div class="product-image-gallery relative">
-<img id="mainImage" alt="Produto Ativador de Vínculo de Cílios" class="rounded-lg transition-opacity duration-300" src="./imagens/1.jpg"/>
+<div class="swiper product-swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide">
+<img src="./imagens/1.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg">
+</div>
+<div class="swiper-slide">
+<img src="./imagens/2.jpg" alt="Produto 2" class="w-full h-auto rounded-lg shadow-lg">
+</div>
+<div class="swiper-slide">
+<img src="./imagens/3.jpg" alt="Produto 3" class="w-full h-auto rounded-lg shadow-lg">
+</div>
+<div class="swiper-slide">
+<img src="./imagens/4.jpg" alt="Produto 4" class="w-full h-auto rounded-lg shadow-lg">
+</div>
+<div class="swiper-slide">
+<img src="./imagens/5.jpg" alt="Produto 5" class="w-full h-auto rounded-lg shadow-lg">
+</div>
+<div class="swiper-slide">
+<img src="./imagens/6.jpg" alt="Produto 6" class="w-full h-auto rounded-lg shadow-lg">
+</div>
+</div>
 <!-- Setas de navegação -->
-<button class="slider-arrow slider-arrow-left" onclick="previousImage()">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<polyline points="15,18 9,12 15,6"></polyline>
-</svg>
-</button>
-<button class="slider-arrow slider-arrow-right" onclick="nextImage()">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-<polyline points="9,18 15,12 9,6"></polyline>
-</svg>
-</button>
+<div class="swiper-button-next product-next"></div>
+<div class="swiper-button-prev product-prev"></div>
+<!-- Paginação -->
+<div class="swiper-pagination product-pagination"></div>
+</div>
 </div>
 <!-- Miniaturas da galeria -->
 <div class="thumbnail-gallery flex space-x-2 mt-4 justify-center">
@@ -1927,92 +1977,9 @@ Fale Conosco no WhatsApp
 <script>
 // Funcionalidade da galeria de imagens
 document.addEventListener('DOMContentLoaded', function() {
-    const mainImage = document.getElementById('mainImage');
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    
-    thumbnails.forEach(function(thumbnail) {
-        thumbnail.addEventListener('click', function() {
-            // Remove a borda ativa de todas as miniaturas
-            thumbnails.forEach(function(thumb) {
-                thumb.classList.remove('border-pink-500');
-                thumb.classList.add('border-gray-200');
-            });
-            
-            // Adiciona a borda ativa à miniatura clicada
-            this.classList.remove('border-gray-200');
-            this.classList.add('border-pink-500');
-            
-            // Efeito de fade out/in para transição suave
-            mainImage.style.opacity = '0.5';
-            
-            setTimeout(function() {
-                // Troca a imagem principal
-                mainImage.src = thumbnail.getAttribute('data-main');
-                mainImage.style.opacity = '1';
-            }, 150);
-        });
-        
-        // Efeito hover adicional
-        thumbnail.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05)';
-        });
-        
-        thumbnail.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
+    // A funcionalidade da galeria agora é gerenciada pelo Swiper
+    // Código removido e substituído pela implementação do Swiper acima
 });
-
-// Funções de navegação do slider
-let currentImageIndex = 0;
-// Construir dinamicamente a lista de imagens a partir das miniaturas existentes (ou fallback para padrão)
-let images = Array.from(document.querySelectorAll('.thumbnail'))
-    .map(t => t.getAttribute('data-main'))
-    .filter(Boolean);
-if (images.length === 0) {
-    images = [
-        './imagens/1.jpg',
-        './imagens/2.jpg',
-        './imagens/3.jpg',
-        './imagens/4.jpg',
-        './imagens/5.jpg',
-        './imagens/6.jpg'
-    ];
-}
-
-function previousImage() {
-    currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : images.length - 1;
-    updateMainImage();
-}
-
-function nextImage() {
-    currentImageIndex = currentImageIndex < images.length - 1 ? currentImageIndex + 1 : 0;
-    updateMainImage();
-}
-
-function updateMainImage() {
-    const mainImage = document.getElementById('mainImage');
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    
-    // Efeito de fade
-    mainImage.style.opacity = '0.5';
-    
-    setTimeout(function() {
-        mainImage.src = images[currentImageIndex];
-        mainImage.style.opacity = '1';
-        
-        // Atualizar bordas das miniaturas
-        thumbnails.forEach(function(thumb, index) {
-            thumb.classList.remove('border-pink-500');
-            thumb.classList.add('border-gray-200');
-            
-            if (index === currentImageIndex) {
-                thumb.classList.remove('border-gray-200');
-                thumb.classList.add('border-pink-500');
-            }
-        });
-    }, 150);
-}
 
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -2132,6 +2099,53 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
+  // Inicializar Swiper para a galeria de produtos
+  if (typeof Swiper !== 'undefined') {
+    const productSwiper = new Swiper('.product-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      loop: true,
+      grabCursor: true,
+      pagination: {
+        el: '.product-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.product-next',
+        prevEl: '.product-prev',
+      },
+      on: {
+        slideChange: function () {
+          // Atualizar thumbnails quando o slide mudar
+          const activeIndex = this.realIndex;
+          updateThumbnailBorders(activeIndex);
+        }
+      }
+    });
+
+    // Função para atualizar bordas das thumbnails
+    function updateThumbnailBorders(activeIndex) {
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      thumbnails.forEach((thumb, index) => {
+        if (index === activeIndex) {
+          thumb.classList.remove('border-gray-200');
+          thumb.classList.add('border-pink-500');
+        } else {
+          thumb.classList.remove('border-pink-500');
+          thumb.classList.add('border-gray-200');
+        }
+      });
+    }
+
+    // Adicionar evento de clique nas thumbnails
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        productSwiper.slideToLoop(index);
+      });
+    });
+  }
+
   // Inicializar Swiper para o slider de avaliações
   if (typeof Swiper !== 'undefined') {
     const reviewsSlider = new Swiper('.reviews-swiper', {
