@@ -465,7 +465,7 @@
             
             /* Fixed mobile cart adjustments */
             .fixed-mobile-cart {
-                padding: 12px 16px !important;
+                padding: 8px 16px !important;
                 box-shadow: 0 -4px 12px rgba(0,0,0,0.15) !important;
             }
             
@@ -478,7 +478,7 @@
             }
             
             .fixed-mobile-cart button {
-                height: 44px !important;
+                height: 32px !important;
                 font-size: 14px !important;
                 min-width: 140px !important;
             }
@@ -2139,13 +2139,11 @@ $(document).ready(function(){
   bottom: 0;
   left: 0;
   right: 0;
-  background: #fff;
-  border-top: 1px solid #e5e7eb;
-  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: #9AD93E;
   z-index: 1000;
   display: none;
-  padding: 12px 16px;
-  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  padding: 0;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .fixed-cart-content {
@@ -2153,14 +2151,16 @@ $(document).ready(function(){
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .fixed-cart-btn {
   background-color: #9AD93E;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 16px 24px;
+  border-radius: 0;
+  padding: 8px 24px;
   font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
@@ -2173,6 +2173,7 @@ $(document).ready(function(){
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
 }
 
 .fixed-cart-btn:hover {
