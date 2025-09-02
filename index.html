@@ -2127,10 +2127,6 @@ $(document).ready(function(){
 <!-- Fixed Mobile Button -->
 <div id="fixed-mobile-cart" class="fixed-mobile-cart">
   <div class="fixed-cart-content">
-    <div class="fixed-cart-price">
-      <span class="current-price">R$157,90</span>
-      <span class="compare-price">R$315,18</span>
-    </div>
     <button class="fixed-cart-btn" onclick="document.getElementById('add-to-cart-btn').click()">
       ADICIONAR AO CARRINHO
     </button>
@@ -2155,28 +2151,8 @@ $(document).ready(function(){
 .fixed-cart-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.fixed-cart-price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.fixed-cart-price .current-price {
-  font-size: 18px;
-  font-weight: 800;
-  color: #E11D48;
-  line-height: 1;
-}
-
-.fixed-cart-price .compare-price {
-  font-size: 14px;
-  color: #9CA3AF;
-  text-decoration: line-through;
-  line-height: 1;
+  justify-content: center;
+  width: 100%;
 }
 
 .fixed-cart-btn {
@@ -2184,15 +2160,19 @@ $(document).ready(function(){
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  padding: 12px 24px;
+  padding: 16px 24px;
   font-weight: 700;
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: background-color 0.2s;
-  flex: 1;
-  max-width: 200px;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fixed-cart-btn:hover {
@@ -2212,28 +2192,6 @@ $(document).ready(function(){
 }
 </style>
 
-<script>
-// Update fixed button prices when swatch selection changes
-$(document).ready(function() {
-  function updateFixedButtonPrices() {
-    var activeElement = $('.swatch-element.active');
-    if (activeElement.length) {
-      var currentPrice = activeElement.attr('data-price');
-      var comparePrice = activeElement.attr('data-compare');
-      
-      $('.fixed-cart-price .current-price').text(currentPrice);
-      $('.fixed-cart-price .compare-price').text(comparePrice);
-    }
-  }
-  
-  // Update prices when swatch changes
-  $('.swatch-element input[type="radio"]').on('change', function() {
-    setTimeout(updateFixedButtonPrices, 100);
-  });
-  
-  // Initial update
-  updateFixedButtonPrices();
-});
-</script>
+
 
 </body></html>
