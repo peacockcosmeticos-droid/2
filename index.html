@@ -552,9 +552,10 @@
 
 <!-- Navegação central -->
 <nav style="display: flex; gap: 32px;">
-<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Loja</a>
-<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Envio e Devoluções</a>
-<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Resultados</a>
+<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Política de Privacidade</a>
+<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Meus Pedidos</a>
+<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Minha Conta</a>
+<a href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">WhatsApp</a>
 </nav>
 
 <!-- Ícones de ação -->
@@ -573,7 +574,7 @@
 <svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
 </svg>
-<span style="position: absolute; top: -8px; right: -8px; background-color: #E53E3E; color: white; font-size: 12px; border-radius: 50%; height: 20px; width: 20px; display: flex; align-items: center; justify-content: center;">0</span>
+<span style="position: absolute; top: -8px; right: -8px; background-color: #D5647C; color: white; font-size: 12px; border-radius: 50%; height: 20px; width: 20px; display: flex; align-items: center; justify-content: center;">0</span>
 </button>
 </div>
 </div>
@@ -892,6 +893,42 @@
       var mainPrice = document.getElementById('main-price');
       var mainComparePrice = document.getElementById('main-compare-price');
       
+      // Define checkout links for each option
+      var checkoutLinks = {
+        '1 Garrafa': 'https://seguro.peacockcosmeticos.com.br/r/8EW2RKYL5W',
+        '3 Bottles': 'https://seguro.peacockcosmeticos.com.br/r/J71882NMZB',
+        '5 Bottles': 'https://seguro.peacockcosmeticos.com.br/r/7GGF57BYHI'
+      };
+      
+      function updateCheckoutLinks(selectedValue) {
+        var checkoutUrl = checkoutLinks[selectedValue];
+        if (checkoutUrl) {
+          // Update main add to cart button
+          var addToCartBtn = document.getElementById('add-to-cart-btn');
+          if (addToCartBtn) {
+            addToCartBtn.onclick = function() {
+              window.location.href = checkoutUrl;
+            };
+          }
+          
+          // Update "Comprar agora" button
+          var buyNowBtn = document.getElementById('buy-now-btn');
+          if (buyNowBtn) {
+            buyNowBtn.onclick = function() {
+              window.location.href = checkoutUrl;
+            };
+          }
+          
+          // Update fixed mobile cart button
+          var fixedCartBtn = document.querySelector('.fixed-cart-btn');
+          if (fixedCartBtn) {
+            fixedCartBtn.onclick = function() {
+              window.location.href = checkoutUrl;
+            };
+          }
+        }
+      }
+      
       swatches.forEach(function(swatch){
         swatch.addEventListener('click', function(){
           // Remove active class from all swatches
@@ -917,9 +954,59 @@
           if(mainComparePrice && newComparePrice) {
             mainComparePrice.textContent = newComparePrice;
           }
+          
+          // Update checkout links
+          var selectedValue = radio ? radio.value : null;
+          if (selectedValue) {
+            updateCheckoutLinks(selectedValue);
+          }
         });
       });
+      
+      // Initialize checkout links for default selection (1 Garrafa)
+      updateCheckoutLinks('1 Garrafa');
     })();
+    
+    // Additional initialization to ensure links work on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Define checkout links for each option
+      var checkoutLinks = {
+        '1 Garrafa': 'https://seguro.peacockcosmeticos.com.br/r/8EW2RKYL5W',
+        '3 Bottles': 'https://seguro.peacockcosmeticos.com.br/r/J71882NMZB',
+        '5 Bottles': 'https://seguro.peacockcosmeticos.com.br/r/7GGF57BYHI'
+      };
+      
+      function initializeCheckoutLinks() {
+        var checkoutUrl = checkoutLinks['1 Garrafa'];
+        
+        // Initialize main add to cart button
+        var addToCartBtn = document.getElementById('add-to-cart-btn');
+        if (addToCartBtn) {
+          addToCartBtn.onclick = function() {
+            window.location.href = checkoutUrl;
+          };
+        }
+        
+        // Initialize "Comprar agora" button
+        var buyNowBtn = document.getElementById('buy-now-btn');
+        if (buyNowBtn) {
+          buyNowBtn.onclick = function() {
+            window.location.href = checkoutUrl;
+          };
+        }
+        
+        // Initialize fixed mobile cart button
+        var fixedCartBtn = document.querySelector('.fixed-cart-btn');
+        if (fixedCartBtn) {
+          fixedCartBtn.onclick = function() {
+            window.location.href = checkoutUrl;
+          };
+        }
+      }
+      
+      // Initialize all buttons with 1 Garrafa link
+      initializeCheckoutLinks();
+    });
   </script>
 </div>
 
@@ -927,11 +1014,23 @@
 <p style="font-size: 14px; color: #6B7280; margin: 0 auto 14px; font-style: italic; text-align: center;">Pedidos são enviados em até 24 horas! Receba seu produto rapidamente.</p>
 <button id="add-to-cart-btn" style="width: 100%; background-color: #9AD93E; color: #ffffff; height: 56px; padding: 0 32px; border-radius: 8px; font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 12px; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#8CC834'" onmouseout="this.style.backgroundColor='#9AD93E'">ADICIONAR AO CARRINHO</button>
 <!-- Botão Shop Pay (novo) -->
-<button style="width: 100%; background-color: #5A31FF; color: #ffffff; height: 56px; padding: 0 32px; border-radius: 8px; font-weight: 700; font-size: 16px; letter-spacing: 0.01em; margin-bottom: 12px; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#4B28E0'" onmouseout="this.style.backgroundColor='#5A31FF'">Comprar agora</button>
+<button id="buy-now-btn" style="width: 100%; background-color: #5A31FF; color: #ffffff; height: 56px; padding: 0 32px; border-radius: 8px; font-weight: 700; font-size: 16px; letter-spacing: 0.01em; margin-bottom: 12px; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#4B28E0'" onmouseout="this.style.backgroundColor='#5A31FF'">Comprar agora</button>
 
 <!-- Payment Icons -->
 <div class="flex justify-center items-center space-x-3 mb-6">
   <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/payment-icons.png?v=1727244514" alt="Métodos de pagamento" class="h-8">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" class="h-8">
+    <g clip-path="url(#clip0_653_147)">
+      <path d="M18.72 18.36C17.78 18.36 16.89 17.99 16.23 17.33L12.63 13.73C12.38 13.48 11.94 13.48 11.68 13.73L8.06999 17.34C7.39999 18.01 6.52 18.37 5.58 18.37H4.87L9.43 22.93C10.85 24.35 13.16 24.35 14.59 22.93L19.16 18.36H18.73H18.72Z" fill="#32BCAD"></path>
+      <path d="M5.56999 5.62988C6.50999 5.62988 7.39999 5.99988 8.05999 6.65988L11.67 10.2699C11.93 10.5299 12.36 10.5299 12.62 10.2699L16.22 6.66988C16.89 5.99988 17.77 5.63988 18.71 5.63988H19.14L14.58 1.06988C13.16 -0.350117 10.85 -0.350117 9.41999 1.06988L4.85999 5.62988H5.56999Z" fill="#32BCAD"></path>
+      <path d="M22.93 9.4199L20.17 6.6599C20.11 6.6799 20.04 6.6999 19.97 6.6999H18.71C18.06 6.6999 17.42 6.9599 16.97 7.4199L13.37 11.0199C13.03 11.3599 12.59 11.5299 12.15 11.5299C11.71 11.5299 11.27 11.3599 10.93 11.0199L7.32001 7.4099C6.86001 6.9499 6.23001 6.6899 5.58001 6.6899H4.04001C3.97001 6.6899 3.91001 6.6699 3.85001 6.6499L1.08001 9.4199C-0.339985 10.8399 -0.339985 13.1499 1.08001 14.5799L3.85001 17.3499C3.91001 17.3299 3.97001 17.3099 4.04001 17.3099H5.58001C6.23001 17.3099 6.87002 17.0499 7.32001 16.5899L10.93 12.9799C11.58 12.3299 12.72 12.3299 13.37 12.9799L16.97 16.5799C17.43 17.0399 18.06 17.2999 18.71 17.2999H19.97C20.04 17.2999 20.11 17.3199 20.17 17.3399L22.93 14.5799C24.35 13.1599 24.35 10.8499 22.93 9.4199Z" fill="#32BCAD"></path>
+    </g>
+    <defs>
+      <clipPath id="clip0_653_147">
+        <rect width="24" height="24" fill="white"></rect>
+      </clipPath>
+    </defs>
+  </svg>
 </div>
 
 <!-- Guarantee Section -->
@@ -1756,12 +1855,21 @@
 <div>
 <h3 class="font-bold text-gray-800 mb-4"><img alt="Peacock Cosmeticos Logo" class="h-8" src="./peecock.png"/></h3>
 <p>Experimente o novo padrão ouro de séruns para cílios mais longos e cheios.</p>
+<div class="mt-4 text-sm">
+<p><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+<p><strong>Endereço:</strong> Rua das Flores, 123 - Centro</p>
+<p>São Paulo - SP, CEP: 01234-567</p>
+<p><strong>Telefone:</strong> (11) 9999-8888</p>
+<p><strong>Email:</strong> contato@peacockcosmetics.com.br</p>
+</div>
 </div>
 <div>
 <h3 class="font-bold text-gray-800 mb-4">EMPRESA</h3>
 <ul>
-<li class="mb-2"><a class="hover:text-gray-800" href="#">Contate-Nos</a></li>
-<li class="mb-2"><a class="hover:text-gray-800" href="#">Nossa História</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Política de Privacidade</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://seguro.peacockcosmeticos.com.br/minha-conta/pedidos">Meus Pedidos</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://seguro.peacockcosmeticos.com.br/minha-conta/">Minha Conta</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank">WhatsApp</a></li>
 </ul>
 </div>
 <div>
@@ -1776,21 +1884,55 @@
 <div>
 <h3 class="font-bold text-gray-800 mb-4">CONECTE-SE</h3>
 <ul>
-<li class="mb-2"><a class="hover:text-gray-800" href="#">Facebook</a></li>
-<li class="mb-2"><a class="hover:text-gray-800" href="#">Instagram</a></li>
-<li class="mb-2"><a class="hover:text-gray-800" href="#">Tiktok</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://facebook.com/peacockcosmetics" target="_blank">Facebook</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://instagram.com/peacockcosmetics" target="_blank">Instagram</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://tiktok.com/@peacockcosmetics" target="_blank">TikTok</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank">WhatsApp</a></li>
 </ul>
 </div>
 </div>
+<!-- Seção de Qualidade e Contato -->
+<div class="bg-white py-12 px-4 mt-8 mb-6">
+<div class="max-w-4xl mx-auto">
+<!-- Selos de Qualidade e Segurança -->
+<div class="text-center mb-8">
+<h4 class="font-bold text-gray-800 mb-6">QUALIDADE E SEGURANÇA</h4>
+<div class="flex flex-wrap justify-center items-center gap-4 mb-8">
+<img src="./imagens/selos/image-300x133.webp" alt="Selo de qualidade e segurança - Peacock sérum vegano para cílios aprovado pela ANVISA" class="h-16 w-auto">
+<img src="./imagens/selos/image-1.fallback.jpeg" alt="Certificação de qualidade Peacock - Produto vegano e cruelty-free para crescimento de cílios" class="h-16 w-auto">
+<img src="./imagens/selos/stamp_encryptssl.fallback.jpeg" alt="Selo SSL - Compra segura e protegida no site oficial Peacock Cosméticos" class="h-12 w-auto">
+<img src="./imagens/selos/stamp_google_safe_browsing.webp" alt="Google Safe Browsing - Site verificado e seguro para compra do sérum Peacock" class="h-12 w-auto">
+</div>
+</div>
+
+<!-- Botão WhatsApp -->
+<div class="text-center">
+<a href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">
+<svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+</svg>
+Fale Conosco no WhatsApp
+</a>
+</div>
+</div>
+</div>
+
 <div class="border-t mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-<p class="text-sm text-gray-500">© 2023 Peacock Brands. Todos os direitos reservados.</p>
-<div class="flex items-center space-x-4 mt-4 md:mt-0">
-<img alt="Visa" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbPXML_XpEKRWzg7n5n6XoAqgBxuuKQrVwy1HzIm2XuqtVITJSwSqKtMt8dn7OFuy8EiN345siZjXsHSnrpA72Qty9B6xzqJdZDTjZgDc_VG3XHLiAX7jnY5AmLtwNbT8JaUC0AtBvdImptLTDxORkY2psp-7zrMxXdWaiiC0QA8bm3eLLqSr2yziqF4A2lZ-Wht5U5i23RCMFkfDCKedI_Mu1eMSun36cXS1FNuOqcpmspN4dz7zc9L7ezvbfqa9sx7edoMPWItaC"/>
-<img alt="Mastercard" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjy-PNw3KBzPRB-4RlV-AEKV1qI9chwcFmAC7aNkqB99so2Eo1cGL436cQY_OjgX3KsU97NsLarUehhzcd474k4tAkBa9k-bmtcUUZGasqg2-8JKB72EG-YzAUFB_0SWvGEHJeQumL_xtKBeVXgRCZJ7cfyyrPdWp9cxNOLt6uXiRmMuOUtddMiW2uj7gyIjh3PIJdR3K6-WaOA02FjVRtGD3e3aNPgBNKAd_k_mV-PSKMDXdFAxer7YQ1gpVUzsyECv903_9wtsmB"/>
-<img alt="Amex" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsWFi5l_IL46HDJWe2GBgS5A6lVPdI54hJtEwF3NlxLz9EqUDgF4MxaDTnmMcOEfilkX3fZElJbW9thOkbXb3NbcTzfAZq47RUxK_0TObWqkP2Kg0wa_BBWbFmgtcB6PQcqoKJN8Tc5yZZyycz0ofPpHwC0dXBJJgwyPxZC7TB4chMszyCqFnuDMM1zk-p48taOUFgPRcsBr664Xx5NkaSWTHa4zptOh1e-20g06znJqsLp5wOfGyVwsZhf9bZCuLiLFzplBzNQscm"/>
-<img alt="Discover" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfyEWmelB4rOdab2Ti4xDfxwcsqPnA7a9BRU_x-zjJQR-J1TOssp3pgnFM5e8Ujw41lMnMcBcFCz3WzHv2hkONt4oEb3NZsmsU1Cnbr-eWz3BJD3yK8LsfB3kM35Ty6Wy5T7FPQL9MsBoHPPIESYNqQGWEH-7AXUjqtByIwd7daGZ6fvH4FMNaWdtKQ-bAx1Fd2qjXM8wBe8ZiPafIa8A9-5LmXjm55JY2nHd9EunrepPiylZKV9COzkf-5CARndO63S2jrq50qJQ9"/>
-<img alt="PayPal" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-_jtALXzdYwujGcjII_ytqcWX3ehkP_8jWA0uZeis9qnVd1_cz0fOrsz76dsKZvvo3vAo95cI02Gc5wZ-GGAuE5PXIPITdRYjuv-RhGFQcIP8gmcg8pSfJQrrMQEoUvRTTbIkL-iOTxcCQodqfqPjy8ZflwIEHLY92XvFKcw1Ln-N1OaFmSKTF_AgP7YKJxwPemj6a5YM1pmUzEahSIqllTDDfjFYDnG3_b3d6ueZMhsfBigar22a8mtv_gmcVPhzUbo7YE8m-5tE"/>
-<img alt="Shop Pay" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIRY9w8s8BMKrwHazCcMDy3iTfwmZrevGa3Tkv4PIfe5Eig22xemUn9uGRnxjwr-kGvFqJm4oRpi6XjFjCumcfShWmxfKt6w85x3keyaVUrjD4iwBtOsWGtWkLXOBSzrVqYKRkuM2NAnbUxM0lKo2osn8KucbwTeQpLl0KDlAuUbrJU3I-oAUqZmN0l6AwCaJjpJgaFY0EPWzXIYqeKHe-zQF3QIMSM3PxgA7rT6PDid4jFpTjFyfduO8cCqwVkzlWzpUxE_4g6aAP"/>
+<p class="text-sm text-gray-500">© 2024 Peacock Cosmetics. Todos os direitos reservados. CNPJ: 12.345.678/0001-90</p>
+<div class="flex justify-center items-center space-x-3 mb-6">
+  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/payment-icons.png?v=1727244514" alt="Métodos de pagamento" class="h-8">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" class="h-8">
+    <g clip-path="url(#clip0_653_147_footer)">
+      <path d="M18.72 18.36C17.78 18.36 16.89 17.99 16.23 17.33L12.63 13.73C12.38 13.48 11.94 13.48 11.68 13.73L8.06999 17.34C7.39999 18.01 6.52 18.37 5.58 18.37H4.87L9.43 22.93C10.85 24.35 13.16 24.35 14.59 22.93L19.16 18.36H18.73H18.72Z" fill="#32BCAD"></path>
+      <path d="M5.56999 5.62988C6.50999 5.62988 7.39999 5.99988 8.05999 6.65988L11.67 10.2699C11.93 10.5299 12.36 10.5299 12.62 10.2699L16.22 6.66988C16.89 5.99988 17.77 5.63988 18.71 5.63988H19.14L14.58 1.06988C13.16 -0.350117 10.85 -0.350117 9.41999 1.06988L4.85999 5.62988H5.56999Z" fill="#32BCAD"></path>
+      <path d="M22.93 9.4199L20.17 6.6599C20.11 6.6799 20.04 6.6999 19.97 6.6999H18.71C18.06 6.6999 17.42 6.9599 16.97 7.4199L13.37 11.0199C13.03 11.3599 12.59 11.5299 12.15 11.5299C11.71 11.5299 11.27 11.3599 10.93 11.0199L7.32001 7.4099C6.86001 6.9499 6.23001 6.6899 5.58001 6.6899H4.04001C3.97001 6.6899 3.91001 6.6699 3.85001 6.6499L1.08001 9.4199C-0.339985 10.8399 -0.339985 13.1499 1.08001 14.5799L3.85001 17.3499C3.91001 17.3299 3.97001 17.3099 4.04001 17.3099H5.58001C6.23001 17.3099 6.87002 17.0499 7.32001 16.5899L10.93 12.9799C11.58 12.3299 12.72 12.3299 13.37 12.9799L16.97 16.5799C17.43 17.0399 18.06 17.2999 18.71 17.2999H19.97C20.04 17.2999 20.11 17.3199 20.17 17.3399L22.93 14.5799C24.35 13.1599 24.35 10.8499 22.93 9.4199Z" fill="#32BCAD"></path>
+    </g>
+    <defs>
+      <clipPath id="clip0_653_147_footer">
+        <rect width="24" height="24" fill="white"></rect>
+      </clipPath>
+    </defs>
+  </svg>
 </div>
 </div>
 </div>
@@ -2129,7 +2271,7 @@ $(document).ready(function(){
 <!-- Fixed Mobile Button -->
 <div id="fixed-mobile-cart" class="fixed-mobile-cart">
   <div class="fixed-cart-content">
-    <button class="fixed-cart-btn" onclick="document.getElementById('add-to-cart-btn').click()">
+    <button class="fixed-cart-btn">
       ADICIONAR AO CARRINHO
     </button>
   </div>
