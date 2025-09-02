@@ -394,15 +394,20 @@
                 right: 50% !important;
                 margin-left: -50vw !important;
                 margin-right: -50vw !important;
+                height: 480px !important;
             }
             
-            .product-image-gallery img {
+            .product-image-gallery #mainImage {
                 border-radius: 0 !important;
                 width: 100vw !important;
-                height: 480px !important;
+                height: 100% !important;
                 max-height: none !important;
+                min-height: 480px !important;
                 object-fit: cover !important;
                 display: block !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
             }
             
             /* Thumbnail gallery mobile - ocultar no mobile */
@@ -520,7 +525,20 @@
 <body class="bg-white font-sans">
 <!-- Banner promocional -->
 <div style="background: linear-gradient(90deg, #FDD3DE 0%, #E6F3EE 50%, #C0BAF2 100%); color: #111827; display: flex; align-items: center; justify-content: center; height: 28px; padding: 0 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
-  <p style="margin: 0;">GANHE 50% DE DESCONTO COM O CÓDIGO SECRET50 - TERMINA EM 1º DE SETEMBRO</p>
+  <p class="promo-text" style="margin: 0; padding: 0 10px; text-align: center; font-size: 14px; line-height: 1.2;">50% OFF - CUPOM: SECRET50 - ATÉ 2 SET</p>
+
+<style>
+    @media (max-width: 768px) {
+        .promo-text {
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+            display: block;
+        }
+    }
+</style>
 </div>
 
 <!-- Cabeçalho -->
@@ -603,8 +621,8 @@
       width: 100%;
       padding:0; /* sem padding interno, usa o do container */
       align-items: center;
-      flex-wrap: nowrap;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .custom-featured-bar-item {
@@ -630,10 +648,33 @@
     }
 
     @media only screen and (max-width:768px) {
-      .custom-featured-bar-item > div:first-child {
-        margin-right:3px;
+      .custom-featured-bar .container {
+        padding: 8px 12px;
       }
-      .custom-featured-bar-item { font-size: 12px; }
+      
+      .custom-featured-bar-wrap {
+        gap: 5px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .custom-featured-bar-item {
+        font-size: 11px;
+        gap: 3px;
+        flex: 1 1 auto;
+        min-width: 0;
+        text-align: center;
+      }
+      
+      .custom-featured-bar-item > div:first-child {
+        margin-right: 3px;
+      }
+      
+      .custom-featured-bar-item span {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }
     }
   </style>
 </div>
@@ -643,7 +684,7 @@
 <div class="md:w-1/2">
 <!-- Imagem principal da galeria -->
 <div class="product-image-gallery relative">
-<img id="mainImage" alt="Produto Ativador de Vínculo de Cílios" class="w-full rounded-lg transition-opacity duration-300" src="./imagens/1.jpg"/>
+<img id="mainImage" alt="Produto Ativador de Vínculo de Cílios" class="rounded-lg transition-opacity duration-300" src="./imagens/1.jpg"/>
 <!-- Setas de navegação -->
 <button class="slider-arrow slider-arrow-left" onclick="previousImage()">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
