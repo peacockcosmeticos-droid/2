@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Termos de Serviço - Peacock Cosméticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Header mobile adjustments */
+            header nav {
+                display: none !important;
+            }
+            
+            header .max-w-7xl {
+                padding: 0 16px !important;
+            }
+            
+            header div[style*="height: 60px"] {
+                height: 50px !important;
+            }
+            
+            header img[style*="height: 40px"] {
+                height: 32px !important;
+            }
+            
+            /* Banner promocional mobile */
+            div[style*="background: linear-gradient"] {
+                font-size: 10px !important;
+                padding: 0 8px !important;
+                height: 24px !important;
+            }
+            
+            /* Main container mobile */
+            main {
+                padding: 16px 0 !important;
+            }
+            
+            .container.mx-auto {
+                padding: 0 16px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header style="background-color: #FFFFFF; border-bottom: 1px solid #E5E7EB; position: sticky; top: 0; z-index: 50;">
+        <div class="max-w-7xl mx-auto" style="padding: 0 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; height: 60px;">
+                <!-- Logo -->
+                <div style="flex-shrink: 0;">
+                    <a href="index.html">
+                        <img style="height: 40px; width: auto;" src="./peecock.png" alt="Peacock Cosméticos">
+                    </a>
+                </div>
+
+                <!-- Navegação central -->
+                <nav style="display: flex; gap: 32px;">
+                    <a href="https://seguro.peacockcosmeticos.com.br/minha-conta/pedidos" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Meus Pedidos</a>
+                    <a href="https://seguro.peacockcosmeticos.com.br/minha-conta/" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Minha Conta</a>
+                    <a href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">WhatsApp</a>
+                </nav>
+
+                <!-- Ícones de ação -->
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <button style="color: #000000; background: none; border: none; cursor: pointer;">
+                        <svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <button style="color: #000000; background: none; border: none; cursor: pointer;">
+                        <svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </button>
+                    <button style="color: #000000; background: none; border: none; cursor: pointer; position: relative;">
+                        <svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                        </svg>
+                        <span style="position: absolute; top: -8px; right: -8px; background-color: #D5647C; color: white; font-size: 12px; border-radius: 50%; height: 20px; width: 20px; display: flex; align-items: center; justify-content: center;">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de destaques abaixo da logo -->
+    <div class="custom-featured-bar">
+        <div class="container">
+            <div class="custom-featured-bar-wrap">
+                <div class="custom-featured-bar-item left-badge">
+                    <div class="badge-content">
+                        <img src="https://herliaison.com/cdn/shop/files/free-shipping-icon.svg?v=1727167109&amp;width=25" alt="Frete grátis" width="25" height="25">
+                        <span class="free-shipping-banner">Frete grátis para todo o Brasil — somente hoje!</span>
+                    </div>
+                </div>
+                <div class="custom-featured-bar-item right-badge">
+                    <div class="badge-content">
+                        <img src="https://herliaison.com/cdn/shop/files/happy-users-icon.svg?v=1727167109&amp;width=25" alt="Usuários satisfeitos" width="25" height="25">
+                        <span>50.000+ usuários satisfeitos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .custom-featured-bar {
+            background:#D5647C;
+            color:#fff;
+        }
+
+        .custom-featured-bar .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding:8px 24px;
+        }
+        
+        .custom-featured-bar-wrap {
+            display:flex;
+            gap:10px;
+            width: 100%;
+            padding:0;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        .custom-featured-bar-item {
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            font-weight:500;
+            line-height:normal;
+            gap:5px;
+            flex: 1;
+        }
+        
+        .left-badge {
+            justify-content: flex-start;
+        }
+         
+        .right-badge {
+            justify-content: flex-end;
+        }
+
+        @media (max-width: 768px) {
+            .custom-featured-bar .container {
+                padding: 8px 16px;
+            }
+            
+            .custom-featured-bar-wrap {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .custom-featured-bar-item {
+                font-size: 11px;
+            }
+        }
+    </style>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto px-6 md:px-12 py-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-500 mb-8">
+                <a href="index.html" class="hover:text-gray-700">Início</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-700">Termos de Serviço</span>
+            </nav>
+
+            <!-- Título da Página -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Termos de Serviço</h1>
+                <p class="text-lg text-gray-600">Última atualização: Janeiro de 2024</p>
+            </div>
+
+            <!-- Conteúdo da Página -->
+            <div class="prose prose-lg max-w-none">
+                <!-- Seção de Aceitação dos Termos -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">1. Aceitação dos Termos</h2>
+                    <p class="text-gray-700 mb-4">
+                        Ao acessar e usar este site, você aceita estar vinculado a estes Termos de Serviço e a todas as leis e regulamentos aplicáveis. Se você não concordar com qualquer um desses termos, está proibido de usar ou acessar este site.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.
+                    </p>
+                </section>
+
+                <!-- Seção de Uso da Licença -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">2. Uso da Licença</h2>
+                    <p class="text-gray-700 mb-4">
+                        É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site da Peacock Cosméticos para visualização pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título, e sob esta licença você não pode:
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-4 space-y-2">
+                        <li>Modificar ou copiar os materiais</li>
+                        <li>Usar os materiais para qualquer finalidade comercial ou para exibição pública</li>
+                        <li>Tentar descompilar ou engenharia reversa de qualquer software contido no site</li>
+                        <li>Remover quaisquer direitos autorais ou outras notações de propriedade dos materiais</li>
+                        <li>Transferir os materiais para outra pessoa ou "espelhar" os materiais em qualquer outro servidor</li>
+                    </ul>
+                </section>
+
+                <!-- Seção de Produtos e Serviços -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">3. Produtos e Serviços</h2>
+                    <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                        <h3 class="text-lg font-bold text-blue-800 mb-4">Descrição dos Produtos</h3>
+                        <p class="text-gray-700 mb-4">
+                            A Peacock Cosméticos oferece produtos de beleza e cuidados pessoais, incluindo séruns para crescimento de cílios. Todos os produtos são desenvolvidos seguindo rigorosos padrões de qualidade e segurança.
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                            <li>Produtos aprovados pela ANVISA</li>
+                            <li>Formulas veganas e cruelty-free</li>
+                            <li>Testados dermatologicamente</li>
+                            <li>Produzidos em laboratórios certificados</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-green-800 mb-4">Garantias e Responsabilidades</h3>
+                        <p class="text-gray-700 mb-4">
+                            Nossos produtos são garantidos contra defeitos de fabricação. No entanto, não garantimos resultados específicos, pois estes podem variar de acordo com cada pessoa.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Seção de Pedidos e Pagamentos -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">4. Pedidos e Pagamentos</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Processamento de Pedidos</h3>
+                            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                                <li>Pedidos são processados em até 24 horas</li>
+                                <li>Pagamento deve ser confirmado antes do envio</li>
+                                <li>Reservamo-nos o direito de recusar pedidos</li>
+                                <li>Preços podem ser alterados sem aviso prévio</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Métodos de Pagamento</h3>
+                            <div class="bg-white border rounded-lg p-4">
+                                <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                                    <li>Cartões de crédito e débito</li>
+                                    <li>PIX</li>
+                                    <li>Boleto bancário</li>
+                                    <li>Transferência bancária</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção de Privacidade e Segurança -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">5. Privacidade e Segurança</h2>
+                    <p class="text-gray-700 mb-4">
+                        Sua privacidade é importante para nós. Nossa coleta e uso de informações pessoais são regidos por nossa Política de Privacidade, que faz parte integrante destes Termos de Serviço.
+                    </p>
+                    <div class="bg-yellow-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-yellow-800 mb-4">Segurança da Informação</h3>
+                        <ul class="list-disc pl-6 text-yellow-700 space-y-2">
+                            <li>Site protegido com certificado SSL</li>
+                            <li>Dados criptografados durante transmissão</li>
+                            <li>Não compartilhamos informações com terceiros</li>
+                            <li>Conformidade com LGPD</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Seção de Limitações -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">6. Limitações</h2>
+                    <p class="text-gray-700 mb-4">
+                        Em nenhuma circunstância a Peacock Cosméticos ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro, ou devido à interrupção do negócio) decorrentes do uso ou da incapacidade de usar os materiais no site da Peacock Cosméticos.
+                    </p>
+                    <div class="bg-red-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-red-800 mb-4">Exclusões de Responsabilidade</h3>
+                        <ul class="list-disc pl-6 text-red-700 space-y-2">
+                            <li>Danos indiretos ou consequenciais</li>
+                            <li>Perda de lucros ou dados</li>
+                            <li>Interrupção de negócios</li>
+                            <li>Uso inadequado dos produtos</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Seção de Propriedade Intelectual -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">7. Propriedade Intelectual</h2>
+                    <p class="text-gray-700 mb-4">
+                        Todo o conteúdo deste site, incluindo textos, gráficos, logotipos, ícones, imagens, clipes de áudio, downloads digitais e compilações de dados, é propriedade da Peacock Cosméticos ou de seus fornecedores de conteúdo e está protegido pelas leis brasileiras e internacionais de direitos autorais.
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-gray-800 mb-4">Marcas Registradas</h3>
+                        <p class="text-gray-700">
+                            "Peacock Cosméticos" e todos os nomes de produtos relacionados são marcas registradas da empresa. O uso não autorizado destas marcas é estritamente proibido.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Seção de Modificações -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">8. Modificações dos Termos</h2>
+                    <p class="text-gray-700 mb-4">
+                        A Peacock Cosméticos pode revisar estes Termos de Serviço a qualquer momento sem aviso prévio. Ao usar este site, você concorda em estar vinculado à versão atual destes Termos de Serviço.
+                    </p>
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-bold text-blue-800 mb-4">Notificação de Alterações</h3>
+                        <p class="text-gray-700">
+                            Alterações significativas serão comunicadas através de nosso site ou e-mail. É sua responsabilidade revisar periodicamente estes termos.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Seção de Lei Aplicável -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">9. Lei Aplicável</h2>
+                    <p class="text-gray-700 mb-4">
+                        Estes Termos de Serviço são regidos e interpretados de acordo com as leis da República Federativa do Brasil. Qualquer disputa será resolvida nos tribunais da comarca de São Paulo, SP.
+                    </p>
+                </section>
+
+                <!-- Seção de Contato -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">10. Contato</h2>
+                    <p class="text-gray-700 mb-4">
+                        Se você tiver dúvidas sobre estes Termos de Serviço, entre em contato conosco:
+                    </p>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <p class="text-gray-700 mb-2"><strong>E-mail:</strong> juridico@peacockcosmetics.com.br</p>
+                        <p class="text-gray-700 mb-2"><strong>Telefone:</strong> (11) 9999-8888</p>
+                        <p class="text-gray-700 mb-2"><strong>Endereço:</strong> Rua das Flores, 123 - Centro, São Paulo - SP</p>
+                        <p class="text-gray-700 mb-2"><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+                    </div>
+                </section>
+
+                <!-- Seção de Aceitação Final -->
+                <section class="mb-12">
+                    <div class="bg-green-50 border-l-4 border-green-400 p-6">
+                        <h2 class="text-xl font-bold text-green-800 mb-4">Aceitação dos Termos</h2>
+                        <p class="text-gray-700 mb-4">
+                            Ao continuar usando nosso site e serviços, você confirma que leu, entendeu e concorda com todos os termos e condições aqui estabelecidos.
+                        </p>
+                        <p class="text-gray-700">
+                            Se você não concordar com estes termos, por favor, não use nossos serviços.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Botão de Voltar -->
+                <div class="text-center mt-12">
+                    <a href="index.html" class="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Voltar ao Início
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-100 pt-16 pb-8">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid md:grid-cols-4 gap-8 text-gray-600">
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">
+                        <img alt="Peacock Cosmeticos Logo" class="h-8" src="./peecock.png"/>
+                    </h3>
+                    <p>Experimente o novo padrão ouro de séruns para cílios mais longos e cheios.</p>
+                    <div class="mt-4 text-sm">
+                        <p><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+                        <p><strong>Endereço:</strong> Rua das Flores, 123 - Centro</p>
+                        <p>São Paulo - SP, CEP: 01234-567</p>
+                        <p><strong>Telefone:</strong> (11) 9999-8888</p>
+                        <p><strong>Email:</strong> contato@peacockcosmetics.com.br</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">EMPRESA</h3>
+                    <ul>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="politica-privacidade.html">Política de Privacidade</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://seguro.peacockcosmeticos.com.br/minha-conta/pedidos">Meus Pedidos</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://seguro.peacockcosmeticos.com.br/minha-conta/">Minha Conta</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">SUPORTE</h3>
+                    <ul>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="politica-privacidade.html">Política de Privacidade</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="envio-devolucoes.html">Envio e Devoluções</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="termos-servico.html">Termos de Serviço</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4">CONECTE-SE</h3>
+                    <ul>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://facebook.com/peacockcosmetics" target="_blank">Facebook</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://instagram.com/peacockcosmetics" target="_blank">Instagram</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://tiktok.com/@peacockcosmetics" target="_blank">TikTok</a></li>
+                        <li class="mb-2"><a class="hover:text-gray-800" href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Seção de Qualidade e Contato -->
+            <div class="bg-white py-12 px-4 mt-8 mb-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Selos de Qualidade e Segurança -->
+                    <div class="text-center mb-8">
+                        <h4 class="font-bold text-gray-800 mb-6">QUALIDADE E SEGURANÇA</h4>
+                        <div class="flex flex-wrap justify-center items-center gap-4 mb-8">
+                            <img src="./imagens/selos/image-300x133.webp" alt="Selo de qualidade e segurança - Peacock sérum vegano para cílios aprovado pela ANVISA" class="h-16 w-auto">
+                            <img src="./imagens/selos/image-1.fallback.jpeg" alt="Certificação de qualidade Peacock - Produto vegano e cruelty-free para crescimento de cílios" class="h-16 w-auto">
+                            <img src="./imagens/selos/stamp_encryptssl.fallback.jpeg" alt="Selo SSL - Compra segura e protegida no site oficial Peacock Cosméticos" class="h-12 w-auto">
+                            <img src="./imagens/selos/stamp_google_safe_browsing.webp" alt="Google Safe Browsing - Site verificado e seguro para compra do sérum Peacock" class="h-12 w-auto">
+                        </div>
+                    </div>
+
+                    <!-- Botão WhatsApp -->
+                    <div class="text-center">
+                        <a href="https://wa.me/5519981625626?text=Ol%C3%A1+Peacock,+tenho+interesse+no+s%C3%A9rum+de+crescimento+de+c%C3%ADlios!+Poderia+me+passar+mais+detalhes?&utm_source=chatgpt.com" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            Fale Conosco no WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">© 2024 Peacock Cosmetics. Todos os direitos reservados. CNPJ: 12.345.678/0001-90</p>
+                <div class="flex justify-center items-center space-x-3 mb-6">
+                    <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/payment-icons.png?v=1727244514" alt="Métodos de pagamento" class="h-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" class="h-8">
+                        <g clip-path="url(#clip0_653_147_footer)">
+                            <path d="M18.72 18.36C17.78 18.36 16.89 17.99 16.23 17.33L12.63 13.73C12.38 13.48 11.94 13.48 11.68 13.73L8.06999 17.34C7.39999 18.01 6.52 18.37 5.58 18.37H4.87L9.43 22.93C10.85 24.35 13.16 24.35 14.59 22.93L19.16 18.36H18.73H18.72Z" fill="#32BCAD"></path>
+                            <path d="M5.56999 5.62988C6.50999 5.62988 7.39999 5.99988 8.05999 6.65988L11.67 10.2699C11.93 10.5299 12.36 10.5299 12.62 10.2699L16.22 6.66988C16.89 5.99988 17.77 5.63988 18.71 5.63988H19.14L14.58 1.06988C13.16 -0.350117 10.85 -0.350117 9.41999 1.06988L4.85999 5.62988H5.56999Z" fill="#32BCAD"></path>
+                            <path d="M22.93 9.4199L20.17 6.6599C20.11 6.6799 20.04 6.6999 19.97 6.6999H18.71C18.06 6.6999 17.42 6.9599 16.97 7.4199L13.37 11.0199C13.03 11.3599 12.59 11.5299 12.15 11.5299C11.71 11.5299 11.27 11.3599 10.93 11.0199L7.32001 7.4099C6.86001 6.9499 6.23001 6.6899 5.58001 6.6899H4.04001C3.97001 6.6899 3.91001 6.6699 3.85001 6.6499L1.08001 9.4199C-0.339985 10.8399 -0.339985 13.1499 1.08001 14.5799L3.85001 17.3499C3.91001 17.3299 3.97001 17.3099 4.04001 17.3099H5.58001C6.23001 17.3099 6.87002 17.0499 7.32001 16.5899L10.93 12.9799C11.58 12.3299 12.72 12.3299 13.37 12.9799L16.97 16.5799C17.43 17.0399 18.06 17.2999 18.71 17.2999H19.97C20.04 17.2999 20.11 17.3199 20.17 17.3399L22.93 14.5799C24.35 13.1599 24.35 10.8499 22.93 9.4199Z" fill="#32BCAD"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_653_147_footer">
+                                <rect width="24" height="24" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
