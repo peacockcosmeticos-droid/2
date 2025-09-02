@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ativador de Vínculo de Cílios</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+        }
+        .cta-button {
+            background-color: #92D43D;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 8px;
+            margin-top: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Estilos para o botão global após FAQ */
+        .global-cta-section {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f9f9f9;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .global-cta-button {
+            background: linear-gradient(135deg, #92D43D 0%, #7BC142 100%);
+            color: white;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(146, 212, 61, 0.3);
+            margin-bottom: 15px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .global-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(146, 212, 61, 0.4);
+        }
+        
+        .guarantee-text {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .guarantee-text strong {
+            color: #D5647C;
+            font-weight: 600;
+        }
+        
+        /* Estilos para botão global original */
+        .global-button {
+            background: #92D43D;
+            border: 2px solid #92D43D;
+            color: white;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .global-button--primary {
+            background: #d5647c;
+            border-color: #d5647c;
+        }
+        
+        .global-button:hover {
+            background: #d5647c;
+            border-color: #d5647c;
+        }
+        
+        .free-shipping-text {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .faq-action-wrap {
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .faq-action-wrap > div {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .faq-action-wrap > div span {
+            margin: 0 5px;
+        }
+        
+        .pdp-section-video-slider-a-1 .pdp-section-title {
+            color: #D5647C;
+        }
+        
+        .pdp-section-video-slider-a-1 .pdp-section-sub-title {
+            margin-bottom: 20px;
+        }
+        
+        .pdp-section-video-slider-a-1 .pdp-section-sub-title .metafield-rich_text_field {
+            font-size: clamp(14px, 2vw, 16px);
+            color: #333;
+        }
+        
+        .pdp-section-video-slider-a-1 .wrap-video-slider-a-1 {
+            margin-top: clamp(0px,3vw,15px);
+        }
+        
+        .wrap-video-slider-a-1 .video-column {
+            overflow: hidden;
+        }
+        
+        .wrap-video-slider-a-1 .video-marquee {
+            width: 100%;
+            overflow: visible;
+            z-index: 0;
+        }
+        
+        .wrap-video-slider-a-1 .video-marquee .swiper-wrapper {
+            -webkit-transition-timing-function: linear !important;
+            -o-transition-timing-function: linear !important;
+            transition-timing-function: linear !important;
+        }
+        
+        .wrap-video-slider-a-1 .swiper-slide {
+            height: 100%;
+            margin: 0px 10px;
+        }
+        
+        .wrap-video-slider-a-1 .swiper-slide > div {
+            padding: 0px 5px;
+            width: fit-content;
+        }
+        
+        .wrap-video-slider-a-1 .swiper-slide video {
+            max-width: 340px;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .wrap-video-slider-a-1 button {
+            font-size: clamp(15px, 3vw, 18px);
+            background: #92D43D;
+            border-color: #92D43D;
+        }
+        
+        .wrap-video-slider-a-1 .overlay-label {
+            width: calc(100% - 10px);
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            position: absolute;
+            bottom: 5px;
+            background: linear-gradient(180deg, rgba(254,246,171,0) 0%, rgba(0,0,0,0.8939950980392157) 100%);
+            color: #fff;
+            padding: 60px 15px 10px;
+            border-radius: 0px 0px 10px 10px;
+        }
+        
+        .wrap-video-slider-a-1 .overlay-label .metafield-rich_text_field {
+            font-size: clamp(16px, 3vw, 18px);
+        }
+        
+        /* Estilos para o slider de avaliações */
+        .testimonials-swiper {
+            padding: 0 50px;
+        }
+        
+        .testimonials-swiper .swiper-button-next,
+        .testimonials-swiper .swiper-button-prev {
+            color: #D5647C;
+            background: white;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: -22px;
+        }
+        
+        .testimonials-swiper .swiper-button-next:after,
+        .testimonials-swiper .swiper-button-prev:after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .testimonials-swiper .swiper-pagination-bullet {
+            background: #D5647C;
+            opacity: 0.3;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .testimonials-swiper .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #D5647C;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-swiper {
+                padding: 0 20px;
+            }
+            
+            .testimonials-swiper .swiper-button-next,
+            .testimonials-swiper .swiper-button-prev {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body class="bg-white font-sans">
+<!-- Banner promocional -->
+<div style="background: linear-gradient(90deg, #FDD3DE 0%, #E6F3EE 50%, #C0BAF2 100%); color: #111827; display: flex; align-items: center; justify-content: center; height: 28px; padding: 0 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
+  <p style="margin: 0;">GANHE 50% DE DESCONTO COM O CÓDIGO SECRET50 - TERMINA EM 1º DE SETEMBRO</p>
+</div>
+
+<!-- Cabeçalho -->
+<header style="background-color: #FFFFFF; border-bottom: 1px solid #E5E7EB; position: sticky; top: 0; z-index: 50;">
+<div class="max-w-7xl mx-auto" style="padding: 0 24px;">
+<div style="display: flex; justify-content: space-between; align-items: center; height: 60px;">
+<!-- Logo -->
+<div style="flex-shrink: 0;">
+<img style="height: 40px; width: auto;" src="./peecock.png" alt="Liaison Growth">
+</div>
+
+<!-- Navegação central -->
+<nav style="display: flex; gap: 32px;">
+<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Loja</a>
+<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Envio e Devoluções</a>
+<a href="#" style="color: #000000; text-decoration: none; padding: 8px 12px; font-size: 14px; font-weight: 500;">Resultados</a>
+</nav>
+
+<!-- Ícones de ação -->
+<div style="display: flex; align-items: center; gap: 16px;">
+<button style="color: #000000; background: none; border: none; cursor: pointer;">
+<svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+</svg>
+</button>
+<button style="color: #000000; background: none; border: none; cursor: pointer;">
+<svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+</svg>
+</button>
+<button style="color: #000000; background: none; border: none; cursor: pointer; position: relative;">
+<svg style="height: 24px; width: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+</svg>
+<span style="position: absolute; top: -8px; right: -8px; background-color: #E53E3E; color: white; font-size: 12px; border-radius: 50%; height: 20px; width: 20px; display: flex; align-items: center; justify-content: center;">0</span>
+</button>
+</div>
+</div>
+</section>
+</header>
+<!-- Barra de destaques abaixo da logo -->
+<div id="shopify-section-template--17956488675490__custom_featured_bar_dabfHQ" class="shopify-section">
+  <div class="custom-featured-bar">
+    <div class="container">
+      <div class="custom-featured-bar-wrap">
+        <div class="custom-featured-bar-item">
+          <div>
+            <img src="https://herliaison.com/cdn/shop/files/free-shipping-icon.svg?v=1727167109&amp;width=25" alt="Frete grátis" width="25" height="25">
+          </div>
+          <div>
+            <span class="free-shipping-banner">Frete grátis para todo o Brasil — somente hoje!</span>
+          </div>
+        </div>
+        <div class="custom-featured-bar-item">
+          <div>
+            <img src="https://herliaison.com/cdn/shop/files/happy-users-icon.svg?v=1727167109&amp;width=25" alt="Usuários satisfeitos" width="25" height="25">
+          </div>
+          <div>
+            <span>50.000+ usuários satisfeitos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style data-shopify="">
+    .custom-featured-bar {
+      background:#D5647C;
+      color:#fff;
+    }
+
+    .custom-featured-bar .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding:8px 24px; /* Alinha com o padding do header */
+    }
+    
+    .custom-featured-bar-wrap {
+      display:flex;
+      gap:10px;
+      width: 100%;
+      padding:0; /* sem padding interno, usa o do container */
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    .custom-featured-bar-item {
+      display:flex;
+      align-items:center;
+      justify-content: center;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      font-weight:500;
+      line-height:normal;
+      gap:5px;
+      flex: 0 0 auto;
+      white-space: nowrap; /* evita quebra entre ícone e texto */
+    }
+
+    .custom-featured-bar-item > div {
+      display:flex;
+      align-items:center;
+    }
+
+    .custom-featured-bar-item > div:first-child {
+      margin-right:10px;
+    }
+
+    @media only screen and (max-width:768px) {
+      .custom-featured-bar-item > div:first-child {
+        margin-right:3px;
+      }
+      .custom-featured-bar-item { font-size: 12px; }
+    }
+  </style>
+</div>
+<main class="py-8">
+<div class="container mx-auto" style="padding: 0 12px;">
+<div class="flex flex-col md:flex-row gap-12">
+<div class="md:w-1/2">
+<!-- Imagem principal da galeria -->
+<img id="mainImage" alt="Produto Ativador de Vínculo de Cílios" class="w-full rounded-lg transition-opacity duration-300" src="./imagens/1.jpg"/>
+<!-- Miniaturas da galeria -->
+<div class="flex space-x-2 mt-4 justify-center">
+<img alt="Miniatura do produto 1" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-pink-500 transition-all duration-200 hover:scale-105" src="./imagens/1.jpg" data-main="./imagens/1.jpg"/>
+<img alt="Miniatura do produto 2" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/2.jpg" data-main="./imagens/2.jpg"/>
+<img alt="Miniatura do produto 3" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/3.jpg" data-main="./imagens/3.jpg"/>
+<img alt="Miniatura do produto 4" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/4.jpg" data-main="./imagens/4.jpg"/>
+<img alt="Miniatura do produto 5" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/5.jpg" data-main="./imagens/5.jpg"/>
+<img alt="Miniatura do produto 6" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/6.jpg" data-main="./imagens/6.jpg"/>
+</div>
+</div>
+<div class="md:w-1/2">
+<div class="flex items-start justify-between mb-4"> 
+ 
+ <div class="flex-1"> 
+ 
+ <div style="display: flex; align-items: center; margin-bottom: 2px; gap: 8px;"> 
+ 
+ <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/stars-rating-2.svg?v=1728979162" alt="5 estrelas" style="height: 20px; width: auto;"> 
+ 
+ 
+ </div> 
+ 
+ <h1 style="font-size: 44px; font-weight: 700; color: #000000; line-height: 1.2; margin-bottom: 2px;">Sérum vegano para crescimento de cílios
+</h1> 
+ 
+ <p style="font-size: 16px;color: #6B7280;font-weight: 400;margin-bottom: 6px;">Aumente o potencial dos cílios</p> 
+ 
+ </div> 
+ 
+
+ 
+ </div>
+
+<div style="display: flex; align-items: center; margin-bottom: 12px; gap: 12px;"> 
+  
+  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/fire-svg.svg?v=1737022834" alt="fire" style="width: 24px; height: 24px;"> 
+  
+  <span id="main-compare-price" style="color: #9CA3AF; text-decoration: line-through; font-size: 24px;">R$315,18</span> 
+  
+  <span id="main-price" style="color: #D5647C; font-size: 24px; font-weight: 700;">R$157,90</span> 
+ 
+ <span style="background-color: #FCE7F3; color: #111827; font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px;">ECONOMIZE 50%</span> 
+ 
+ </div>
+
+<div style="display: flex; align-items: center; justify-content: flex-start; gap: 16px; margin-bottom: 16px;"> 
+ 
+ <div style="display: flex; flex-direction: column; align-items: center;"> 
+ 
+ <img src="https://herliaison.com/cdn/shop/files/1-badge-vegan-product.svg?height=74&amp;v=1729249351" alt="Produto Vegano" style="height: 74px; width: auto;"> 
+ 
+ </div> 
+ 
+ <div style="display: flex; flex-direction: column; align-items: center;"> 
+ 
+ <img src="https://herliaison.com/cdn/shop/files/2-badge-cruelty-free.svg?height=74&amp;v=1729249352" alt="Livre de Crueldade" style="height: 74px; width: auto;"> 
+ 
+ </div> 
+ 
+ <div style="display: flex; flex-direction: column; align-items: center;"> 
+ 
+ <img src="https://herliaison.com/cdn/shop/files/3-badge-sulfate-free.svg?height=74&amp;v=1729249351" alt="Livre de Sulfato" style="height: 74px; width: auto;"> 
+ 
+ </div> 
+ 
+ <div style="display: flex; flex-direction: column; align-items: center;"> 
+ 
+ <img src="https://herliaison.com/cdn/shop/files/4-badge-paraben-free.svg?height=74&amp;v=1729249351" alt="Livre de Parabenos" style="height: 74px; width: auto;"> 
+ 
+ </div> 
+ 
+ </div>
+
+<!-- Descrições dos benefícios -->
+<div style="margin-bottom: 16px;">
+<p style="font-size: 16px; line-height: 1.6; color: #111827; font-weight: 400; margin-bottom: 12px;"><strong>Aumenta o volume e o comprimento:</strong> Melhore a aparência dos seus cílios desde a raiz com nossa eficaz tecnologia Lash Bond.</p>
+<p style="font-size: 16px; line-height: 1.6; color: #111827; font-weight: 400; margin-bottom: 12px;"><strong>Fórmula suave e rica em nutrientes:</strong> Cuida da saúde dos seus cílios com peptídeos e nutrientes essenciais, sem irritação ou complicações.</p>
+<p style="font-size: 16px; line-height: 1.6; color: #111827; font-weight: 400; margin-bottom: 0;"><strong>Cílios mais cheios e longos em poucas semanas:</strong> Comece a ver cílios mais cheios em apenas 12 semanas com uso rápido e diário.</p>
+</div>
+<div class="mb-8" id="product-selection">
+  <style>
+    .swatch-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+    .swatch-element .swatch-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid #E5E7EB; border-radius: 12px; padding: 14px 16px; background: #fff; cursor: pointer; }
+    .swatch-element.active .swatch-option { background: #FDE7EF; border-color: #EF4B6C; }
+    .swatch-option__left { display: flex; align-items: center; gap: 12px; flex: 1 1 auto; }
+    .swatch-option__left input[type="radio"] { width: 18px; height: 18px; }
+    .swatch-option__left-image img { width: 48px; height: 48px; border-radius: 8px; object-fit: contain; background: #F9FAFB; }
+    .swatch-option__left-name { font-weight: 600; color: #111827; }
+    .swatch-option__center { margin-left: 8px; margin-right: auto; font-weight: 700; font-size: 12px; color: #E11D48; border: 2px solid #E11D48; padding: 4px 10px; border-radius: 9999px; line-height: 1; }
+    .swatch-element .swatch-option__center:empty { display: none; }
+    .swatch-option__right { text-align: right; min-width: 92px; }
+    .swatch-option__right-price b { color: #E11D48; font-weight: 800; }
+    .swatch-options__savings span { color: #9CA3AF; text-decoration: line-through; font-size: 13px; }
+  </style>
+
+  <div class="swatch-list">
+    <!-- 1 Bottle (Selected) -->
+    <div class="swatch-element 1-bottle-swatch available active" data-price="R$157,90" data-compare="R$315,18">
+      <label class="swatch-option">
+        <div class="swatch-option__left">
+          <input type="radio" name="option-0" value="1 Garrafa" checked>
+          <div class="swatch-option__left-image">
+            <img src="https://herliaison.com/cdn/shop/files/cro2-image1.png?v=1684002563" alt="1-Garrafa">
+          </div>
+          <div class="swatch-option__left-name">1-Frasco </div>
+        </div>
+        <div class="swatch-option__center"></div>
+        <div class="swatch-option__right">
+          <div class="swatch-option__right-price"><span class="money"><b>R$157,90</b></span></div>
+          <span class="money">
+            <div class="swatch-options__savings"><span>R$315,18</span></div>
+          </span>
+        </div>
+      </label>
+    </div>
+
+    <!-- 3 Bottles -->
+    <div class="swatch-element 3-bottles-swatch available" data-price="R$426,33" data-compare="R$945,30">
+      <label class="swatch-option">
+        <div class="swatch-option__left">
+          <input type="radio" name="option-0" value="3 Bottles">
+          <div class="swatch-option__left-image">
+            <img src="https://herliaison.com/cdn/shop/files/cro2-image2.png?v=1684002564" alt="3-Bottles">
+          </div>
+          <div class="swatch-option__left-name">3-Frascos</div>
+        </div>
+        <div class="swatch-option__center">ECONOMIZE 60%</div>
+        <div class="swatch-option__right">
+          <div class="swatch-option__right-price"><span class="money"><b>R$426,33</b></span></div>
+          <span class="money">
+            <div class="swatch-options__savings"><span>R$945,30</span></div>
+          </span>
+        </div>
+      </label>
+    </div>
+
+    <!-- 5 Bottles -->
+    <div class="swatch-element 5-bottles-swatch available" data-price="R$631,60" data-compare="R$1575,90">
+      <label class="swatch-option">
+        <div class="swatch-option__left">
+          <input type="radio" name="option-0" value="5 Bottles">
+          <div class="swatch-option__left-image">
+            <img src="https://herliaison.com/cdn/shop/files/cro2-image3.png?v=1684002565" alt="5-Bottles">
+          </div>
+          <div class="swatch-option__left-name">5-Frascos</div>
+        </div>
+        <div class="swatch-option__center">ECONOMIZE 70%</div>
+        <div class="swatch-option__right">
+          <div class="swatch-option__right-price"><span class="money"><b>R$631,60</b></span></div>
+          <span class="money">
+            <div class="swatch-options__savings"><span>R$1575,90</span></div>
+          </span>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var swatches = document.querySelectorAll('.swatch-list .swatch-element');
+      var mainPrice = document.getElementById('main-price');
+      var mainComparePrice = document.getElementById('main-compare-price');
+      
+      swatches.forEach(function(swatch){
+        swatch.addEventListener('click', function(){
+          // Remove active class from all swatches
+          swatches.forEach(function(el){ 
+            el.classList.remove('active'); 
+            var input = el.querySelector('input[type="radio"]'); 
+            if(input){ input.checked = false; } 
+          });
+          
+          // Add active class to clicked swatch
+          this.classList.add('active');
+          var radio = this.querySelector('input[type="radio"]');
+          if(radio){ radio.checked = true; }
+          
+          // Update main prices
+          var newPrice = this.getAttribute('data-price');
+          var newComparePrice = this.getAttribute('data-compare');
+          
+          if(mainPrice && newPrice) {
+            mainPrice.textContent = newPrice;
+          }
+          
+          if(mainComparePrice && newComparePrice) {
+            mainComparePrice.textContent = newComparePrice;
+          }
+        });
+      });
+    })();
+  </script>
+</div>
+
+
+<p style="font-size: 14px; color: #6B7280; margin: 0 auto 14px; font-style: italic; text-align: center;">Pedidos são enviados em até 24 horas! Receba seu produto rapidamente.</p>
+<button style="width: 100%; background-color: #9AD93E; color: #ffffff; height: 56px; padding: 0 32px; border-radius: 8px; font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 12px; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#8CC834'" onmouseout="this.style.backgroundColor='#9AD93E'">ADICIONAR AO CARRINHO</button>
+<!-- Botão Shop Pay (novo) -->
+<button style="width: 100%; background-color: #5A31FF; color: #ffffff; height: 56px; padding: 0 32px; border-radius: 8px; font-weight: 700; font-size: 16px; letter-spacing: 0.01em; margin-bottom: 12px; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#4B28E0'" onmouseout="this.style.backgroundColor='#5A31FF'">Comprar agora</button>
+
+<!-- Payment Icons -->
+<div class="flex justify-center items-center space-x-3 mb-6">
+  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/payment-icons.png?v=1727244514" alt="Métodos de pagamento" class="h-8">
+</div>
+
+<!-- Guarantee Section -->
+<div style="display: flex; align-items: center; text-align: center; justify-content: center; margin: 8px 0px;">
+  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/calendar-icon.svg?v=1727244798" alt="Garantia de Satisfação de 30 Dias" style="margin-right: 12px;">
+  <div style="text-align: center;">
+    <h5 style="color: #D5647C; font-weight: 700; text-transform: uppercase; line-height: normal; margin-bottom: 3px; font-size: clamp(14px, 3vw, 16px) !important; letter-spacing: normal; padding: 0px;">Garantia de Satisfação de 30 Dias</h5>
+    <p style="line-height: normal; font-size: clamp(14px, 3vw, 16px) !important; font-weight: 500; letter-spacing: normal; margin-bottom: 0px;">Ame ou nós acertaremos.</p>
+  </div>
+</div>
+<!-- Secure Checkout Message -->
+
+<style>
+  .product-block--custom_accordion .custom-accordion-wrap {
+  border-top: 1px solid #ededed;
+}
+
+.product-block--custom_accordion .accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ededed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-right: 10px;
+  font-size: clamp(14px, 3vw, 16px);
+}
+
+.product-block--custom_accordion .accordion-header:last-child {
+  border-bottom: 1px solid #ededed;
+}
+
+.product-block--custom_accordion .accordion-image {
+  max-width: 500px;
+}
+
+.product-block--custom_accordion .accordion-content {
+  display: none;
+  padding: 10px;
+  border-top: none;
+  font-size: clamp(14px, 3vw, 16px);
+}
+
+.product-block--custom_accordion ul {
+  padding-left: 20px;
+}
+
+.product-block--custom_accordion .icon {
+  width: 20px;
+  height: 21px;
+  transition: transform 0.3s;
+}
+
+.product-block--custom_accordion .active .icon {
+  transform: rotate(90deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .product-block--custom_accordion .accordion-header {
+    padding: 10px 10px 10px 0px;
+  }
+}
+
+/* Estilos do Slider de Avaliações */
+.reviews-slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.reviews-swiper {
+  padding: 0 50px;
+  overflow: hidden;
+}
+
+.reviews-swiper .swiper-slide {
+  width: auto;
+  height: auto;
+}
+
+.review-card {
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-card img {
+  max-height: 400px;
+  object-fit: contain;
+  width: 100%;
+}
+
+/* Botões de navegação personalizados */
+.reviews-next,
+.reviews-prev {
+  background: #D5647C;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reviews-next:hover,
+.reviews-prev:hover {
+  background: #B8546A;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.reviews-next {
+  right: 10px;
+}
+
+.reviews-prev {
+  left: 10px;
+}
+
+.reviews-next:after,
+.reviews-prev:after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Paginação personalizada */
+.reviews-pagination {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.reviews-pagination .swiper-pagination-bullet {
+  background: #D5647C;
+  opacity: 0.3;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+}
+
+.reviews-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .reviews-swiper {
+    padding: 0 20px;
+  }
+  
+  .reviews-next,
+  .reviews-prev {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .reviews-next {
+    right: 5px;
+  }
+  
+  .reviews-prev {
+    left: 5px;
+  }
+  
+  .review-card img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-swiper {
+    padding: 0 10px;
+  }
+  
+  .review-card img {
+    max-height: 250px;
+  }
+}
+
+/* FAQ Section Styles from Competitor */
+.pdp-section-faq .pdp-section-title {
+  color: #D5647C;
+  font-weight: 700;
+}
+
+.pdp-section-faq dl {
+  margin-top: 0px;
+}
+
+.pdp-section-faq dt {
+  background: #F1F1F3;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.pdp-section-faq dt:first-child {
+  margin-top: 0px;
+}
+
+.pdp-section-faq dd {
+  text-align: left;
+  background: #F1F1F3;
+  padding: 20px;
+  margin: 0px;
+  font-size: clamp(14px,3vw,16px);
+}
+
+.pdp-section-faq .accordion>dt>a, .pdp-section-faq .accordion>dt>button, .pdp-section-faq .faqAccordion>dt>a, .pdp-section-faq .faqAccordion>dt>button {
+  padding: 20px 60px 20px 20px;
+  font-size: clamp(14px,3vw,18px);
+  font-weight: 600;
+  color: #333333;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+
+.pdp-section-faq .accordion>dt>a:after, .pdp-section-faq .accordion>dt>button:after, .pdp-section-faq .faqAccordion>dt>a:after, .pdp-section-faq .faqAccordion>dt>button:after {
+  content: '+';
+  position: absolute;
+  left: auto;
+  right: 20px;
+  font-size: 18px;
+  color: #222;
+  transition: transform 0.3s ease;
+}
+
+.pdp-section-faq .faqAccordion>dt>button[aria-expanded="true"]:after {
+  transform: rotate(45deg);
+}
+
+.pdp-section-faq .faq-action-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pdp-section-faq .faq-action-wrap button {
+  margin-bottom: 10px;
+  font-size: clamp(15px, 3vw, 18px);
+}
+
+.pdp-section-faq .faq-action-wrap div span {
+  margin: 0px 5px;
+  font-weight: 700;
+}
+
+.pdp-section-faq .faq-action-wrap span {
+    font-size: clamp(14px, 3vw, 16px);
+  }
+
+  .metafield-rich_text_field p:last-child {
+    margin-bottom: 0px;
+  }
+
+  @media only screen and (max-width: 768px) {
+  .pdp-section-faq .accordion>dt>a, .pdp-section-faq .accordion>dt>button, .pdp-section-faq .faqAccordion>dt>a, .pdp-section-faq .faqAccordion>dt>button {
+    padding: 15px 50px 15px 15px;
+  }
+
+  .pdp-section-faq .pdp-section-sub-title {
+    margin-bottom: 0px;
+  }
+}
+</style>
+<div class="product-block--custom_accordion">
+<div class="custom-accordion-wrap">
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p>Descrição</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><p><strong>Revitalize Seus Cílios Naturalmente</strong></p><p>O Ativador de Raiz de Cílios da Liaison transforma a aparência dos seus cílios. Projetado para qualquer pessoa que deseja cílios naturalmente mais cheios, nossa fórmula única aborda as causas raiz do afinamento e quebra. Peptídeos, cloreto de sódio e ácido cítrico se combinam para fortalecer as raízes, melhorar o crescimento e apoiar a saúde dos cílios danificados pelo uso diário ou idade. Desfrute de cílios mais cheios e saudáveis ou seu dinheiro de volta.</p></div>
+  </div>
+  
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p>BENEFÍCIOS PRINCIPAIS</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><ul><li>Crescimento Rápido dos Cílios: Veja cílios mais cheios desde a primeira aplicação, com comprimento e volume significativos na Semana 12.</li><li>Saúde Melhorada dos Cílios: Peptídeos fortalecem a base dos cílios, criando uma fundação mais forte para crescimento duradouro.</li><li>Brilho e Força Naturais: O uso regular melhora o brilho dos cílios e reduz a quebra para uma aparência mais vibrante.</li></ul></div>
+  </div>
+  
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p><strong>TECNOLOGIA LASH BOND:</strong> COMO FUNCIONA</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><p>A Tecnologia Lash Bond é a chave para alcançar cílios cheios e bonitos naturalmente.</p><ol><li>Reparo de Proteínas: Os peptídeos direcionam e reparam a estrutura danificada dos cílios, fortalecendo cada fio desde a base.</li><li>Nutrição Aprimorada: O cloreto de sódio e o ácido cítrico melhoram a absorção de nutrientes, garantindo que cada cílio tenha os nutrientes necessários.</li><li>Suporte Nutricional: Ingredientes essenciais apoiam a força e elasticidade dos cílios, dando aos seus cílios o cuidado que merecem todos os dias.</li></ol><p>Esta abordagem abrangente não apenas melhora a aparência dos seus cílios, mas também aborda questões subjacentes, garantindo cílios vibrantes e resistentes que duram.</p></div>
+  </div>
+  
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p>INGREDIENTES</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><p>Cada frasco é uma mistura precisa de:</p><ul><li>Enzima EPM: Estimula as raízes dos cílios, promovendo crescimento saudável e natural dos cílios.</li><li>Cloreto de Sódio: Limpa os folículos dos cílios, removendo impurezas e melhorando a absorção de nutrientes.</li><li>Ácido Cítrico: Mantém o equilíbrio do pH, prevenindo irritação e garantindo uma base sólida para o crescimento.</li></ul><p>Todos os Ingredientes: <br />Água Purificada, Cloreto de Sódio, Cloreto de Benzalcônio, Ácido Cítrico, Fosfato Dissódico, Goma de Celulose, Enzima EPM</p></div>
+  </div>
+  
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p>LIVRE DE</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><p>O Ativador de Raiz de Cílios da Liaison é livre de:</p><ul><li>Parabenos, Sulfatos e Silicones: Evita produtos químicos nocivos para proteger a saúde natural dos seus cílios.</li><li>Fragrâncias Artificiais: Garante uma aplicação suave sem irritação.</li></ul></div>
+  </div>
+  
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p>COMO USAR</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><ol><li>Comece com um Rosto Limpo e Seco: Certifique-se de que seus cílios estejam livres de óleo e maquiagem para máxima absorção.</li><li>Aplique Uniformemente: Passe o aplicador uma vez ao longo da linha superior dos cílios diariamente. Deixe secar antes de continuar sua rotina.</li><li>Use Consistentemente: Aplique diariamente para melhores resultados. O uso regular é fundamental para alcançar cílios mais cheios.</li></ol></div>
+  </div>
+  
+  <div class="accordion-header">
+    <div class="metafield-rich_text_field"><p>ENVIO E DEVOLUÇÕES</p></div>
+    <svg class="icon" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.15625 10.5C0.15625 8.55309 0.733576 6.64991 1.81522 5.03111C2.89687 3.41231 4.43425 2.15062 6.23296 1.40557C8.03167 0.660515 10.0109 0.465576 11.9204 0.845399C13.8299 1.22522 15.5839 2.16275 16.9606 3.53942C18.3373 4.9161 19.2748 6.67008 19.6546 8.57958C20.0344 10.4891 19.8395 12.4683 19.0944 14.267C18.3494 16.0658 17.0877 17.6031 15.4689 18.6848C13.8501 19.7664 11.9469 20.3438 10 20.3438C7.38928 20.3438 4.88548 19.3066 3.03942 17.4606C1.19336 15.6145 0.15625 13.1107 0.15625 10.5ZM18.5312 10.5C18.5312 8.81268 18.0309 7.16325 17.0935 5.7603C16.156 4.35734 14.8236 3.26387 13.2648 2.61816C11.7059 1.97245 9.99054 1.8035 8.33564 2.13268C6.68074 2.46186 5.16061 3.27438 3.9675 4.4675C2.77438 5.66062 1.96186 7.18074 1.63268 8.83564C1.3035 10.4905 1.47244 12.2059 2.11815 13.7648C2.76386 15.3237 3.85733 16.6561 5.26029 17.5935C6.66325 18.5309 8.31268 19.0313 10 19.0313C12.2626 19.0313 14.4326 18.1324 16.0325 16.5325C17.6324 14.9326 18.5312 12.7626 18.5312 10.5Z" fill="#C4C4C4"/>
+      <path d="M7.45646 14.1684L11.1183 10.4999L7.45646 6.83148C7.33423 6.70852 7.26562 6.54219 7.26562 6.36882C7.26562 6.19545 7.33423 6.02912 7.45646 5.90616C7.57941 5.78394 7.74574 5.71533 7.91911 5.71533C8.09249 5.71533 8.25881 5.78394 8.38177 5.90616L12.5555 10.0799C12.6661 10.1917 12.7282 10.3426 12.7282 10.4999C12.7282 10.6572 12.6661 10.8081 12.5555 10.9199L8.38177 15.0937C8.25881 15.2159 8.09249 15.2845 7.91911 15.2845C7.74574 15.2845 7.57941 15.2159 7.45646 15.0937C7.33423 14.9707 7.26562 14.8044 7.26562 14.631C7.26563 14.4576 7.33423 14.2913 7.45646 14.1684Z" fill="#C4C4C4"/>
+    </svg>
+  </div>
+  <div class="accordion-content">
+    <div class="metafield-rich_text_field"><p>Envio e Entrega</p><ul><li>Processamos pedidos dentro de 1-2 dias úteis do nosso armazém nos EUA. Após o envio, o tempo estimado de entrega varia com base no método de envio escolhido e sua localização.</li></ul><p>Política de Devoluções e Reembolso</p><ul><li>Se você não estiver apaixonada pelo seu novo visual dentro de 30 dias, simplesmente entre em contato com nossa equipe de atendimento ao cliente 24/7 e nós resolveremos.</li></ul></div>
+  </div>
+</div>
+<script>
+  (function(){
+    var toggles = document.querySelectorAll('.custom-accordion-toggle');
+    toggles.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var content = this.nextElementSibling;
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        content.style.display = expanded ? 'none' : 'block';
+      });
+    });
+  })();
+</script>
+</div>
+</div>
+</div>
+<!-- Seção de Vídeos Original -->
+<section class="video-slider-a-dReg3A pdp-section first-section py-16" style="background:#fbe3eb;">
+  <div class="section is-width-standard pdp-section-video-slider-a-1">
+    <div class="wrap-video-slider-a-1 container mx-auto flex flex-col md:flex-row items-center">
+      <div class="w-full md:w-[42.857%] text-center flex flex-col items-center justify-center p-8">
+        <div class="pdp-section-title-wrap">
+          <h2 class="text-4xl font-bold leading-tight" style="color: #D5647C;">
+            <div class="metafield-rich_text_field">
+              <p>Nossos Clientes Falam por Nós: <strong class="font-bold">Verdadeiras Transformações de Cílios</strong></p>
+            </div>
+          </h2>
+          
+          <div class="mt-4 flex items-center justify-center">
+            <svg width="59" height="11" viewBox="0 0 59 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2"> 
+              <path d="M5.27166 7.75846L2.05007 10.0851L3.31995 6.30108L0.0898438 3.96585H4.04438L5.27166 0.181763L6.49893 3.96585H10.4534L7.22336 6.30108L8.49325 10.0851L5.27166 7.75846Z" fill="#ffb700"></path> 
+              <path d="M17.1818 7.75846L13.9602 10.0851L15.2301 6.30108L12 3.96585H15.9545L17.1818 0.181763L18.4091 3.96585H22.3636L19.1335 6.30108L20.4034 10.0851L17.1818 7.75846Z" fill="#ffb700"></path> 
+              <path d="M29.092 7.75846L25.8704 10.0851L27.1403 6.30108L23.9102 3.96585H27.8647L29.092 0.181763L30.3192 3.96585H34.2737L31.0437 6.30108L32.3136 10.0851L29.092 7.75846Z" fill="#ffb700"></path> 
+              <path d="M41.0021 7.75846L37.7805 10.0851L39.0504 6.30108L35.8203 3.96585H39.7749L41.0021 0.181763L42.2294 3.96585H46.1839L42.9538 6.30108L44.2237 10.0851L41.0021 7.75846Z" fill="#ffb700"></path> 
+              <path d="M52.9123 7.75846L49.6907 10.0851L50.9606 6.30108L47.7305 3.96585H51.685L52.9123 0.181763L54.1396 3.96585H58.0941L54.864 6.30108L56.1339 10.0851L52.9123 7.75846Z" fill="#ffb700"></path>
+            </svg> 
+            <span class="metafield-single_line_text_field text-sm" style="color: #333;">4.9 (17429 Reviews)</span>
+          </div>
+          
+          <button class="cta-button scroll-to-product">COMECE SUA RENOVAÇÃO DE CÍLIOS</button>
+        </div>
+      </div>
+      <div class="w-full md:w-[57.143%] flex items-center justify-center video-column">
+        <div class="swiper swiper-pdp-section-video-slider-a-1 video-marquee">
+          <div class="swiper-pagination"></div>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div>
+                <video preload="metadata" autoplay playsinline muted loop muted="true">
+                  <source src="./imagens/videos/1.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <video preload="metadata" autoplay playsinline muted loop muted="true">
+                  <source src="./imagens/videos/2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <video preload="metadata" autoplay playsinline muted loop muted="true">
+                  <source src="./imagens/videos/3.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div>
+                <video preload="metadata" autoplay playsinline muted loop muted="true">
+                  <source src="./imagens/videos/4.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="container mx-auto px-6 md:px-12 py-16">
+<h2 class="text-center text-3xl font-bold text-gray-800">O Poder da Natureza em Cada Aplicação</h2>
+<div class="flex flex-col md:flex-row items-center gap-12 mt-12">
+<div class="md:w-1/2">
+<img alt="O Vínculo da Natureza para Seus Cílios" class="rounded-lg w-full" src="./imagens/6.jpg"/>
+</div>
+<div class="md:w-1/2 space-y-6">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Peptídeos BPM: O Potencializador de Crescimento dos Cílios</h3>
+<p class="text-gray-600 mt-2">Peptídeos especializados ajudam a estimular o crescimento dos cílios e supercílios, apoiando cílios visivelmente mais cheios e longos.</p>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800">Equilíbrio de pH: Otimizador de Recepção de Nutrientes</h3>
+<p class="text-gray-600 mt-2">Ajusta o pH para uma absorção ideal de nutrientes, preparando uma base limpa para que a fórmula funcione eficazmente.</p>
+</div>
+<div>
+<h3 class="font-bold text-lg text-gray-800">Aderência Suave: Precisão que Dura o Dia Todo</h3>
+<p class="text-gray-600 mt-2">Um polímero especializado proporciona um contato suave e preciso, promovendo uma base limpa para que a fórmula funcione eficazmente.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white py-16">
+<div class="container mx-auto px-6 md:px-12 text-center">
+<h2 class="text-3xl font-bold text-gray-800">De Ralos a Deslumbrantes</h2>
+<p class="text-gray-600 mt-2 max-w-2xl mx-auto">Veja a diferença por si mesma. Nossos clientes estão amando seus novos cílios, e você também vai amar.</p>
+
+<!-- Slider de Avaliações -->
+<div class="mt-12 relative">
+  <div class="swiper testimonials-swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 1" class="rounded-lg" src="./imagens/antesedepois/1.png"/>
+            <p class="mt-4 text-gray-600">"Tenho cílios asiáticos típicos, curtos e ralos. Já tentei vários séruns para cílios, mas nada funcionou. Não consigo acreditar no progresso! Até meus amigos estão me perguntando o que estou fazendo e mal posso esperar para ver mais progresso."</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Michele</p>
+            </div>
+          </div>
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 2" class="rounded-lg" src="./imagens/antesedepois/2.png"/>
+            <p class="mt-4 text-gray-600">"A diferença é enorme! Estou amando meus novos cílios e minha confiança disparou. As pessoas continuam me perguntando se estou usando extensões, mas são todos meus!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Priscila</p>
+            </div>
+          </div>
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 3" class="rounded-lg" src="./imagens/antesedepois/3.png"/>
+            <p class="mt-4 text-gray-600">"Meus cílios ficaram mais longos e grossos após apenas 6 semanas de uso. Mal posso esperar para ver os resultados depois de terminar o frasco inteiro. Eu recomendei para todos os meus amigos."</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Ana Paula</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 4" class="rounded-lg" src="./imagens/antesedepois/4.png"/>
+            <p class="mt-4 text-gray-600">"Sempre tive cílios finos e sem vida. Depois de usar o produto por 8 semanas, meus cílios estão incrivelmente mais volumosos e longos. Não preciso mais de máscara de cílios todos os dias!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Carla</p>
+            </div>
+          </div>
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 5" class="rounded-lg" src="./imagens/antesedepois/5.png"/>
+            <p class="mt-4 text-gray-600">"Resultado incrível! Meus cílios cresceram tanto que as pessoas pensam que estou usando cílios postiços. A transformação foi além das minhas expectativas."</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Fernanda</p>
+            </div>
+          </div>
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 6" class="rounded-lg" src="./imagens/antesedepois/6.png"/>
+            <p class="mt-4 text-gray-600">"Estava cética no início, mas os resultados falam por si só. Meus cílios estão mais fortes, mais longos e com muito mais volume. Produto fantástico!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Juliana</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 7" class="rounded-lg" src="./imagens/antesedepois/7.png"/>
+            <p class="mt-4 text-gray-600">"Depois de anos usando extensões de cílios, decidi tentar algo natural. O resultado superou todas as minhas expectativas. Meus cílios naturais nunca estiveram tão bonitos!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Beatriz</p>
+            </div>
+          </div>
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 8" class="rounded-lg" src="./imagens/antesedepois/8.png"/>
+            <p class="mt-4 text-gray-600">"A mudança foi gradual mas consistente. A cada semana via meus cílios ficando mais densos e longos. Agora recebo elogios constantemente!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Mariana</p>
+            </div>
+          </div>
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 9" class="rounded-lg" src="./imagens/antesedepois/9.png"/>
+            <p class="mt-4 text-gray-600">"Produto revolucionário! Meus cílios eram praticamente inexistentes e agora tenho cílios de revista. A autoestima mudou completamente!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Camila</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <img alt="Antes e depois do resultado dos cílios 10" class="rounded-lg" src="./imagens/antesedepois/10.png"/>
+            <p class="mt-4 text-gray-600">"Transformação inacreditável! De cílios quase invisíveis para cílios deslumbrantes em apenas 10 semanas. Este produto mudou minha vida!"</p>
+            <div class="flex items-center justify-center mt-4">
+              <p class="ml-2 font-semibold">Roberta</p>
+            </div>
+          </div>
+          <div class="text-center flex flex-col justify-center">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Sua Transformação Começa Aqui!</h3>
+            <p class="text-gray-600 mb-6">Junte-se a milhares de mulheres que já transformaram seus cílios com nosso produto.</p>
+            <button class="cta-button mx-auto scroll-to-product">COMECE SUA TRANSFORMAÇÃO</button>
+          </div>
+          <div class="text-center flex flex-col justify-center">
+            <div class="bg-pink-50 p-6 rounded-lg">
+              <h4 class="font-bold text-gray-800 mb-2">Garantia de 30 dias</h4>
+              <p class="text-sm text-gray-600">Se não ficar satisfeita com os resultados, devolvemos seu dinheiro!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navegação -->
+    <div class="swiper-button-next testimonials-next"></div>
+    <div class="swiper-button-prev testimonials-prev"></div>
+    
+    <!-- Paginação -->
+    <div class="swiper-pagination testimonials-pagination mt-8"></div>
+  </div>
+</div>
+
+</div>
+</div>
+<div class="bg-gray-50 py-16">
+<div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-gray-800">Por que a Liaison lidera a Revolução dos Cílios</h2>
+<p class="text-gray-600 mt-4">Veja como o Lash Bond se compara a outras marcas e traz cílios felizes para você.</p>
+</div>
+<div class="md:w-1/2">
+<table class="w-full text-left">
+<thead>
+<tr>
+<th class="py-2"></th>
+<th class="py-2 text-center font-bold text-gray-800">PEACOCK</th>
+<th class="py-2 text-center text-gray-500">Outras Marcas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t">
+<td class="py-4">Resultados em 1-6 Semanas</td>
+<td class="py-4 text-center"><span class="material-icons text-green-500">check_circle</span></td>
+<td class="py-4 text-center"><span class="material-icons text-red-500">cancel</span></td>
+</tr>
+<tr class="border-t">
+<td class="py-4">Aplique Uma Vez ao Dia</td>
+<td class="py-4 text-center"><span class="material-icons text-green-500">check_circle</span></td>
+<td class="py-4 text-center"><span class="material-icons text-red-500">cancel</span></td>
+</tr>
+<tr class="border-t">
+<td class="py-4">Vegano e Livre de Crueldade</td>
+<td class="py-4 text-center"><span class="material-icons text-green-500">check_circle</span></td>
+<td class="py-4 text-center"><span class="material-icons text-red-500">cancel</span></td>
+</tr>
+<tr class="border-t">
+<td class="py-4">Livre de Hormônios</td>
+<td class="py-4 text-center"><span class="material-icons text-green-500">check_circle</span></td>
+<td class="py-4 text-center"><span class="material-icons text-green-500">check_circle</span></td>
+</tr>
+<tr class="border-t">
+<td class="py-4 font-bold">Custo por Sérum</td>
+<td class="py-4 text-center font-bold">R$49,99</td>
+<td class="py-4 text-center text-gray-500">R$60,00+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-pink-50 py-16">
+<div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/4 flex justify-center">
+<img alt="Selo de Garantia de Satisfação de 30 Dias" class="h-32" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF-oBCnfDhjSor6deonlHtXLoRy0s_cTVspJesnjcwVs54OvWHrdmwRof62Ry7Z_rqyKUTHkbWv-xx-HZiRwYiqOyaWnvifvvMtUrIHtutJGLTe6ZadYRqD0N0wzL_UYbWUJ7x-fzZhuF2P_DhLysJaH3eQUtpc1Io6sVDL3HsiNojPQd1MlluUHcoSNhXho0vHZtbs4xpqa7KSdBuFILmweNwONFbfb-5Unw7Gfl88PztMRTUZd-arSfG-FqjJpML93zEnq2oUeUo"/>
+</div>
+<div class="md:w-3/4 text-center md:text-left">
+<h2 class="text-2xl font-bold text-gray-800">Garantia de Satisfação de 30 Dias</h2>
+<p class="text-gray-600 mt-2">Estamos tão confiantes de que você vai amar seus novos cílios que oferecemos uma garantia de devolução do dinheiro em 30 dias. Se você não estiver completamente satisfeito com seus resultados após 30 dias de uso, nós lhe daremos um reembolso total. Sem perguntas. Experimente sem riscos!</p>
+</div>
+</div>
+</div>
+
+<!-- Seção de Avaliações dos Clientes -->
+<section class="bg-white py-16">
+  <div class="container mx-auto px-6 md:px-12">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">O Que Nossos Clientes Dizem</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Depoimentos reais de clientes satisfeitas que transformaram seus cílios com nosso produto</p>
+    </div>
+    
+    <!-- Slider de Avaliações -->
+    <div class="reviews-slider-container relative">
+      <div class="swiper reviews-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
+              <img src="./imagens/opinioes/depoimento-whats-1-819x1024.jpeg" alt="Depoimento WhatsApp 1" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
+              <img src="./imagens/opinioes/depoimento-whats-2-819x1024.jpeg" alt="Depoimento WhatsApp 2" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
+              <img src="./imagens/opinioes/depoimento-whats-3-819x1024.jpeg" alt="Depoimento WhatsApp 3" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
+              <img src="./imagens/opinioes/depoimento-whats-4-819x1024.jpeg" alt="Depoimento WhatsApp 4" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
+              <img src="./imagens/opinioes/depoimento-whats-5-819x1024.jpeg" alt="Depoimento WhatsApp 5" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
+              <img src="./imagens/opinioes/depoimento-whats-6-819x1024.jpeg" alt="Depoimento WhatsApp 6" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Navegação -->
+        <div class="swiper-button-next reviews-next"></div>
+        <div class="swiper-button-prev reviews-prev"></div>
+        
+        <!-- Paginação -->
+        <div class="swiper-pagination reviews-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Seção FAQ -->
+<section class="pdp-section pdp-section-faq">
+  <div class="section is-width-standard">
+    <div class="container">
+      <div class="three-sevenths column medium-down--one-whole text-center is-flex is-justify-center">
+        <div class="pdp-section-title-wrap">
+          <h2 class="pdp-section-title">Perguntas Frequentes</h2>
+          <div class="pdp-section-sub-title">Tem uma pergunta? Nós podemos ajudar!</div>
+        </div>
+      </div>
+      <div class="four-sevenths column medium-down--one-whole text-center is-flex is-flex-column is-justify-center">
+        <dl class="faqAccordion">
+          
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-01" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Como funciona o Ativador de Raiz dos Cílios?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-01" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>O Ativador de Raiz dos Cílios usa uma mistura de Enzima EPM e outros ingredientes essenciais para estimular e nutrir as raízes dos cílios, promovendo cílios mais saudáveis e longos naturalmente.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-02" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Com que frequência devo usar o Ativador de Raiz dos Cílios?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-02" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Para melhores resultados, aplique o Ativador de Raiz dos Cílios diariamente. O uso consistente é essencial para alcançar e manter cílios mais longos e cheios.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-03" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>O Ativador de Raiz dos Cílios é adequado para pele sensível?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-03" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Sim, nossa fórmula é projetada para ser suave e segura para a pele delicada ao redor dos olhos. Recomendamos fazer um teste de alergia antes da aplicação completa para garantir a compatibilidade.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-04" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Em quanto tempo verei resultados notáveis?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-04" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Os resultados variam, mas muitos usuários notam melhorias dentro de 2 a 3 semanas. A consistência é fundamental para mudanças significativas e duradouras.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-05" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Posso usar o Ativador de Raiz dos Cílios com outras maquiagens para os olhos ou produtos?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-05" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Sim, pode complementar sua rotina. No entanto, se você estiver usando outros ingredientes ativos, considere fazer um teste de alergia para garantir a compatibilidade.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-06" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Quanto tempo dura um frasco de Ativador de Raiz dos Cílios?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-06" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Cada frasco é projetado para durar cerca de 2 meses com uso diário regular. Compre em pacotes para garantir que nunca fique sem o produto.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-07" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Qual é a garantia do Ativador de Raiz dos Cílios?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-07" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Se por qualquer motivo você não estiver satisfeito com nosso produto, simplesmente entre em contato com nossa equipe de atendimento ao cliente 24/7 e nós resolveremos a situação.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-08" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Onde vocês estão localizados e de onde enviam?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-08" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Nossa empresa está localizada nos EUA. Enviamos de diferentes locais dependendo de onde você está baseado.</p></div>
+          </dd>
+
+          <dt>
+            <button type="button" class="accordion-header" aria-controls="panel-09" aria-expanded="false">
+              <div class="metafield-rich_text_field"><p>Quanto tempo leva para receber meu pedido?</p></div>
+            </button>
+          </dt>
+          <dd class="accordion-content" id="panel-09" aria-hidden="true" style="display: none;">
+            <div class="metafield-rich_text_field"><p>Os pedidos são enviados dentro de 3-5 dias! A maioria dos pedidos chegará dentro de 7 dias úteis após o envio. Em casos raros, pode demorar mais. Entre em contato com nossa equipe de suporte em support@herliaison.com se tiver alguma dúvida.</p></div>
+          </dd>
+
+        </dl>
+        
+        <div class="faq-action-wrap">
+          <button class="global-button global-button--primary scroll-btn scroll-to-product">Experimente o Ativador de Raiz dos Cílios Sem Risco</button>
+          <div>
+            <span class="free-shipping-text">Frete Grátis para todo Brasil</span><span>|</span><span>Garantia de Satisfação de 30 Dias</span><span>|</span><span>Devoluções Fáceis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="bg-gray-100 pt-16 pb-8">
+<div class="container mx-auto px-6 md:px-12">
+
+<div class="grid md:grid-cols-4 gap-8 text-gray-600">
+<div>
+<h3 class="font-bold text-gray-800 mb-4"><img alt="Peacock Cosmeticos Logo" class="h-8" src="./peecock.png"/></h3>
+<p>Experimente o novo padrão ouro de séruns para cílios mais longos e cheios.</p>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-4">EMPRESA</h3>
+<ul>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Contate-Nos</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Nossa História</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-4">SUPORTE</h3>
+<ul>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Central de Ajuda</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Política de Privacidade</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Envio e Devoluções</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Termos de Serviço</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-gray-800 mb-4">CONECTE-SE</h3>
+<ul>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Facebook</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Instagram</a></li>
+<li class="mb-2"><a class="hover:text-gray-800" href="#">Tiktok</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+<p class="text-sm text-gray-500">© 2023 Peacock Brands. Todos os direitos reservados.</p>
+<div class="flex items-center space-x-4 mt-4 md:mt-0">
+<img alt="Visa" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbPXML_XpEKRWzg7n5n6XoAqgBxuuKQrVwy1HzIm2XuqtVITJSwSqKtMt8dn7OFuy8EiN345siZjXsHSnrpA72Qty9B6xzqJdZDTjZgDc_VG3XHLiAX7jnY5AmLtwNbT8JaUC0AtBvdImptLTDxORkY2psp-7zrMxXdWaiiC0QA8bm3eLLqSr2yziqF4A2lZ-Wht5U5i23RCMFkfDCKedI_Mu1eMSun36cXS1FNuOqcpmspN4dz7zc9L7ezvbfqa9sx7edoMPWItaC"/>
+<img alt="Mastercard" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjy-PNw3KBzPRB-4RlV-AEKV1qI9chwcFmAC7aNkqB99so2Eo1cGL436cQY_OjgX3KsU97NsLarUehhzcd474k4tAkBa9k-bmtcUUZGasqg2-8JKB72EG-YzAUFB_0SWvGEHJeQumL_xtKBeVXgRCZJ7cfyyrPdWp9cxNOLt6uXiRmMuOUtddMiW2uj7gyIjh3PIJdR3K6-WaOA02FjVRtGD3e3aNPgBNKAd_k_mV-PSKMDXdFAxer7YQ1gpVUzsyECv903_9wtsmB"/>
+<img alt="Amex" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsWFi5l_IL46HDJWe2GBgS5A6lVPdI54hJtEwF3NlxLz9EqUDgF4MxaDTnmMcOEfilkX3fZElJbW9thOkbXb3NbcTzfAZq47RUxK_0TObWqkP2Kg0wa_BBWbFmgtcB6PQcqoKJN8Tc5yZZyycz0ofPpHwC0dXBJJgwyPxZC7TB4chMszyCqFnuDMM1zk-p48taOUFgPRcsBr664Xx5NkaSWTHa4zptOh1e-20g06znJqsLp5wOfGyVwsZhf9bZCuLiLFzplBzNQscm"/>
+<img alt="Discover" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfyEWmelB4rOdab2Ti4xDfxwcsqPnA7a9BRU_x-zjJQR-J1TOssp3pgnFM5e8Ujw41lMnMcBcFCz3WzHv2hkONt4oEb3NZsmsU1Cnbr-eWz3BJD3yK8LsfB3kM35Ty6Wy5T7FPQL9MsBoHPPIESYNqQGWEH-7AXUjqtByIwd7daGZ6fvH4FMNaWdtKQ-bAx1Fd2qjXM8wBe8ZiPafIa8A9-5LmXjm55JY2nHd9EunrepPiylZKV9COzkf-5CARndO63S2jrq50qJQ9"/>
+<img alt="PayPal" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-_jtALXzdYwujGcjII_ytqcWX3ehkP_8jWA0uZeis9qnVd1_cz0fOrsz76dsKZvvo3vAo95cI02Gc5wZ-GGAuE5PXIPITdRYjuv-RhGFQcIP8gmcg8pSfJQrrMQEoUvRTTbIkL-iOTxcCQodqfqPjy8ZflwIEHLY92XvFKcw1Ln-N1OaFmSKTF_AgP7YKJxwPemj6a5YM1pmUzEahSIqllTDDfjFYDnG3_b3d6ueZMhsfBigar22a8mtv_gmcVPhzUbo7YE8m-5tE"/>
+<img alt="Shop Pay" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIRY9w8s8BMKrwHazCcMDy3iTfwmZrevGa3Tkv4PIfe5Eig22xemUn9uGRnxjwr-kGvFqJm4oRpi6XjFjCumcfShWmxfKt6w85x3keyaVUrjD4iwBtOsWGtWkLXOBSzrVqYKRkuM2NAnbUxM0lKo2osn8KucbwTeQpLl0KDlAuUbrJU3I-oAUqZmN0l6AwCaJjpJgaFY0EPWzXIYqeKHe-zQF3QIMSM3PxgA7rT6PDid4jFpTjFyfduO8cCqwVkzlWzpUxE_4g6aAP"/>
+</div>
+</div>
+</div>
+</footer>
+
+
+
+<script>
+// Funcionalidade da galeria de imagens
+document.addEventListener('DOMContentLoaded', function() {
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
+    thumbnails.forEach(function(thumbnail) {
+        thumbnail.addEventListener('click', function() {
+            // Remove a borda ativa de todas as miniaturas
+            thumbnails.forEach(function(thumb) {
+                thumb.classList.remove('border-pink-500');
+                thumb.classList.add('border-gray-200');
+            });
+            
+            // Adiciona a borda ativa à miniatura clicada
+            this.classList.remove('border-gray-200');
+            this.classList.add('border-pink-500');
+            
+            // Efeito de fade out/in para transição suave
+            mainImage.style.opacity = '0.5';
+            
+            setTimeout(function() {
+                // Troca a imagem principal
+                mainImage.src = thumbnail.getAttribute('data-main');
+                mainImage.style.opacity = '1';
+            }, 150);
+        });
+        
+        // Efeito hover adicional
+        thumbnail.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        thumbnail.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+});
+
+// Accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  accordionHeaders.forEach(function(header) {
+    header.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Find content - either next sibling or next dd element
+      let content = header.nextElementSibling;
+      if (header.parentElement && header.parentElement.tagName === 'DT') {
+        content = header.parentElement.nextElementSibling;
+      }
+      
+      const isActive = header.classList.contains('active');
+      const icon = header.querySelector('.icon');
+      
+      // Close all other accordions
+      accordionHeaders.forEach(function(otherHeader) {
+        if (otherHeader !== header) {
+          otherHeader.classList.remove('active');
+          otherHeader.setAttribute('aria-expanded', 'false');
+          
+          // Find other content
+          let otherContent = otherHeader.nextElementSibling;
+          if (otherHeader.parentElement && otherHeader.parentElement.tagName === 'DT') {
+            otherContent = otherHeader.parentElement.nextElementSibling;
+          }
+          
+          const otherIcon = otherHeader.querySelector('.icon');
+          if (otherContent && (otherContent.classList.contains('accordion-content') || otherContent.tagName === 'DD')) {
+            otherContent.style.display = 'none';
+            otherContent.setAttribute('aria-hidden', 'true');
+          }
+          if (otherIcon) {
+            otherIcon.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+      
+      // Toggle current accordion
+      if (isActive) {
+        header.classList.remove('active');
+        header.setAttribute('aria-expanded', 'false');
+        if (content) {
+          content.style.display = 'none';
+          content.setAttribute('aria-hidden', 'true');
+        }
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      } else {
+        header.classList.add('active');
+        header.setAttribute('aria-expanded', 'true');
+        if (content) {
+          content.style.display = 'block';
+          content.setAttribute('aria-hidden', 'false');
+        }
+        if (icon) icon.style.transform = 'rotate(90deg)';
+      }
+    });
+  });
+  
+  // Initially hide all accordion content
+  const accordionContents = document.querySelectorAll('.accordion-content, dd.accordion-content');
+  accordionContents.forEach(function(content) {
+    content.style.display = 'none';
+    content.setAttribute('aria-hidden', 'true');
+  });
+  
+  // Set initial aria-expanded to false
+  accordionHeaders.forEach(function(header) {
+    header.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Video Slider Functionality com Swiper
+document.addEventListener('DOMContentLoaded', function() {
+  // Inicializar Swiper para o slider de vídeos
+  if (typeof Swiper !== 'undefined') {
+    const marqueeSlider = new Swiper('.video-marquee', {
+      spaceBetween: 0,
+      speed: 4000,
+      autoplay: {
+        delay: 0,
+      },
+      loop: true,
+      slidesPerView: 1.7,
+      allowTouchMove: false,
+      disableOnInteraction: true,
+      waitForTransition: false,
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          autoplay: {
+            delay: 0,
+          },
+          speed: 4000,
+        },
+      },
+    });
+  } else {
+    // Fallback caso Swiper não esteja disponível
+    console.warn('Swiper não encontrado, usando fallback básico');
+    const videoSlides = document.querySelector('.swiper-wrapper');
+    if (videoSlides) {
+      let currentSlide = 0;
+      const totalSlides = 4;
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        const translateX = -currentSlide * 100;
+        videoSlides.style.transform = `translateX(${translateX}%)`;
+      }
+      
+      setInterval(nextSlide, 4000);
+    }
+  }
+  
+  // Inicializar Swiper para o slider de avaliações
+  if (typeof Swiper !== 'undefined') {
+    const reviewsSlider = new Swiper('.reviews-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.reviews-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.reviews-next',
+        prevEl: '.reviews-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      },
+    });
+  }
+  
+  // Inicializar slider de avaliações
+  const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.testimonials-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.testimonials-next',
+      prevEl: '.testimonials-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+      },
+    },
+  });
+
+  // FAQ Accordion functionality
+  const faqButtons = document.querySelectorAll('.faq-item button');
+  
+  faqButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const panel = this.getAttribute('aria-controls');
+      const panelElement = document.getElementById(panel);
+      const icon = this.querySelector('.material-icons');
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      
+      // Close all other panels
+      faqButtons.forEach(otherButton => {
+        if (otherButton !== this) {
+          const otherPanel = otherButton.getAttribute('aria-controls');
+          const otherPanelElement = document.getElementById(otherPanel);
+          const otherIcon = otherButton.querySelector('.material-icons');
+          
+          otherButton.setAttribute('aria-expanded', 'false');
+          otherPanelElement.classList.add('hidden');
+          otherPanelElement.setAttribute('aria-hidden', 'true');
+          otherIcon.textContent = 'add';
+          otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      // Toggle current panel
+      if (isExpanded) {
+        this.setAttribute('aria-expanded', 'false');
+        panelElement.classList.add('hidden');
+        panelElement.setAttribute('aria-hidden', 'true');
+        icon.textContent = 'add';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        this.setAttribute('aria-expanded', 'true');
+        panelElement.classList.remove('hidden');
+        panelElement.setAttribute('aria-hidden', 'false');
+        icon.textContent = 'remove';
+        icon.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+});
+</script>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+// Scroll suave para a seção de seleção de produtos
+$(document).ready(function(){
+  $('.scroll-to-product').on('click', function(e){
+    e.preventDefault();
+    
+    var targetSection = $('#product-selection');
+    
+    if(targetSection.length) {
+      $('html, body').animate({
+        scrollTop: targetSection.offset().top - 20
+      }, 800, 'swing');
+    }
+  });
+});
+</script>
+
+</body></html>
