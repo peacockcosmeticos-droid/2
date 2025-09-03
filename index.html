@@ -842,17 +842,32 @@
  </div>
 
 <style>
-  /* Ajuste fino para telas estreitas */
+  /* Ajustes responsivos para telas estreitas e muito estreitas */
+  @media (max-width: 414px) {
+    #trust-block { padding: 12px; margin-bottom: 10px; }
+    #trust-block .badges-row { gap: 14px; margin-bottom: 6px; }
+    #trust-block .trust-badge { min-width: 82px; }
+    #trust-block .trust-label { font-size: 12px; letter-spacing: 0.1px; line-height: 1.05; }
+    #trust-block .guarantees { gap: 5px; }
+    #trust-block .guarantees span { font-size: 12.5px; }
+  }
   @media (max-width: 360px) {
     #trust-block .badges-row { gap: 12px; margin-bottom: 6px; }
     #trust-block .trust-circle { width: 40px; height: 40px; }
     #trust-block .trust-circle svg { width: 20px; height: 20px; }
-    #trust-block .trust-label { font-size: 11.5px; }
+    #trust-block .trust-badge { min-width: 78px; }
+    #trust-block .trust-label { font-size: 11.5px; line-height: 1.05; }
   }
+  /* Micro-interações e refinamentos */
+  #trust-block .trust-badge { transition: transform 120ms ease, box-shadow 140ms ease; cursor: default; outline: none; border-radius: 8px; }
+  #trust-block .trust-badge:active { transform: scale(0.98); }
+  #trust-block .trust-badge:hover .trust-circle { box-shadow: 0 0 0 3px rgba(146,212,61,0.18) inset; }
+  #trust-block .trust-circle { margin-bottom: 4px !important; }
 </style>
 
 <!-- Bloco de Confiança Unificado -->
-<div id="trust-block" style="background: #F9FAFB; padding: 14px; border-radius: 12px; margin-bottom: 14px; border-left: 3px solid #92D43D;">
+<div id="trust-block" role="group" aria-labelledby="trust-title" style="background: #F9FAFB; padding: 14px; border-radius: 12px; margin-bottom: 10px; border-left: 2px solid #92D43D; position: relative;">
+  <h3 id="trust-title" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip: rect(0,0,0,0); white-space:nowrap; border:0;">Por que confiar na Peacock</h3>
  
  <!-- Badges de Confiança -->
  <div class="badges-row" style="display: flex; align-items: center; justify-content: flex-start; gap: 16px; margin-bottom: 8px; flex-wrap: wrap;"> 
@@ -864,7 +879,7 @@
  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
  </svg>
  </div>
- <span class="trust-label" style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.1;">Regularizado<br>na Anvisa</span>
+ <span class="trust-label" style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.05;">Regularizado na Anvisa</span>
  </div> 
  
  <!-- Badge Vegano -->
@@ -876,7 +891,7 @@
  <path d="M12 7v6m0 0c-2 0-4 1-5 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
  </svg>
  </div>
- <span class="trust-label" style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.1;">100%<br>Vegano</span>
+ <span class="trust-label" style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.05;">100% Vegano</span>
  </div> 
  
  <!-- Badge Livre de Sulfato -->
@@ -888,28 +903,32 @@
  <path d="M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
  </svg>
  </div>
- <span class="trust-label" style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.1;">Livre de<br>Sulfato</span>
+ <span class="trust-label" style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.05;">Livre de Sulfato</span>
  </div> 
  
  </div>
  
  <!-- Linha divisória sutil -->
- <div style="height: 1px; background: linear-gradient(90deg, transparent, #92D43D, transparent); margin: 8px 0;"></div>
+ <div style="height: 1px; background: linear-gradient(90deg, transparent, #92D43D, transparent); margin: 6px 0; opacity: .6;"></div>
  
  <!-- Garantia e Entrega (ordem priorizada) -->
- <div style="display: flex; flex-direction: column; gap: 6px;">
- <div style="display: flex; align-items: center; gap: 8px;">
- <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#92D43D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
- </svg>
- <span style="font-size: 13px; font-weight: 600; color: #374151;">Teste por 60 dias — seu dinheiro de volta se não amar</span>
- </div>
- <div style="display: flex; align-items: center; gap: 8px;">
- <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
- <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#92D43D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
- </svg>
- <span style="font-size: 13px; font-weight: 600; color: #374151;">Frete grátis Brasil | Entrega em 2–5 dias úteis</span>
- </div>
+ <div class="guarantees" style="display: flex; flex-direction: column; gap: 6px;">
+   <div style="display: flex; align-items: center; gap: 8px;">
+     <span aria-hidden="true" style="display:flex; align-items:center; color:#92D43D;">
+       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+       </svg>
+     </span>
+     <span style="font-size: 13px; font-weight: 600; color: #374151;">Teste por 60 dias — seu dinheiro de volta se não amar</span>
+   </div>
+   <div style="display: flex; align-items: center; gap: 8px;">
+     <span aria-hidden="true" style="display:flex; align-items:center; color:#92D43D;">
+       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+       </svg>
+     </span>
+     <span style="font-size: 13px; font-weight: 600; color: #374151;">Frete grátis Brasil | Entrega em 2–5 dias úteis</span>
+   </div>
  </div>
  
 </div>
