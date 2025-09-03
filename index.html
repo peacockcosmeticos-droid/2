@@ -10,16 +10,27 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ativador de Vínculo de Cílios</title>
+<!-- Resource Hints -->
+<link rel="preconnect" href="https://cdn.tailwindcss.com">
+<link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload LCP image -->
+<link rel="preload" as="image" href="./imagens/78.jpg" fetchpriority="high">
+<!-- Tailwind CDN (necessário para manter o layout) -->
 <script src="https://cdn.tailwindcss.com"></script>
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Swiper CSS (preload + non-blocking apply) -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/></noscript>
+<!-- Swiper JS (defer para não bloquear render) -->
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Google Fonts (consolidado) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
         body {
             font-family: 'Inter', 'Poppins', sans-serif;
@@ -571,7 +582,7 @@
   <!-- End Google Tag Manager (noscript) -->
 <!-- Banner promocional -->
 <div style="background: linear-gradient(90deg, #FDD3DE 0%, #E6F3EE 50%, #C0BAF2 100%); color: #111827; display: flex; align-items: center; justify-content: center; height: 28px; padding: 0 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
-  <p class="promo-text" style="margin: 0; padding: 0 10px; text-align: center; font-size: 14px; line-height: 1.2;">50% OFF - CUPOM: SECRET50 - ATÉ 2 SET</p>
+  <p class="promo-text" style="margin: 0; padding: 0 10px; text-align: center; font-size: 14px; line-height: 1.2;">50% OFF - CUPOM: SECRET50 - ATÉ 4 SET</p>
 
 <style>
     @media (max-width: 768px) {
@@ -771,25 +782,25 @@
 <div class="swiper product-swiper">
 <div class="swiper-wrapper">
   <div class="swiper-slide">
-    <img src="./imagens/78.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg">
+    <img src="./imagens/78.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg" loading="eager" fetchpriority="high" decoding="async">
     </div>
 <div class="swiper-slide">
-<img src="./imagens/1.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg">
+<img src="./imagens/1.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
 </div>
 <div class="swiper-slide">
-<img src="./imagens/2.jpg" alt="Produto 2" class="w-full h-auto rounded-lg shadow-lg">
+<img src="./imagens/2.jpg" alt="Produto 2" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
 </div>
 <div class="swiper-slide">
-<img src="./imagens/3.jpg" alt="Produto 3" class="w-full h-auto rounded-lg shadow-lg">
+<img src="./imagens/3.jpg" alt="Produto 3" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
 </div>
 <div class="swiper-slide">
-<img src="./imagens/4.jpg" alt="Produto 4" class="w-full h-auto rounded-lg shadow-lg">
+<img src="./imagens/4.jpg" alt="Produto 4" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
 </div>
 <div class="swiper-slide">
-<img src="./imagens/5.jpg" alt="Produto 5" class="w-full h-auto rounded-lg shadow-lg">
+<img src="./imagens/5.jpg" alt="Produto 5" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
 </div>
 <div class="swiper-slide">
-<img src="./imagens/6.jpg" alt="Produto 6" class="w-full h-auto rounded-lg shadow-lg">
+<img src="./imagens/6.jpg" alt="Produto 6" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
 </div>
 </div>
 <!-- Setas de navegação -->
@@ -801,12 +812,12 @@
 </div>
 <!-- Miniaturas da galeria -->
 <div class="thumbnail-gallery flex space-x-2 mt-4 justify-center">
-<img alt="Miniatura do produto 1" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-pink-500 transition-all duration-200 hover:scale-105" src="./imagens/1.jpg" data-main="./imagens/1.jpg"/>
-<img alt="Miniatura do produto 2" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/2.jpg" data-main="./imagens/2.jpg"/>
-<img alt="Miniatura do produto 3" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/3.jpg" data-main="./imagens/3.jpg"/>
-<img alt="Miniatura do produto 4" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/4.jpg" data-main="./imagens/4.jpg"/>
-<img alt="Miniatura do produto 5" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/5.jpg" data-main="./imagens/5.jpg"/>
-<img alt="Miniatura do produto 6" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/6.jpg" data-main="./imagens/6.jpg"/>
+<img alt="Miniatura do produto 1" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-pink-500 transition-all duration-200 hover:scale-105" src="./imagens/1.jpg" data-main="./imagens/1.jpg" decoding="async"/>
+<img alt="Miniatura do produto 2" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/2.jpg" data-main="./imagens/2.jpg" decoding="async"/>
+<img alt="Miniatura do produto 3" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/3.jpg" data-main="./imagens/3.jpg" decoding="async"/>
+<img alt="Miniatura do produto 4" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/4.jpg" data-main="./imagens/4.jpg" decoding="async"/>
+<img alt="Miniatura do produto 5" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/5.jpg" data-main="./imagens/5.jpg" decoding="async"/>
+<img alt="Miniatura do produto 6" class="thumbnail w-20 h-20 rounded-md cursor-pointer border-2 border-gray-200 transition-all duration-200 hover:scale-105" src="./imagens/6.jpg" data-main="./imagens/6.jpg" decoding="async"/>
 </div>
 </div>
 <div class="md:w-1/2">
@@ -1644,7 +1655,7 @@
 <h2 class="text-center text-3xl font-bold text-gray-800">O Poder da Natureza em Cada Aplicação</h2>
 <div class="flex flex-col md:flex-row items-center gap-12 mt-12">
 <div class="md:w-1/2">
-<img alt="O Vínculo da Natureza para Seus Cílios" class="rounded-lg w-full" src="./imagens/6.jpg"/>
+<img alt="O Vínculo da Natureza para Seus Cílios" class="rounded-lg w-full" src="./imagens/6.jpg" loading="lazy" decoding="async"/>
 </div>
 <div class="md:w-1/2 space-y-6">
 <div>
@@ -1801,7 +1812,7 @@
       <!-- Imagem da tabela à direita -->
       <div class="lg:w-1/2">
         <div class=" rounded-2xl ">
-          <img src="./imagens/tabela.webp" alt="Comparação: Peacock vs Tratamentos de Salão vs Alternativa com Receita" class="w-full h-auto rounded-lg">
+          <img src="./imagens/tabela.webp" alt="Comparação: Peacock vs Tratamentos de Salão vs Alternativa com Receita" class="w-full h-auto rounded-lg" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1835,7 +1846,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-1-819x1024.jpeg" alt="Depoimento WhatsApp 1" class="w-full h-auto rounded-lg shadow-md">
+              <img src="./imagens/opinioes/depoimento-whats-1-819x1024.jpeg" alt="Depoimento WhatsApp 1" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="swiper-slide">
@@ -2346,22 +2357,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- jQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery CDN (adiado) -->
+<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-// Scroll suave para a seção de seleção de produtos
-$(document).ready(function(){
-  $('.scroll-to-product').on('click', function(e){
-    e.preventDefault();
-    
-    var targetSection = $('#product-selection');
-    
-    if(targetSection.length) {
-      $('html, body').animate({
-        scrollTop: targetSection.offset().top - 20
-      }, 800, 'swing');
-    }
+// Scroll suave para a seção de seleção de produtos sem bloquear render
+window.addEventListener('DOMContentLoaded', function(){
+  var triggerLinks = document.querySelectorAll('.scroll-to-product');
+  triggerLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var targetSection = document.getElementById('product-selection');
+      if(targetSection) {
+        window.scrollTo({ top: targetSection.offsetTop - 20, behavior: 'smooth' });
+      }
+    });
   });
 });
 </script>
