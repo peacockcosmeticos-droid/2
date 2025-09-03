@@ -824,7 +824,7 @@
  <h1 style="font-size: 44px; font-weight: 700; color: #000000; line-height: 1.2; margin-bottom: 2px;">Cílios mais longos e cheios em 4–6 semanas 
 </h1> 
  
- <p style="font-size: 16px;color: #6B7280;font-weight: 400;margin-bottom: 6px;">Vegano, dermatológica e oftalmologicamente testado. Resultados sem irritação — garantia de satisfação.</p> 
+ <p style="font-size: 16px;color: #6B7280;font-weight: 400;margin-bottom: 6px;">Vegano, aprovado pela Anvisa e testado dermatologicamente. </p> 
  
  </div> 
  
@@ -880,7 +880,14 @@
   @media (max-width: 360px) {
     #trust-block .badges-row { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
     #trust-block .guarantees { gap: 4px; }
-    #trust-block .trust-divider { margin: 4px 0 !important; }
+    #trust-block .trust-divider { margin: 2px 0 !important; height: 1px !important; }
+  }
+  
+  /* Ajuste geral para o divider ficar mais fino em todas as telas */
+  #trust-block .trust-divider { 
+    height: 1px !important; 
+    margin: 3px 0 !important; 
+    opacity: 0.4 !important;
   }
 </style>
 
@@ -936,7 +943,7 @@
  </div>
  
  <!-- Linha divisória sutil -->
- <div class="trust-divider" style="height: 1px; background: linear-gradient(90deg, transparent, #92D43D, transparent); margin: 5px 0; opacity: .5;"></div>
+ <div class="trust-divider" style="background: linear-gradient(90deg, transparent, #92D43D, transparent);"></div>
  
  <!-- Garantia e Entrega (ordem priorizada) -->
  <div class="guarantees" style="display: flex; flex-direction: column; gap: 6px;">
