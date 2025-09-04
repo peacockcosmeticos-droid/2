@@ -11,26 +11,26 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ativador de Vínculo de Cílios</title>
 <!-- Resource Hints -->
-<link rel="preconnect" href="https://cdn.tailwindcss.com">
-<link rel="dns-prefetch" href="//cdn.tailwindcss.com">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+
+
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="//www.googletagmanager.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preload" href="./assets/css/fonts.css" as="style">
+<link rel="stylesheet" href="./assets/css/fonts.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="./assets/css/fonts.css"></noscript>
 <!-- Preload LCP image -->
-<link rel="preload" as="image" href="./imagens/78.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="./imagens/78.avif" type="image/avif" fetchpriority="high">
+<link rel="preload" as="image" href="./imagens/78.jpg" type="image/jpeg" fetchpriority="high">
 <!-- Tailwind CDN (necessário para manter o layout) -->
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./assets/css/tailwind.css">
 <!-- Swiper CSS (preload + non-blocking apply) -->
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/></noscript>
+<link rel="preload" href="./assets/vendor/swiper/swiper-bundle.min.css" as="style">
+<link rel="stylesheet" href="./assets/vendor/swiper/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="./assets/vendor/swiper/swiper-bundle.min.css"/></noscript>
 <!-- Swiper JS (defer para não bloquear render) -->
-<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<!-- Google Fonts (consolidado) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script defer src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+
 <style>
         body {
             font-family: 'Inter', 'Poppins', sans-serif;
@@ -604,7 +604,7 @@
 <div style="display: flex; justify-content: space-between; align-items: center; height: 60px;">
 <!-- Logo -->
 <div style="flex-shrink: 0;">
-<img style="height: 40px; width: auto;" src="./peecock.png" alt="Liaison Growth">
+<img style="height: 40px; width: auto;" src="./peecock.png" alt="Liaison Growth" loading="lazy" decoding="async">
 </div>
 
 <!-- Navegação central -->
@@ -649,13 +649,13 @@
       <div class="custom-featured-bar-wrap">
         <div class="custom-featured-bar-item left-badge">
           <div class="badge-content">
-            <img src="https://herliaison.com/cdn/shop/files/free-shipping-icon.svg?v=1727167109&amp;width=25" alt="Frete grátis" width="25" height="25">
+            <img src="./imagens/icons/free-shipping-icon.svg" alt="Frete grátis" width="25" height="25" loading="lazy" decoding="async">
             <span class="free-shipping-banner">Frete grátis para todo o Brasil — somente hoje!</span>
           </div>
         </div>
         <div class="custom-featured-bar-item right-badge">
           <div class="badge-content">
-            <img src="https://herliaison.com/cdn/shop/files/happy-users-icon.svg?v=1727167109&amp;width=25" alt="Usuários satisfeitos" width="25" height="25">
+            <img src="./imagens/icons/happy-users-icon.svg" alt="Usuários satisfeitos" width="25" height="25" loading="lazy" decoding="async">
             <span>50.000+ usuários satisfeitos</span>
           </div>
         </div>
@@ -782,25 +782,53 @@
 <div class="swiper product-swiper">
 <div class="swiper-wrapper">
   <div class="swiper-slide">
-    <img src="./imagens/78.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg" loading="eager" fetchpriority="high" decoding="async">
+    <picture>
+      <source srcset="./imagens/78.avif" type="image/avif">
+      <source srcset="./imagens/78.webp" type="image/webp">
+      <img src="./imagens/78.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg" loading="eager" fetchpriority="high" decoding="async">
+    </picture>
     </div>
 <div class="swiper-slide">
-<img src="./imagens/1.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+<picture>
+  <source srcset="./imagens/1.avif" type="image/avif">
+  <source srcset="./imagens/1.webp" type="image/webp">
+  <img src="./imagens/1.jpg" alt="Produto Ativador de Vínculo de Cílios" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+</picture>
 </div>
 <div class="swiper-slide">
-<img src="./imagens/2.jpg" alt="Produto 2" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+<picture>
+  <source srcset="./imagens/2.avif" type="image/avif">
+  <source srcset="./imagens/2.webp" type="image/webp">
+  <img src="./imagens/2.jpg" alt="Produto 2" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+</picture>
 </div>
 <div class="swiper-slide">
-<img src="./imagens/3.jpg" alt="Produto 3" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+<picture>
+  <source srcset="./imagens/3.avif" type="image/avif">
+  <source srcset="./imagens/3.webp" type="image/webp">
+  <img src="./imagens/3.jpg" alt="Produto 3" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+</picture>
 </div>
 <div class="swiper-slide">
-<img src="./imagens/4.jpg" alt="Produto 4" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+<picture>
+  <source srcset="./imagens/4.avif" type="image/avif">
+  <source srcset="./imagens/4.webp" type="image/webp">
+  <img src="./imagens/4.jpg" alt="Produto 4" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+</picture>
 </div>
 <div class="swiper-slide">
-<img src="./imagens/5.jpg" alt="Produto 5" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+<picture>
+  <source srcset="./imagens/5.avif" type="image/avif">
+  <source srcset="./imagens/5.webp" type="image/webp">
+  <img src="./imagens/5.jpg" alt="Produto 5" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+</picture>
 </div>
 <div class="swiper-slide">
-<img src="./imagens/6.jpg" alt="Produto 6" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+<picture>
+  <source srcset="./imagens/6.avif" type="image/avif">
+  <source srcset="./imagens/6.webp" type="image/webp">
+  <img src="./imagens/6.jpg" alt="Produto 6" class="w-full h-auto rounded-lg shadow-lg" loading="lazy" decoding="async">
+</picture>
 </div>
 </div>
 <!-- Setas de navegação -->
@@ -827,7 +855,7 @@
  
  <div style="display: flex; align-items: center; margin-bottom: 2px; gap: 8px;"> 
  
- <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/stars-rating-2.svg?v=1728979162" alt="5 estrelas" style="height: 20px; width: auto;"> 
+ <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/stars-rating-2.svg?v=1728979162" alt="5 estrelas" style="height: 20px; width: auto;" loading="lazy" decoding="async">
  
  
  </div> 
@@ -845,7 +873,7 @@
 
 <div style="display: flex; align-items: center; margin-bottom: 12px; gap: 12px;"> 
   
-  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/fire-svg.svg?v=1737022834" alt="fire" style="width: 24px; height: 24px;"> 
+  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/fire-svg.svg?v=1737022834" alt="fire" style="width: 24px; height: 24px;" loading="lazy" decoding="async">
   
   <span id="main-compare-price" style="color: #9CA3AF; text-decoration: line-through; font-size: 24px;">R$315,18</span> 
   
@@ -1003,7 +1031,7 @@
         <div class="swatch-option__left">
           <input type="radio" name="option-0" value="1 Garrafa" checked>
           <div class="swatch-option__left-image">
-            <img src="https://herliaison.com/cdn/shop/files/cro2-image1.png?v=1684002563" alt="1-Garrafa">
+            <img src="https://herliaison.com/cdn/shop/files/cro2-image1.png?v=1684002563" alt="1-Garrafa" loading="lazy" decoding="async">
           </div>
           <div class="swatch-option__left-name">1-Frasco </div>
         </div>
@@ -1023,7 +1051,7 @@
         <div class="swatch-option__left">
           <input type="radio" name="option-0" value="3 Bottles">
           <div class="swatch-option__left-image">
-            <img src="https://herliaison.com/cdn/shop/files/cro2-image2.png?v=1684002564" alt="3-Bottles">
+            <img src="https://herliaison.com/cdn/shop/files/cro2-image2.png?v=1684002564" alt="3-Bottles" loading="lazy" decoding="async">
           </div>
           <div class="swatch-option__left-name">3-Frascos</div>
         </div>
@@ -1043,7 +1071,7 @@
         <div class="swatch-option__left">
           <input type="radio" name="option-0" value="5 Bottles">
           <div class="swatch-option__left-image">
-            <img src="https://herliaison.com/cdn/shop/files/cro2-image3.png?v=1684002565" alt="5-Bottles">
+            <img src="https://herliaison.com/cdn/shop/files/cro2-image3.png?v=1684002565" alt="5-Bottles" loading="lazy" decoding="async">
           </div>
           <div class="swatch-option__left-name">5-Frascos</div>
         </div>
@@ -1189,7 +1217,7 @@
 
 <!-- Payment Icons -->
 <div class="flex justify-center items-center space-x-3 mb-6">
-  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/payment-icons.png?v=1727244514" alt="Métodos de pagamento" class="h-8">
+  <img src="./imagens/payment-icons.png" alt="Métodos de pagamento" class="h-8" loading="lazy" decoding="async">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" class="h-8">
     <g clip-path="url(#clip0_653_147)">
       <path d="M18.72 18.36C17.78 18.36 16.89 17.99 16.23 17.33L12.63 13.73C12.38 13.48 11.94 13.48 11.68 13.73L8.06999 17.34C7.39999 18.01 6.52 18.37 5.58 18.37H4.87L9.43 22.93C10.85 24.35 13.16 24.35 14.59 22.93L19.16 18.36H18.73H18.72Z" fill="#32BCAD"></path>
@@ -1206,7 +1234,7 @@
 
 <!-- Guarantee Section -->
 <div style="display: flex; align-items: center; text-align: center; justify-content: center; margin: 8px 0px;">
-  <img src="https://cdn.shopify.com/s/files/1/0076/7875/4852/files/calendar-icon.svg?v=1727244798" alt="Garantia de Satisfação de 30 Dias" style="margin-right: 12px;">
+  <img src="./imagens/icons/calendar.svg" alt="Garantia de Satisfação de 30 Dias" style="margin-right: 12px;" loading="lazy" decoding="async">
   <div style="text-align: center;">
     <h5 style="color: #D5647C; font-weight: 700; text-transform: uppercase; line-height: normal; margin-bottom: 3px; font-size: clamp(14px, 3vw, 16px) !important; letter-spacing: normal; padding: 0px;">Garantia de Satisfação de 30 Dias</h5>
     <p style="line-height: normal; font-size: clamp(14px, 3vw, 16px) !important; font-weight: 500; letter-spacing: normal; margin-bottom: 0px;">Ame ou nós acertaremos.</p>
@@ -1655,7 +1683,11 @@
 <h2 class="text-center text-3xl font-bold text-gray-800">O Poder da Natureza em Cada Aplicação</h2>
 <div class="flex flex-col md:flex-row items-center gap-12 mt-12">
 <div class="md:w-1/2">
-<img alt="O Vínculo da Natureza para Seus Cílios" class="rounded-lg w-full" src="./imagens/6.jpg" loading="lazy" decoding="async"/>
+<picture>
+  <source srcset="./imagens/6.avif" type="image/avif">
+  <source srcset="./imagens/6.webp" type="image/webp">
+  <img alt="O Vínculo da Natureza para Seus Cílios" class="rounded-lg w-full" src="./imagens/6.jpg" loading="lazy" decoding="async"/>
+</picture>
 </div>
 <div class="md:w-1/2 space-y-6">
 <div>
@@ -1686,21 +1718,33 @@
       <div class="swiper-slide">
         <div class="grid md:grid-cols-3 gap-8">
           <div>
-            <img alt="Antes e depois do resultado dos cílios 1" class="rounded-lg" src="./imagens/antesedepois/1.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/1.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/1.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 1" class="rounded-lg" src="./imagens/antesedepois/1.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Tenho cílios asiáticos típicos, curtos e ralos. Já tentei vários séruns para cílios, mas nada funcionou. Não consigo acreditar no progresso! Até meus amigos estão me perguntando o que estou fazendo e mal posso esperar para ver mais progresso."</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Michele</p>
             </div>
           </div>
           <div>
-            <img alt="Antes e depois do resultado dos cílios 2" class="rounded-lg" src="./imagens/antesedepois/2.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/2.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/2.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 2" class="rounded-lg" src="./imagens/antesedepois/2.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"A diferença é enorme! Estou amando meus novos cílios e minha confiança disparou. As pessoas continuam me perguntando se estou usando extensões, mas são todos meus!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Priscila</p>
             </div>
           </div>
           <div>
-            <img alt="Antes e depois do resultado dos cílios 3" class="rounded-lg" src="./imagens/antesedepois/3.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/3.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/3.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 3" class="rounded-lg" src="./imagens/antesedepois/3.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Meus cílios ficaram mais longos e grossos após apenas 6 semanas de uso. Mal posso esperar para ver os resultados depois de terminar o frasco inteiro. Eu recomendei para todos os meus amigos."</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Ana Paula</p>
@@ -1713,21 +1757,33 @@
       <div class="swiper-slide">
         <div class="grid md:grid-cols-3 gap-8">
           <div>
-            <img alt="Antes e depois do resultado dos cílios 4" class="rounded-lg" src="./imagens/antesedepois/4.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/4.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/4.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 4" class="rounded-lg" src="./imagens/antesedepois/4.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Sempre tive cílios finos e sem vida. Depois de usar o produto por 8 semanas, meus cílios estão incrivelmente mais volumosos e longos. Não preciso mais de máscara de cílios todos os dias!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Carla</p>
             </div>
           </div>
           <div>
-            <img alt="Antes e depois do resultado dos cílios 5" class="rounded-lg" src="./imagens/antesedepois/5.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/5.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/5.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 5" class="rounded-lg" src="./imagens/antesedepois/5.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Resultado incrível! Meus cílios cresceram tanto que as pessoas pensam que estou usando cílios postiços. A transformação foi além das minhas expectativas."</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Fernanda</p>
             </div>
           </div>
           <div>
-            <img alt="Antes e depois do resultado dos cílios 6" class="rounded-lg" src="./imagens/antesedepois/6.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/6.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/6.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 6" class="rounded-lg" src="./imagens/antesedepois/6.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Estava cética no início, mas os resultados falam por si só. Meus cílios estão mais fortes, mais longos e com muito mais volume. Produto fantástico!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Juliana</p>
@@ -1740,21 +1796,33 @@
       <div class="swiper-slide">
         <div class="grid md:grid-cols-3 gap-8">
           <div>
-            <img alt="Antes e depois do resultado dos cílios 7" class="rounded-lg" src="./imagens/antesedepois/7.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/7.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/7.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 7" class="rounded-lg" src="./imagens/antesedepois/7.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Depois de anos usando extensões de cílios, decidi tentar algo natural. O resultado superou todas as minhas expectativas. Meus cílios naturais nunca estiveram tão bonitos!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Beatriz</p>
             </div>
           </div>
           <div>
-            <img alt="Antes e depois do resultado dos cílios 8" class="rounded-lg" src="./imagens/antesedepois/8.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/8.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/8.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 8" class="rounded-lg" src="./imagens/antesedepois/8.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"A mudança foi gradual mas consistente. A cada semana via meus cílios ficando mais densos e longos. Agora recebo elogios constantemente!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Mariana</p>
             </div>
           </div>
           <div>
-            <img alt="Antes e depois do resultado dos cílios 9" class="rounded-lg" src="./imagens/antesedepois/9.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/9.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/9.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 9" class="rounded-lg" src="./imagens/antesedepois/9.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Produto revolucionário! Meus cílios eram praticamente inexistentes e agora tenho cílios de revista. A autoestima mudou completamente!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Camila</p>
@@ -1767,7 +1835,11 @@
       <div class="swiper-slide">
         <div class="grid md:grid-cols-3 gap-8">
           <div>
-            <img alt="Antes e depois do resultado dos cílios 10" class="rounded-lg" src="./imagens/antesedepois/10.jpg"/>
+            <picture>
+              <source srcset="./imagens/antesedepois/10.avif" type="image/avif">
+              <source srcset="./imagens/antesedepois/10.webp" type="image/webp">
+              <img alt="Antes e depois do resultado dos cílios 10" class="rounded-lg" src="./imagens/antesedepois/10.jpg" loading="lazy" decoding="async"/>
+            </picture>
             <p class="mt-4 text-gray-600">"Transformação inacreditável! De cílios quase invisíveis para cílios deslumbrantes em apenas 10 semanas. Este produto mudou minha vida!"</p>
             <div class="flex items-center justify-center mt-4">
               <p class="ml-2 font-semibold">Roberta</p>
@@ -1812,7 +1884,11 @@
       <!-- Imagem da tabela à direita -->
       <div class="lg:w-1/2">
         <div class=" rounded-2xl ">
-          <img src="./imagens/tabela.webp" alt="Comparação: Peacock vs Tratamentos de Salão vs Alternativa com Receita" class="w-full h-auto rounded-lg" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="./imagens/tabela.avif" type="image/avif">
+            <source srcset="./imagens/tabela.webp" type="image/webp">
+            <img src="./imagens/tabela.png" alt="Comparação: Peacock vs Tratamentos de Salão vs Alternativa com Receita" class="w-full h-auto rounded-lg" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
     </div>
@@ -1823,7 +1899,7 @@
 <section class="bg-pink-50 py-16">
   <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-12">
     <div class="md:w-1/4 flex justify-center">
-      <img alt="Selo de Garantia de Satisfação de 30 Dias" class="h-32" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF-oBCnfDhjSor6deonlHtXLoRy0s_cTVspJesnjcwVs54OvWHrdmwRof62Ry7Z_rqyKUTHkbWv-xx-HZiRwYiqOyaWnvifvvMtUrIHtutJGLTe6ZadYRqD0N0wzL_UYbWUJ7x-fzZhuF2P_DhLysJaH3eQUtpc1Io6sVDL3HsiNojPQd1MlluUHcoSNhXho0vHZtbs4xpqa7KSdBuFILmweNwONFbfb-5Unw7Gfl88PztMRTUZd-arSfG-FqjJpML93zEnq2oUeUo"/>
+      <img alt="Selo de Garantia de Satisfação de 30 Dias" class="h-32" src="./imagens/badges/guarantee.png" loading="lazy" decoding="async"/>
     </div>
     <div class="md:w-3/4 text-center md:text-left">
       <h2 class="text-2xl font-bold text-gray-800">Garantia de Satisfação de 30 Dias</h2>
@@ -1846,32 +1922,56 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-1-819x1024.jpeg" alt="Depoimento WhatsApp 1" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              <picture>
+                <source srcset="./imagens/opinioes/depoimento-whats-1-819x1024.avif" type="image/avif">
+                <source srcset="./imagens/opinioes/depoimento-whats-1-819x1024.webp" type="image/webp">
+                <img src="./imagens/opinioes/depoimento-whats-1-819x1024.jpeg" alt="Depoimento WhatsApp 1" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-2-819x1024.jpeg" alt="Depoimento WhatsApp 2" class="w-full h-auto rounded-lg shadow-md">
+              <picture>
+                <source srcset="./imagens/opinioes/depoimento-whats-2-819x1024.avif" type="image/avif">
+                <source srcset="./imagens/opinioes/depoimento-whats-2-819x1024.webp" type="image/webp">
+                <img src="./imagens/opinioes/depoimento-whats-2-819x1024.jpeg" alt="Depoimento WhatsApp 2" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-3-819x1024.jpeg" alt="Depoimento WhatsApp 3" class="w-full h-auto rounded-lg shadow-md">
+              <picture>
+                <source srcset="./imagens/opinioes/depoimento-whats-3-819x1024.avif" type="image/avif">
+                <source srcset="./imagens/opinioes/depoimento-whats-3-819x1024.webp" type="image/webp">
+                <img src="./imagens/opinioes/depoimento-whats-3-819x1024.jpeg" alt="Depoimento WhatsApp 3" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-4-819x1024.jpeg" alt="Depoimento WhatsApp 4" class="w-full h-auto rounded-lg shadow-md">
+              <picture>
+                <source srcset="./imagens/opinioes/depoimento-whats-4-819x1024.avif" type="image/avif">
+                <source srcset="./imagens/opinioes/depoimento-whats-4-819x1024.webp" type="image/webp">
+                <img src="./imagens/opinioes/depoimento-whats-4-819x1024.jpeg" alt="Depoimento WhatsApp 4" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-5-819x1024.jpeg" alt="Depoimento WhatsApp 5" class="w-full h-auto rounded-lg shadow-md">
+              <picture>
+                <source srcset="./imagens/opinioes/depoimento-whats-5-819x1024.avif" type="image/avif">
+                <source srcset="./imagens/opinioes/depoimento-whats-5-819x1024.webp" type="image/webp">
+                <img src="./imagens/opinioes/depoimento-whats-5-819x1024.jpeg" alt="Depoimento WhatsApp 5" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              </picture>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="review-card bg-gray-50 rounded-lg p-4 mx-2">
-              <img src="./imagens/opinioes/depoimento-whats-6-819x1024.jpeg" alt="Depoimento WhatsApp 6" class="w-full h-auto rounded-lg shadow-md">
+              <picture>
+                <source srcset="./imagens/opinioes/depoimento-whats-6-819x1024.avif" type="image/avif">
+                <source srcset="./imagens/opinioes/depoimento-whats-6-819x1024.webp" type="image/webp">
+                <img src="./imagens/opinioes/depoimento-whats-6-819x1024.jpeg" alt="Depoimento WhatsApp 6" class="w-full h-auto rounded-lg shadow-md" loading="lazy" decoding="async">
+              </picture>
             </div>
           </div>
         </div>
@@ -2043,10 +2143,26 @@
 <div class="text-center mb-8">
 <h4 class="font-bold text-gray-800 mb-6">QUALIDADE E SEGURANÇA</h4>
 <div class="flex flex-wrap justify-center items-center gap-4 mb-8">
-<img src="./imagens/selos/image-300x133.webp" alt="Selo de qualidade e segurança - Peacock sérum vegano para cílios aprovado pela ANVISA" class="h-16 w-auto">
-<img src="./imagens/selos/image-1.fallback.jpeg" alt="Certificação de qualidade Peacock - Produto vegano e cruelty-free para crescimento de cílios" class="h-16 w-auto">
-<img src="./imagens/selos/stamp_encryptssl.fallback.jpeg" alt="Selo SSL - Compra segura e protegida no site oficial Peacock Cosméticos" class="h-12 w-auto">
-<img src="./imagens/selos/stamp_google_safe_browsing.webp" alt="Google Safe Browsing - Site verificado e seguro para compra do sérum Peacock" class="h-12 w-auto">
+<picture>
+  <source srcset="./imagens/selos/image-300x133.avif" type="image/avif">
+  <source srcset="./imagens/selos/image-300x133.webp" type="image/webp">
+  <img src="./imagens/selos/image-300x133.webp" alt="Selo de qualidade e segurança - Peacock sérum vegano para cílios aprovado pela ANVISA" class="h-16 w-auto" loading="lazy" decoding="async">
+</picture>
+<picture>
+  <source srcset="./imagens/selos/image-1.fallback.avif" type="image/avif">
+  <source srcset="./imagens/selos/image-1.fallback.webp" type="image/webp">
+  <img src="./imagens/selos/image-1.fallback.jpeg" alt="Certificação de qualidade Peacock - Produto vegano e cruelty-free para crescimento de cílios" class="h-16 w-auto" loading="lazy" decoding="async">
+</picture>
+<picture>
+  <source srcset="./imagens/selos/stamp_encryptssl.fallback.avif" type="image/avif">
+  <source srcset="./imagens/selos/stamp_encryptssl.fallback.webp" type="image/webp">
+  <img src="./imagens/selos/stamp_encryptssl.fallback.jpeg" alt="Selo SSL - Compra segura e protegida no site oficial Peacock Cosméticos" class="h-12 w-auto" loading="lazy" decoding="async">
+</picture>
+<picture>
+  <source srcset="./imagens/selos/stamp_google_safe_browsing.avif" type="image/avif">
+  <source srcset="./imagens/selos/stamp_google_safe_browsing.webp" type="image/webp">
+  <img src="./imagens/selos/stamp_google_safe_browsing.webp" alt="Google Safe Browsing - Site verificado e seguro para compra do sérum Peacock" class="h-12 w-auto" loading="lazy" decoding="async">
+</picture>
 </div>
 </div>
 
@@ -2357,8 +2473,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- jQuery CDN (adiado) -->
-<script defer src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 <script>
 // Scroll suave para a seção de seleção de produtos sem bloquear render
