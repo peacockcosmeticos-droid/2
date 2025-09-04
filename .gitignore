@@ -1,0 +1,37 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build/Cache
+.dist/
+dist/
+.cache/
+.tmp/
+.eslintcache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env/Secrets
+.env
+.env.*
+
+# Local tooling
+.vscode/
+.idea/
+.vercel/
+
+# Backups e cópias
+backup/
+
+# Logs
+logs/
+*.log
+
+# Misc
+*.orig
+

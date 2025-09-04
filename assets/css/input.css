@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Garantia: tipografia em mobile (como no backup) */
+@media (max-width: 768px) {
+  div[style*="display:flex"][style*="text-align:center"][style*="justify-content:center"] h5 { font-size: 12px !important; }
+  div[style*="display:flex"][style*="text-align:center"][style*="justify-content:center"] p  { font-size: 12px !important; }
+}
+
+/* Garantia: tamanhos do ícone (desktop + mobile) */
+img[alt="Garantia de Satisfação de 30 Dias"][src$="calendar.svg"],
+img[src*="/icons/calendar.svg"],
+img[src*="icons/calendar.svg"] {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  margin-right: 12px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  flex: 0 0 auto !important;
+}
+@media (max-width: 768px) {
+  img[alt="Garantia de Satisfação de 30 Dias"][src$="calendar.svg"],
+  img[src*="/icons/calendar.svg"],
+  img[src*="icons/calendar.svg"] {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+  }
+}
