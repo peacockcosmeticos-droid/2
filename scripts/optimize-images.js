@@ -5,6 +5,12 @@ const sharp = require('sharp');
 const INPUT_DIRS = [
   path.join(__dirname, '..', 'imagens'),
 ];
+
+// Lista de arquivos individuais fora da pasta imagens a converter
+const INPUT_FILES = [
+  path.join(__dirname, '..', 'peecock.png'),
+  path.join(__dirname, '..', 'fav.png'),
+];
 const OUTPUT_ROOT = path.join(__dirname, '..');
 
 async function processImage(filePath) {
@@ -40,6 +46,10 @@ async function walk(dir) {
 (async () => {
   for (const d of INPUT_DIRS) {
     if (fs.existsSync(d)) await walk(d);
+  }
+  // Processar arquivos avulsos
+  for (const f of INPUT_FILES) {
+    if (fs.existsSync(f)) await processImage(f);
   }
 })();
 
