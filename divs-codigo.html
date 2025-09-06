@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código das Divs Selecionadas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .div-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .div-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d5647c;
+            margin-bottom: 15px;
+        }
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Código das Duas Divs Selecionadas</h1>
+        
+        <div class="div-section">
+            <div class="div-title">1. DIV - Price Highlight Block (Bloco de Destaque de Preço)</div>
+            <pre><code>&lt;div class="price-highlight-block" id="price-highlight-block" 
+     style="display: flex; flex-direction: column; gap: 4px; margin: 14px 0px 10px; 
+            padding: 12px; border: 1px solid rgb(243, 213, 221); 
+            background: rgb(255, 248, 250); border-radius: 10px;"&gt;
+    
+    &lt;div style="font-weight: 600; color: rgb(107, 114, 128); font-size: 14px;"&gt;
+        Por apenas 12x de
+    &lt;/div&gt;
+    
+    &lt;div style="display: flex; align-items: baseline; gap: 8px;"&gt;
+        &lt;span style="color: rgb(213, 100, 124); font-weight: 800; font-size: 20px;"&gt;
+            R$
+        &lt;/span&gt;
+        &lt;span style="color: rgb(213, 100, 124); font-weight: 900; 
+                     letter-spacing: -0.02em; font-size: 44px; line-height: 1;"&gt;
+            13,16
+        &lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;div style="color: rgb(17, 24, 39); font-size: 14px; font-weight: 600;"&gt;
+        ou R$&amp;nbsp;157,90 à vista
+    &lt;/div&gt;
+    
+    &lt;div class="economy-row" 
+         style="margin-top: 8px; color: rgb(14, 122, 13); font-weight: 700; font-size: 14px;"&gt;
+        💚 Economize R$&amp;nbsp;157,90 (50%) hoje
+    &lt;/div&gt;
+    
+    &lt;div class="trust-primary" 
+         style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgb(243, 213, 221); 
+                display: flex; flex-wrap: wrap; align-items: center; gap: 8px; 
+                color: rgb(55, 65, 81); font-size: 13px;"&gt;
+        &lt;span style="color:#F59E0B"&gt;★★★★★&lt;/span&gt; 
+        &lt;strong&gt;4,9/5&lt;/strong&gt; • 
+        &lt;span&gt;50.000+ clientes&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="reviews-mini" 
+         style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px;"&gt;
+        &lt;span style="display: inline-block; background: rgb(255, 255, 255); 
+                     border: 1px solid rgb(238, 238, 238); color: rgb(75, 85, 99); 
+                     padding: 6px 10px; border-radius: 999px; font-size: 12px;"&gt;
+            "Cresceu em 5 semanas"
+        &lt;/span&gt;
+        &lt;span style="display: inline-block; background: rgb(255, 255, 255); 
+                     border: 1px solid rgb(238, 238, 238); color: rgb(75, 85, 99); 
+                     padding: 6px 10px; border-radius: 999px; font-size: 12px;"&gt;
+            "Sem irritar"
+        &lt;/span&gt;
+        &lt;span style="display: inline-block; background: rgb(255, 255, 255); 
+                     border: 1px solid rgb(238, 238, 238); color: rgb(75, 85, 99); 
+                     padding: 6px 10px; border-radius: 999px; font-size: 12px;"&gt;
+            "Voltei a usar rímel"
+        &lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="guarantee-test" 
+         style="margin-top: 6px; display: flex; align-items: center; gap: 8px;"&gt;
+        &lt;span style="display:inline-block; background:#FCE7F3; color:#D5647C; 
+                     border:1px solid #F8C7D7; padding:6px 10px; border-radius:8px; 
+                     font-weight:600;"&gt;
+            Teste 60 dias ou seu dinheiro de volta
+        &lt;/span&gt;
+    &lt;/div&gt;
+    
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="div-section">
+            <div class="div-title">2. DIV - Benefits Card (Cartão de Benefícios)</div>
+            <pre><code>&lt;div id="benefits-card" 
+     style="margin-top: 12px; padding: 14px; background: rgb(255, 255, 255); 
+            border: 1px solid rgb(229, 231, 235); border-radius: 12px; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; 
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px;"&gt;
+    
+    &lt;div style="display: flex; align-items: center; gap: 8px; 
+                background: rgb(248, 250, 252); border: 1px solid rgb(241, 245, 249); 
+                border-radius: 8px; padding: 10px 12px; font-size: 13px; 
+                color: rgb(55, 65, 81); font-weight: 500;"&gt;
+        ✅ Aprovado pela Anvisa
+    &lt;/div&gt;
+    
+    &lt;div style="display: flex; align-items: center; gap: 8px; 
+                background: rgb(248, 250, 252); border: 1px solid rgb(241, 245, 249); 
+                border-radius: 8px; padding: 10px 12px; font-size: 13px; 
+                color: rgb(55, 65, 81); font-weight: 500;"&gt;
+        🌱 Vegano
+    &lt;/div&gt;
+    
+    &lt;div style="display: flex; align-items: center; gap: 8px; 
+                background: rgb(248, 250, 252); border: 1px solid rgb(241, 245, 249); 
+                border-radius: 8px; padding: 10px 12px; font-size: 13px; 
+                color: rgb(55, 65, 81); font-weight: 500;"&gt;
+        🚫 Sem sulfato
+    &lt;/div&gt;
+    
+    &lt;div style="display: flex; align-items: center; gap: 8px; 
+                background: rgb(248, 250, 252); border: 1px solid rgb(241, 245, 249); 
+                border-radius: 8px; padding: 10px 12px; font-size: 13px; 
+                color: rgb(55, 65, 81); font-weight: 500;"&gt;
+        🚀 Frete rápido
+    &lt;/div&gt;
+    
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <div class="div-section">
+            <div class="div-title">📝 Observações Importantes:</div>
+            <ul style="margin-left: 20px; line-height: 1.6;">
+                <li><strong>Geração Dinâmica:</strong> Essas divs são criadas dinamicamente via JavaScript no arquivo index.html</li>
+                <li><strong>IDs únicos:</strong> price-highlight-block e benefits-card</li>
+                <li><strong>Responsividade:</strong> Incluem media queries para mobile no CSS</li>
+                <li><strong>Cores principais:</strong> 
+                    <ul style="margin-top: 5px;">
+                        <li>Rosa: #D5647C (rgb(213, 100, 124))</li>
+                        <li>Verde: #0E7A0D (rgb(14, 122, 13))</li>
+                        <li>Cinza: #374151 (rgb(55, 65, 81))</li>
+                    </ul>
+                </li>
+                <li><strong>Funcionalidades:</strong> Preços dinâmicos, avaliações, garantia e benefícios do produto</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
