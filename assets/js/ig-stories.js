@@ -86,7 +86,7 @@ export function initInstagramStories(options = {}) {
     loadToken: 0,
   };
   // Default sound state
-  state.muted = true;
+  state.muted = false;
 
 
   const el = buildModal(cfg);
@@ -777,7 +777,7 @@ export function initInstagramStories(options = {}) {
       v.preload = 'metadata';
       v.playsInline = true;
       v.setAttribute('playsinline', '');
-      v.muted = true; // autoplay friendlier
+      v.muted = false; // iniciar com áudio habilitado após clique do usuário
       v.controls = false;
       v.style.width = '100%';
       v.style.height = '100%';
