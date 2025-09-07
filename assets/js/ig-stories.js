@@ -248,10 +248,11 @@ export function initInstagramStories(options = {}) {
     video.playsInline = true;
     video.preload = 'metadata';
 
-    // Usar versão otimizada para preview
-    const videoSrc = deviceDetection.isMobile() ?
-      story.items[0]?.mobile || story.items[0]?.src :
-      story.items[0]?.src;
+    // Usar versão ultra-otimizada para círculo (se disponível)
+    const videoSrc = story.items[0]?.circle ||
+      (deviceDetection.isMobile() ?
+        story.items[0]?.mobile || story.items[0]?.src :
+        story.items[0]?.src);
 
     video.src = videoSrc;
 
@@ -1436,8 +1437,23 @@ export function initInstagramStories(options = {}) {
     // Função para gerar caminhos de mídia baseado no dispositivo
     const getMediaPaths = (basePath, type) => {
       const mediaSize = deviceDetection.getOptimalMediaSize();
-      const folder = type === 'video' ? 'videos' : 'imagens';
 
+      // Ajuste: para vídeos, usamos a convenção *_optimized.mp4 gerada por FFmpeg
+      if (type === 'video') {
+        const baseNoExt = basePath.replace('.mp4', '');
+        const mobile = `./videos/mobile/${baseNoExt}_optimized.mp4`;
+        const desktop = `./videos/desktop/${baseNoExt}_optimized.mp4`;
+        const circle = `./videos/thumbnails/${baseNoExt}_circle.mp4`;
+        return {
+          mobile,
+          desktop,
+          optimal: mediaSize === 'mobile' ? mobile : desktop,
+          circle
+        };
+      }
+
+      // Imagens seguem a estrutura padrão
+      const folder = 'imagens';
       return {
         thumbnail: `./imagens/thumbnails/${basePath}`,
         mobile: `./${folder}/mobile/${basePath}`,
@@ -1457,6 +1473,21 @@ export function initInstagramStories(options = {}) {
     }));
 
     return [
+      {
+        label: 'Brenda',
+        items: [
+          {
+            type: 'video',
+            src: './imagens/videos/brenda.MOV',
+            mobile: './videos/mobile/brenda_optimized.mp4',
+            desktop: './videos/desktop/brenda_optimized.mp4',
+            circle: './videos/thumbnails/brenda_circle.mp4',
+            thumbnail: './imagens/thumbnails/brenda_real.jpg'
+          }
+        ],
+        previewType: 'video',
+        thumbnail: './imagens/thumbnails/brenda_real.jpg'
+      },
       {
         label: 'Antes/Depois',
         items: beforeAfter,
