@@ -69,6 +69,29 @@ export function initInstagramStories(options = {}) {
     imageDurationMs: 3000,
   };
 
+
+  // Carregador dinâmico do hls.js (para streaming em pedaços no mobile)
+  async function ensureHlsJs() {
+    try {
+      if (window.Hls) return true;
+      await new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js';
+        s.async = true;
+        s.onload = () => resolve(true);
+        s.onerror = () => resolve(false);
+        document.head.appendChild(s);
+      });
+      return !!window.Hls;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function canPlayHlsNatively(videoEl) {
+    try { return !!videoEl?.canPlayType?.('application/vnd.apple.mpegurl'); } catch { return false; }
+  }
+
   // Build modal once
   let state = {
     storyIndex: 0,
@@ -232,7 +255,7 @@ export function initInstagramStories(options = {}) {
 
   // Configurar preview de vídeo no círculo
   function setupVideoPreview(container, story, originalImg) {
-    // Criar vídeo em miniatura
+    // Criar vídeo em miniatura (lazy)
     const video = document.createElement('video');
     video.style.cssText = `
       width: 100%;
@@ -254,7 +277,36 @@ export function initInstagramStories(options = {}) {
         story.items[0]?.mobile || story.items[0]?.src :
         story.items[0]?.src);
 
-    video.src = videoSrc;
+    // Lazy: só definir src quando visível
+    video.dataset.src = videoSrc || '';
+
+    const onVisible = (isVisible) => {
+      if (isVisible) {
+        if (!video.src && video.dataset.src) {
+          video.src = video.dataset.src;
+          video.play?.().catch(() => {});
+        }
+      } else {
+        try {
+          video.pause?.();
+          video.removeAttribute?.('src');
+          const s = video.querySelector('source'); if (s) s.removeAttribute?.('src');
+          video.load?.();
+          if (originalImg) originalImg.style.visibility = '';
+          video.style.opacity = 0;
+        } catch {}
+      }
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => onVisible(entry.isIntersecting));
+    }, { rootMargin: '100px', threshold: 0.5 });
+    io.observe(container);
+
+    video.addEventListener('canplay', () => {
+      if (originalImg) originalImg.style.visibility = 'hidden';
+      video.style.opacity = 1;
+    }, { once: true });
 
     // Indicador de vídeo
     const videoIcon = document.createElement('div');
@@ -803,10 +855,8 @@ export function initInstagramStories(options = {}) {
     } else {
       const optimalSrc = getOptimalMediaSrc(item);
 
-      // Para vídeos, não usamos cache direto pois são objetos complexos
-      // Mas registramos que foi carregado para estatísticas
+      // Para vídeos: preferir HLS (stream em pedaços) no mobile, com fallback para MP4
       const v = document.createElement('video');
-      v.src = optimalSrc;
       v.preload = 'metadata';
       v.playsInline = true;
       v.setAttribute('playsinline', '');
@@ -817,23 +867,46 @@ export function initInstagramStories(options = {}) {
       v.style.objectFit = 'contain';
       v.style.background = '#000';
 
+      const desiredHls = (deviceDetection.getOptimalMediaSize?.() === 'mobile')
+        ? (item.mobileHls || item.hls)
+        : (item.hls || item.mobileHls);
+
+      const tryMp4Fallback = () => { if (!v.src && !v.currentSrc) { v.src = optimalSrc; } };
+
+      if (desiredHls) {
+        if (canPlayHlsNatively(v)) {
+          v.src = desiredHls; // Safari iOS toca HLS nativamente
+        } else {
+          ensureHlsJs().then((ok) => {
+            if (ok && window.Hls && window.Hls.isSupported()) {
+              const h = new Hls();
+              h.on(Hls.Events.ERROR, function(_, data){ if (data?.fatal) { tryMp4Fallback(); } });
+              h.loadSource(desiredHls);
+              h.attachMedia(v);
+            } else {
+              tryMp4Fallback();
+            }
+          }).catch(tryMp4Fallback);
+        }
+      } else {
+        v.src = optimalSrc;
+      }
+
       // Registrar no cache para estatísticas (sem dados reais)
       v.addEventListener('loadedmetadata', () => {
-        mediaCache.set(optimalSrc, { type: 'video', loaded: true });
+        const key = v.currentSrc || desiredHls || optimalSrc;
+        mediaCache.set(key, { type: 'video', loaded: true });
       }, { once: true });
 
-      // Preload de alta qualidade para vídeos em desktop com boa conexão
-      if (deviceDetection.shouldUseHighQuality() && item.desktop && optimalSrc !== item.desktop) {
-        // Verificar se já foi carregado
+      // Preload de alta qualidade para vídeos em desktop com boa conexão (apenas MP4)
+      if (!desiredHls && deviceDetection.shouldUseHighQuality() && item.desktop && optimalSrc !== item.desktop) {
         if (!mediaCache.has(item.desktop)) {
-          // Criar vídeo de alta qualidade em background
           const highQualityVideo = document.createElement('video');
           highQualityVideo.preload = 'metadata';
           highQualityVideo.muted = true;
           highQualityVideo.playsInline = true;
 
           highQualityVideo.addEventListener('canplay', () => {
-            // Registrar no cache e trocar se ainda estiver visível
             mediaCache.set(item.desktop, { type: 'video', loaded: true });
             if (v.parentNode && v.paused) {
               const currentTime = v.currentTime;
@@ -842,10 +915,7 @@ export function initInstagramStories(options = {}) {
             }
           }, { once: true });
 
-          // Carregar em background apenas se conexão for boa
-          setTimeout(() => {
-            highQualityVideo.src = item.desktop;
-          }, 1000);
+          setTimeout(() => { highQualityVideo.src = item.desktop; }, 1000);
         }
       }
 
@@ -1477,11 +1547,13 @@ export function initInstagramStories(options = {}) {
         const mobile = `./videos/mobile/${baseNoExt}_optimized.mp4`;
         const desktop = `./videos/desktop/${baseNoExt}_optimized.mp4`;
         const circle = `./videos/thumbnails/${baseNoExt}_circle.mp4`;
+        const mobileHls = `./videos/hls/mobile/${baseNoExt}_360p.m3u8`;
         return {
           mobile,
           desktop,
           optimal: mediaSize === 'mobile' ? mobile : desktop,
-          circle
+          circle,
+          mobileHls
         };
       }
 
@@ -1515,6 +1587,7 @@ export function initInstagramStories(options = {}) {
             mobile: './videos/mobile/brenda_optimized.mp4',
             desktop: './videos/desktop/brenda_optimized.mp4',
             circle: './videos/thumbnails/brenda_circle.mp4',
+            mobileHls: './videos/hls/mobile/brenda_360p.m3u8',
             thumbnail: './imagens/thumbnails/brenda_real.jpg'
           }
         ],
