@@ -155,7 +155,6 @@ export function initInstagramStories(options = {}) {
     btn.addEventListener('pointerdown', () => {
       try {
         const story = cfg.stories[idx];
-        if (story?.items?.[0]?.type === 'youtube') return; // Não aquecer nada para stories de YouTube
         const firstVid = story?.items?.find(it => it?.type === 'video');
         if (!firstVid) return;
         // Decidir a melhor fonte para este device
@@ -214,7 +213,6 @@ export function initInstagramStories(options = {}) {
             if (idx < 0) idx = 0; // fallback seguro
           }
           const story = cfg.stories[idx];
-          if (story?.items?.[0]?.type === 'youtube') return; // N e3o aquecer nada para stories de YouTube
           const firstVid = story?.items?.find(it => it?.type === 'video');
           if (!firstVid) return;
           const mediaSize = deviceDetection.getOptimalMediaSize?.() || 'mobile';
@@ -798,8 +796,9 @@ export function initInstagramStories(options = {}) {
       if (iframe) {
         const ytReady = iframe.dataset.ytLoaded === '1';
         if (!ytReady) {
-          // Evitar spinner interno para YouTube: manter apenas o poster até carregar
-          const onReady = () => { startCurrentTimer(); };
+          console.log('[DEBUG] YT: não pronto, mostrando loading e aguardando');
+          showLoading(true, 300);
+          const onReady = () => { console.log('[DEBUG] YT: onReady, escondendo loading'); showLoading(false); startCurrentTimer(); };
           iframe.addEventListener('load', onReady, { once: true });
           return; // inicia somente quando o iframe carregar
         }
