@@ -1547,7 +1547,7 @@ export function initInstagramStories(options = {}) {
         const mobile = `./videos/mobile/${baseNoExt}_optimized.mp4`;
         const desktop = `./videos/desktop/${baseNoExt}_optimized.mp4`;
         const circle = `./videos/thumbnails/${baseNoExt}_circle.mp4`;
-        const mobileHls = `./videos/hls/mobile/${baseNoExt}_360p.m3u8`;
+        const mobileHls = `./videos/hls/mobile/${baseNoExt}_master.m3u8`;
         return {
           mobile,
           desktop,
@@ -1587,7 +1587,7 @@ export function initInstagramStories(options = {}) {
             mobile: './videos/mobile/brenda_optimized.mp4',
             desktop: './videos/desktop/brenda_optimized.mp4',
             circle: './videos/thumbnails/brenda_circle.mp4',
-            mobileHls: './videos/hls/mobile/brenda_360p.m3u8',
+            mobileHls: './videos/hls/mobile/brenda_master.m3u8',
             thumbnail: './imagens/thumbnails/brenda_real.jpg'
           }
         ],
