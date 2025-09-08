@@ -72,11 +72,14 @@ html,body{max-width:100vw;overflow-x:hidden}
     
     setTimeout(function() {
         bar.style.display = 'flex';
+        // Recalcula e aplica o spacer para evitar salto quando a barra aparecer
+        handleScroll();
     }, 7000);
 
     // Criar elemento spacer para compensar quando ficar fixo
     var spacer = document.createElement('div');
     spacer.className = 'sticky-spacer';
+    spacer.style.height = '0px';
     bar.parentNode.insertBefore(spacer, bar.nextSibling);
 
     // Controle de scroll para sticky behavior
@@ -86,12 +89,16 @@ html,body{max-width:100vw;overflow-x:hidden}
     function handleScroll() {
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
-      if (scrollTop > barOffset + barHeight) {
-        bar.classList.add('sticky');
-        spacer.classList.add('active');
+      // Ativa sticky assim que a barra estiver visível e houver scroll, sem salto visual
+      if (scrollTop > 0 && bar.style.display !== 'none') {
+        // Ajusta o spacer primeiro para compensar a altura exata da barra
+        spacer.style.height = bar.offsetHeight + 'px';
+        if (!bar.classList.contains('sticky')) {
+          bar.classList.add('sticky');
+        }
       } else {
         bar.classList.remove('sticky');
-        spacer.classList.remove('active');
+        spacer.style.height = '0px';
       }
     }
     
@@ -175,7 +182,7 @@ html,body{max-width:100vw;overflow-x:hidden}
       var gf=document.createElement('link');gf.rel='stylesheet';gf.href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Roboto:wght@400;700&display=swap';document.head.appendChild(gf);
     }catch(_){}
 
-    style.textContent = '#promo-countdown-bar{position:relative;z-index:9999;font-family:Montserrat,sans-serif;transition:all 0.3s ease}#promo-countdown-bar.sticky{position:fixed;top:0;left:0;right:0;width:100%;box-shadow:0 2px 10px rgba(0,0,0,0.1)}#promo-countdown-bar .pc-wrap{max-width:1280px;margin:0 auto;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:6px 12px}#promo-countdown-bar .pc-left{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}#promo-countdown-bar .pc-right{display:flex;flex-direction:column;align-items:center}#promo-countdown-bar .pc-text{font-weight:800;font-size:25px;line-height:1;color:#000;letter-spacing:normal}#promo-countdown-bar .pc-coupon{font-weight:700;font-size:24px;line-height:1;color:#d5647c;margin:0}#promo-countdown-bar .pc-timer{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:0}#promo-countdown-bar .pc-numbers{display:flex;align-items:center;gap:20px}#promo-countdown-bar .pc-group{display:flex;flex-direction:column;align-items:center}#promo-countdown-bar .pc-unit{width:54.2px;height:54px;background:#d5647c;border-radius:4px;display:flex;align-items:center;justify-content:center}#promo-countdown-bar .pc-num{font-family:Roboto,sans-serif;font-size:30.8px;font-weight:700;color:#fff;line-height:1}#promo-countdown-bar .pc-sep{font-family:Roboto,sans-serif;font-weight:700;font-size:28px;line-height:54px;color:#d5647c;display:inline-block;margin:0 2px}#promo-countdown-bar .pc-label{width:54.2px;text-align:center;color:#d5647c;font-family:Arial,sans-serif;font-size:7.7px;font-weight:600;text-transform:uppercase;letter-spacing:normal;margin-top:4px}.sticky-spacer{height:0;transition:height 0.3s ease}.sticky-spacer.active{height:80px}@keyframes copyFadeInOut{0%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}15%{opacity:1;transform:translate(-50%,-50%) scale(1)}85%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}}@media (max-width:768px){#promo-countdown-bar .pc-wrap{flex-direction:column;align-items:center;gap:6px}#promo-countdown-bar .pc-text{font-size:20px;text-align:center;font-weight:800}#promo-countdown-bar .pc-coupon{font-size:18px;text-align:center;font-weight:700}#promo-countdown-bar .pc-numbers{gap:8px}#promo-countdown-bar .pc-unit{width:46px;height:46px}#promo-countdown-bar .pc-num{font-size:26px}#promo-countdown-bar .pc-sep{font-size:18px;line-height:46px;margin:0 -2px}#promo-countdown-bar .pc-label{font-size:7px}.sticky-spacer.active{height:100px}}';
+    style.textContent = '#promo-countdown-bar{position:relative;z-index:9999;font-family:Montserrat,sans-serif;transition:all 0.3s ease}#promo-countdown-bar.sticky{position:fixed;top:0;left:0;right:0;width:100%;box-shadow:0 2px 10px rgba(0,0,0,0.1)}#promo-countdown-bar .pc-wrap{max-width:1280px;margin:0 auto;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:6px 12px}#promo-countdown-bar .pc-left{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}#promo-countdown-bar .pc-right{display:flex;flex-direction:column;align-items:center}#promo-countdown-bar .pc-text{font-weight:800;font-size:25px;line-height:1;color:#000;letter-spacing:normal}#promo-countdown-bar .pc-coupon{font-weight:700;font-size:24px;line-height:1;color:#d5647c;margin:0}#promo-countdown-bar .pc-timer{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:0}#promo-countdown-bar .pc-numbers{display:flex;align-items:center;gap:20px}#promo-countdown-bar .pc-group{display:flex;flex-direction:column;align-items:center}#promo-countdown-bar .pc-unit{width:54.2px;height:54px;background:#d5647c;border-radius:4px;display:flex;align-items:center;justify-content:center}#promo-countdown-bar .pc-num{font-family:Roboto,sans-serif;font-size:30.8px;font-weight:700;color:#fff;line-height:1}#promo-countdown-bar .pc-sep{font-family:Roboto,sans-serif;font-weight:700;font-size:28px;line-height:54px;color:#d5647c;display:inline-block;margin:0 2px}#promo-countdown-bar .pc-label{width:54.2px;text-align:center;color:#d5647c;font-family:Arial,sans-serif;font-size:7.7px;font-weight:600;text-transform:uppercase;letter-spacing:normal;margin-top:4px}.sticky-spacer{height:0}@keyframes copyFadeInOut{0%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}15%{opacity:1;transform:translate(-50%,-50%) scale(1)}85%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}}@media (max-width:768px){#promo-countdown-bar .pc-wrap{flex-direction:column;align-items:center;gap:6px}#promo-countdown-bar .pc-text{font-size:20px;text-align:center;font-weight:800}#promo-countdown-bar .pc-coupon{font-size:18px;text-align:center;font-weight:700}#promo-countdown-bar .pc-numbers{gap:8px}#promo-countdown-bar .pc-unit{width:46px;height:46px}#promo-countdown-bar .pc-num{font-size:26px}#promo-countdown-bar .pc-sep{font-size:18px;line-height:46px;margin:0 -2px}#promo-countdown-bar .pc-label{font-size:7px}}';
     document.head.appendChild(style);
 
     // Cronômetro 15 minutos
