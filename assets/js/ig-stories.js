@@ -2238,7 +2238,7 @@ if (document.readyState === 'loading') {
             label: 'Brenda',
             items: [{
               type: 'youtube',
-              youtubeId: 'hTY7ti4ktXg',
+              youtubeId: 'S67GXqlWhCM',
               circle: './videos/thumbnails/brenda_circle.mp4',
               poster: './stories/story-brenda-poster.jpg',
               thumbnail: './imagens/thumbnails/brenda_real.jpg',
