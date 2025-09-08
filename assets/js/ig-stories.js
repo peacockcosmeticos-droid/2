@@ -240,6 +240,41 @@ export function initInstagramStories(options = {}) {
       }, { passive: true });
     }
   } catch {}
+  // Fun E7 E3o global para o clique inline do c EDrculo flutuante
+  try {
+    if (!window.openStoryFromFloating) {
+      window.openStoryFromFloating = function(){
+        try {
+          // Criar story temporrio srio para YouTube, carregado apenas aps clique
+          window.__ytStoryIdx = window.__ytStoryIdx ?? -1;
+          if (window.__ytStoryIdx < 0) {
+            const ytStory = {
+              label: 'Brenda',
+              items: [{
+                type: 'youtube',
+                youtubeId: 'hTY7ti4ktXg',
+                // Mantr circle preview leve
+                circle: './videos/thumbnails/brenda_circle.mp4',
+                poster: './stories/story-brenda-poster.jpg',
+                thumbnail: './imagens/thumbnails/brenda_real.jpg',
+                durationMs: 60000
+              }],
+              previewType: 'video',
+              thumbnail: './imagens/thumbnails/brenda_real.jpg',
+              __temp: true
+            };
+            cfg.stories.push(ytStory);
+            window.__ytStoryIdx = cfg.stories.length - 1;
+          }
+          openStory(window.__ytStoryIdx, 0);
+        } catch (e) {
+          // fallback absoluto
+          const btn = document.querySelector('.story-avatar'); if (btn) btn.click();
+        }
+      };
+    }
+  } catch {}
+
 
     // Abrir Stories ao clicar em blocos de confiança e estrelas
     document.addEventListener('click', (e) => {
@@ -756,6 +791,21 @@ export function initInstagramStories(options = {}) {
           return; // só inicia quando carregar
         }
       }
+    } else if (item.type === 'youtube') {
+      const iframe = el.media.querySelector('iframe.yt-embed');
+      if (iframe) {
+        const ytReady = iframe.dataset.ytLoaded === '1';
+        if (!ytReady) {
+          console.log('[DEBUG] YT: não pronto, mostrando loading e aguardando');
+          showLoading(true, 300);
+          const onReady = () => { console.log('[DEBUG] YT: onReady, escondendo loading'); showLoading(false); startCurrentTimer(); };
+          iframe.addEventListener('load', onReady, { once: true });
+          return; // inicia somente quando o iframe carregar
+        }
+      }
+      // Duração padrão segura para Shorts; usuário pode avançar manualmente
+      dur = item.durationMs || 60000;
+
     } else if (item.type === 'video') {
       const v = media.querySelector('video');
       if (v) {
@@ -959,6 +1009,45 @@ export function initInstagramStories(options = {}) {
           highQualityImg.src = item.desktop;
         }
       }
+    } else if (item.type === 'youtube') {
+      // Embed YouTube somente quando o usuário abriu (sem impactar velocidade antes do clique)
+      const ytId = item.youtubeId || ((item.src||'').match(/(?:v=|be\/|embed\/)([A-Za-z0-9_-]{6,})/)||[])[1] || '';
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'width:100%;height:100%;background:#000;position:relative;';
+
+      // Poster para feedback imediato
+      const poster = document.createElement('img');
+      poster.alt = story.label || '';
+      poster.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;transition:opacity .2s';
+      poster.src = item.poster || (ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : '');
+      wrap.appendChild(poster);
+
+      // Iframe YouTube com autoplay e playsinline
+      const iframe = document.createElement('iframe');
+      iframe.className = 'yt-embed';
+      iframe.setAttribute('title', story.label || 'YouTube');
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = false;
+      iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;';
+      const params = new URLSearchParams({
+        autoplay: '1',
+        mute: (state.muted ? '1' : '0'),
+        playsinline: '1',
+        controls: '0',
+        rel: '0',
+        modestbranding: '1',
+        iv_load_policy: '3',
+        fs: '0',
+        enablejsapi: '0',
+        origin: location.origin
+      });
+      iframe.src = `https://www.youtube.com/embed/${ytId}?${params.toString()}`;
+      iframe.loading = 'eager';
+      iframe.addEventListener('load', () => { iframe.dataset.ytLoaded = '1'; poster.style.opacity = '0'; }, { once: true });
+      wrap.appendChild(iframe);
+
+      el.media.appendChild(wrap);
+
     } else {
       const optimalSrc = getOptimalMediaSrc(item);
 
@@ -1745,13 +1834,10 @@ export function initInstagramStories(options = {}) {
         label: 'Brenda',
         items: [
           {
-            type: 'video',
-            src: './imagens/videos/brenda.MOV',
-            mobile: './videos/mobile/brenda_optimized.mp4',
-            desktop: './videos/desktop/brenda_optimized.mp4',
+            type: 'youtube',
+            youtubeId: 'hTY7ti4ktXg',
+            // Mantém preview do círculo com mini-vídeo local ultra leve
             circle: './videos/thumbnails/brenda_circle.mp4',
-            mobileHls: './videos/hls/mobile/brenda_master.m3u8',
-            optimal: './stories/story-brenda.mp4',
             poster: './stories/story-brenda-poster.jpg',
             thumbnail: './imagens/thumbnails/brenda_real.jpg'
           }
@@ -2137,3 +2223,47 @@ if (document.readyState === 'loading') {
   setTimeout(() => thumbnailPreloader.observeAvatars(), 500);
 }
 
+
+
+// Forçar versão final do handler do círculo flutuante (evita sobrescritas por outros scripts)
+(function(){
+  try {
+    window.openStoryFromFloating = function(){
+      try {
+        // Limpar qualquer mídia anterior
+        try { if (window.stopAllMediaGlobal) window.stopAllMediaGlobal(); } catch(_){}
+        // Criar story temporário YouTube apenas no clique
+        if (typeof window.__ytStoryIdx !== 'number' || window.__ytStoryIdx < 0) {
+          const ytStory = {
+            label: 'Brenda',
+            items: [{
+              type: 'youtube',
+              youtubeId: 'hTY7ti4ktXg',
+              circle: './videos/thumbnails/brenda_circle.mp4',
+              poster: './stories/story-brenda-poster.jpg',
+              thumbnail: './imagens/thumbnails/brenda_real.jpg',
+              durationMs: 60000
+            }],
+            previewType: 'video',
+            thumbnail: './imagens/thumbnails/brenda_real.jpg',
+            __temp: true
+          };
+          try { cfg.stories.push(ytStory); } catch(_){ (window.__igStories?.cfg?.stories||window.cfg?.stories)?.push?.(ytStory); }
+          const c = window.__igStories?.cfg || window.cfg;
+          window.__ytStoryIdx = (c?.stories?.length || 1) - 1;
+        }
+        // Abrir diretamente o story YouTube
+        if (typeof openStory === 'function') {
+          openStory(window.__ytStoryIdx, 0);
+          return;
+        }
+        const api = window.__igStories || window.igStoriesInstance;
+        if (api && typeof api.openStory === 'function') { api.openStory(window.__ytStoryIdx, 0); return; }
+        // Fallback absoluto: acionar primeiro avatar
+        const btn = document.querySelector('.story-avatar'); if (btn) btn.click();
+      } catch (e) {
+        const btn = document.querySelector('.story-avatar'); if (btn) btn.click();
+      }
+    };
+  } catch(_){ }
+})();
