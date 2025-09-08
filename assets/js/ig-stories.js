@@ -198,6 +198,49 @@ export function initInstagramStories(options = {}) {
   });
 
 
+  // Pré-aquecimento para o círculo flutuante (#floating-story-circle)
+  try {
+    const floating = document.getElementById('floating-story-circle');
+    if (floating) {
+      floating.addEventListener('pointerdown', () => {
+        try {
+          const rawIdx = floating.getAttribute('data-story-index') || '';
+          const norm = (s)=> (s||'').toString().trim().toLowerCase();
+          let idx = Number.isFinite(parseInt(rawIdx,10)) ? parseInt(rawIdx,10) : -1;
+          if (idx < 0) {
+            idx = cfg.stories.findIndex(s => norm(s.id||s.key||s.label) === norm(rawIdx));
+            if (idx < 0) idx = cfg.stories.findIndex(s => norm(s.label).includes(norm(rawIdx)));
+            if (idx < 0) idx = 0; // fallback seguro
+          }
+          const story = cfg.stories[idx];
+          const firstVid = story?.items?.find(it => it?.type === 'video');
+          if (!firstVid) return;
+          const mediaSize = deviceDetection.getOptimalMediaSize?.() || 'mobile';
+          const optimal = firstVid.optimal
+            || (mediaSize === 'mobile' ? (firstVid.mobile || firstVid.src) : (firstVid.desktop || firstVid.src));
+
+          if (optimal && /\.mp4(\?|$)/i.test(optimal)) {
+            // Cabeçalho + primeiros KB para start instantâneo
+            prefetchMp4Head(optimal, 524288);
+            // Pré-aquecer com <video> real e reutilizar quando o modal abrir
+            window.__igPrewarm = window.__igPrewarm || {};
+            const key = `story-${idx}-item-0`;
+            if (!window.__igPrewarm[key]) {
+              const v = document.createElement('video');
+              v.preload = 'auto'; v.muted = true; v.playsInline = true; v.setAttribute('playsinline','');
+              v.src = optimal;
+              v.addEventListener('canplay', () => { try { v.pause(); } catch {} }, { once: true });
+              try { v.play().then(()=>{ try { v.pause(); } catch {} }).catch(()=>{}); } catch {}
+              window.__igPrewarm[key] = v;
+            }
+          } else if (firstVid.mobileHls || firstVid.hls) {
+            prefetchHlsWarmup(firstVid.mobileHls || firstVid.hls);
+          }
+        } catch {}
+      }, { passive: true });
+    }
+  } catch {}
+
     // Abrir Stories ao clicar em blocos de confiança e estrelas
     document.addEventListener('click', (e) => {
       const target = e.target;
