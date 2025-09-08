@@ -383,6 +383,32 @@ export function initInstagramStories(options = {}) {
 
   // Public API for navigation
   function openStory(storyIdx, itemIdx = 0) {
+    try { if (window.stopAllMediaGlobal) { window.stopAllMediaGlobal(); } } catch(e){}
+
+    // Limpeza defensiva: parar qualquer mídia anterior fora do IG modal e fechar modal legacy
+    try {
+      const legacy = document.getElementById('stories-modal-v2');
+      if (legacy) {
+        legacy.querySelectorAll('video').forEach(v => {
+          try {
+            v.muted = true; v.volume = 0; v.pause && v.pause(); v.currentTime = 0;
+            if (v.removeAttribute) v.removeAttribute('src');
+            const s = v.querySelector('source'); if (s && s.removeAttribute) s.removeAttribute('src');
+            if (v.load) v.load();
+          } catch {}
+        });
+        legacy.style.display = 'none';
+        legacy.innerHTML = '';
+      }
+      // Pausar/mutar todos os vídeos fora do IG modal
+      document.querySelectorAll('video').forEach(v => {
+        const inIg = v.closest && v.closest('#ig-stories-modal');
+        if (!inIg) {
+          try { v.muted = true; v.volume = 0; v.pause && v.pause(); v.currentTime = 0; } catch {}
+        }
+      });
+    } catch {}
+
     state.storyIndex = clamp(storyIdx, 0, cfg.stories.length - 1);
     state.itemIndex = clamp(itemIdx, 0, cfg.stories[state.storyIndex].items.length - 1);
     fillBars();
@@ -681,7 +707,14 @@ export function initInstagramStories(options = {}) {
     return cfg.stories[state.storyIndex].items[state.itemIndex];
   }
   function stopAllVideos() {
-    el.media.querySelectorAll('video').forEach(v => { try { v.pause(); v.currentTime = 0; } catch {} });
+    el.media.querySelectorAll('video').forEach(v => {
+      try { v.muted = true; v.volume = 0; v.pause && v.pause(); v.currentTime = 0; } catch {}
+      try {
+        if (v.removeAttribute) v.removeAttribute('src');
+        const s = v.querySelector('source'); if (s && s.removeAttribute) s.removeAttribute('src');
+        if (v.load) v.load();
+      } catch {}
+    });
   }
   function pauseVideo() {
     const v = el.media.querySelector('video');
