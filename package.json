@@ -33,5 +33,10 @@
     "svgo": "^4.0.0",
     "swiper": "^11.2.10",
     "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@mux/mux-node": "^12.7.0",
+    "@mux/mux-player": "^3.5.3",
+    "@mux/mux-uploader": "^1.2.0"
   }
 }

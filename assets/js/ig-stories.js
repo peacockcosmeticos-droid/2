@@ -92,6 +92,23 @@ export function initInstagramStories(options = {}) {
     try { return !!videoEl?.canPlayType?.('application/vnd.apple.mpegurl'); } catch { return false; }
   }
 
+  // Pré-carrega manifesto e primeiros segmentos (nível 0) para iniciar instantâneo
+  async function prefetchHlsWarmup(masterUrl){
+    try{
+      if(!masterUrl || typeof masterUrl !== 'string') return;
+      // master: foo_master.m3u8 -> variante baixa: foo_0.m3u8; 1ºs segmentos: foo_0_000.ts, foo_0_001.ts
+      const v0 = masterUrl.replace('_master.m3u8','_0.m3u8');
+      const s0 = masterUrl.replace('_master.m3u8','_0_000.ts');
+      const s1 = masterUrl.replace('_master.m3u8','_0_001.ts');
+      await Promise.allSettled([
+        fetch(masterUrl, { credentials:'same-origin' }),
+        fetch(v0, { credentials:'same-origin' }),
+        fetch(s0, { credentials:'same-origin' }),
+        fetch(s1, { credentials:'same-origin' })
+      ]);
+    }catch(_){/* silencioso */}
+  }
+
   // Build modal once
   let state = {
     storyIndex: 0,
@@ -120,6 +137,16 @@ export function initInstagramStories(options = {}) {
   document.querySelectorAll(cfg.avatarsSelector).forEach((btn) => {
     const idx = parseInt(btn.getAttribute('data-story-index') || '0', 10);
     if (seenSet.has(idx)) btn.setAttribute('data-viewed', 'true');
+
+    // Warmup HLS no primeiro toque (antes do clique)
+    btn.addEventListener('pointerdown', () => {
+      try {
+        const story = cfg.stories[idx];
+        const firstVid = story?.items?.find(it => it?.type === 'video' && (it.mobileHls || it.hls));
+        if (firstVid) prefetchHlsWarmup(firstVid.mobileHls || firstVid.hls);
+      } catch {}
+    }, { passive: true });
+
     btn.addEventListener('click', () => openStory(idx));
 
     // Inicializar preview no círculo
@@ -867,9 +894,15 @@ export function initInstagramStories(options = {}) {
       v.style.objectFit = 'contain';
       v.style.background = '#000';
 
-      const desiredHls = (deviceDetection.getOptimalMediaSize?.() === 'mobile')
+      // Poster para primeiro frame imediato
+      try { v.poster = item.poster || item.thumbnail || ''; } catch {}
+
+
+      let desiredHls = (deviceDetection.getOptimalMediaSize?.() === 'mobile')
         ? (item.mobileHls || item.hls)
         : (item.hls || item.mobileHls);
+      // Preferir MP4 web-optimized quando disponível (sem Mux/HLS)
+      try { if (optimalSrc && /\.mp4$/i.test(optimalSrc)) { desiredHls = null; } } catch {}
 
       const tryMp4Fallback = () => { if (!v.src && !v.currentSrc) { v.src = optimalSrc; } };
 
@@ -879,8 +912,16 @@ export function initInstagramStories(options = {}) {
         } else {
           ensureHlsJs().then((ok) => {
             if (ok && window.Hls && window.Hls.isSupported()) {
-              const h = new Hls();
+              const h = new Hls({
+                autoStartLoad: true,
+                startLevel: 0,
+                capLevelOnFPSDrop: true,
+                capLevelToPlayerSize: true,
+                maxInitialBitrate: 300000,
+                startFragPrefetch: true
+              });
               h.on(Hls.Events.ERROR, function(_, data){ if (data?.fatal) { tryMp4Fallback(); } });
+              try { h.startLevel = 0; } catch {}
               h.loadSource(desiredHls);
               h.attachMedia(v);
             } else {
@@ -914,6 +955,39 @@ export function initInstagramStories(options = {}) {
               v.currentTime = currentTime;
             }
           }, { once: true });
+
+
+      // Prefetch do prximo story (apenas 1   frente)
+      try {
+        const tryPrefetchNext = () => {
+          try {
+            const s = cfg.stories[state.storyIndex];
+            const atEnd = state.itemIndex + 1 >= s.items.length;
+            const nextStoryIndex = atEnd ? state.storyIndex + 1 : state.storyIndex;
+            const nextItemIndex = atEnd ? 0 : state.itemIndex + 1;
+            const nextStory = cfg.stories[nextStoryIndex];
+            const nextItem = nextStory?.items?.[nextItemIndex];
+            if (!nextItem || nextItem.type !== 'video') return;
+            const nextHls = (deviceDetection.getOptimalMediaSize?.() === 'mobile')
+              ? (nextItem.mobileHls || nextItem.hls)
+              : (nextItem.hls || nextItem.mobileHls);
+            if (nextHls) {
+              prefetchHlsWarmup(nextHls);
+            } else {
+              const nextSrc = getOptimalMediaSrc(nextItem);
+              if (nextSrc) {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'video';
+                link.href = nextSrc;
+                document.head.appendChild(link);
+              }
+            }
+            if (nextItem.thumbnail) { const img = new Image(); img.src = nextItem.thumbnail; }
+          } catch {}
+        };
+        v.addEventListener('playing', tryPrefetchNext, { once: true });
+      } catch {}
 
           setTimeout(() => { highQualityVideo.src = item.desktop; }, 1000);
         }
@@ -1588,6 +1662,8 @@ export function initInstagramStories(options = {}) {
             desktop: './videos/desktop/brenda_optimized.mp4',
             circle: './videos/thumbnails/brenda_circle.mp4',
             mobileHls: './videos/hls/mobile/brenda_master.m3u8',
+            optimal: './stories/story-brenda.mp4',
+            poster: './stories/story-brenda-poster.jpg',
             thumbnail: './imagens/thumbnails/brenda_real.jpg'
           }
         ],
@@ -1607,12 +1683,16 @@ export function initInstagramStories(options = {}) {
             type: 'video',
             src: './imagens/videos/1.mp4',
             ...getMediaPaths('1.mp4', 'video'),
+            optimal: './stories/story-1.mp4',
+            poster: './stories/story-1-poster.jpg',
             thumbnail: './videos/thumbnails/video-1.jpg'
           },
           {
             type: 'video',
             src: './imagens/videos/2.mp4',
             ...getMediaPaths('2.mp4', 'video'),
+            optimal: './stories/story-2.mp4',
+            poster: './stories/story-2-poster.jpg',
             thumbnail: './videos/thumbnails/video-2.jpg'
           }
         ],
@@ -1626,6 +1706,8 @@ export function initInstagramStories(options = {}) {
             type: 'video',
             src: './imagens/videos/3.mp4',
             ...getMediaPaths('3.mp4', 'video'),
+            optimal: './stories/story-3.mp4',
+            poster: './stories/story-3-poster.jpg',
             thumbnail: './videos/thumbnails/video-3.jpg'
           }
         ],
@@ -1658,6 +1740,8 @@ export function initInstagramStories(options = {}) {
             type: 'video',
             src: './imagens/videos/6.mp4',
             ...getMediaPaths('6.mp4', 'video'),
+            optimal: './stories/story-6.mp4',
+            poster: './stories/story-6-poster.jpg',
             thumbnail: './videos/thumbnails/video-6.jpg'
           }
         ],
@@ -1671,6 +1755,8 @@ export function initInstagramStories(options = {}) {
             type: 'video',
             src: './imagens/videos/2.mp4',
             ...getMediaPaths('2.mp4', 'video'),
+            optimal: './stories/story-2.mp4',
+            poster: './stories/story-2-poster.jpg',
             thumbnail: './videos/thumbnails/video-2.jpg'
           }
         ],
@@ -1684,6 +1770,8 @@ export function initInstagramStories(options = {}) {
             type: 'video',
             src: './imagens/videos/1.mp4',
             ...getMediaPaths('1.mp4', 'video'),
+            optimal: './stories/story-1.mp4',
+            poster: './stories/story-1-poster.jpg',
             thumbnail: './videos/thumbnails/video-1.jpg'
           }
         ],
@@ -1923,6 +2011,13 @@ const thumbnailPreloader = {
                   this.add(item.thumbnail, 'normal');
                 }
               });
+
+                  // Warmup HLS da primeira mda de vddeo do story para start instantneo
+                  try{
+                    const firstVid = story.items.find(it => it?.type==='video' && (it.mobileHls||it.hls));
+                    if(firstVid) prefetchHlsWarmup(firstVid.mobileHls || firstVid.hls);
+                  }catch{}
+
             }
           }
 

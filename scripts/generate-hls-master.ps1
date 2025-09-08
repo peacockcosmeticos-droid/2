@@ -45,7 +45,7 @@ if ($hasAudio) { $cmd += @('-map','a:0?','-c:a:2','aac','-b:a:2','96k','-ac:2','
 
 # GOP/segmentação
 $cmd += @('-g','48','-keyint_min','48','-sc_threshold','0','-pix_fmt','yuv420p',
-  '-hls_time','4','-hls_playlist_type','vod','-hls_flags','independent_segments',
+  '-hls_init_time','1','-hls_time','2','-hls_playlist_type','vod','-hls_flags','independent_segments',
   '-master_pl_name', ("{0}_master.m3u8" -f $Name))
 
 $varMap = if ($hasAudio) { 'v:0,a:0 v:1,a:1 v:2,a:2' } else { 'v:0 v:1 v:2' }
