@@ -252,7 +252,7 @@ export function initInstagramStories(options = {}) {
               label: 'Brenda',
               items: [{
                 type: 'youtube',
-                youtubeId: 'hTY7ti4ktXg',
+                youtubeId: 'S67GXqlWhCM',
                 // Mantr circle preview leve
                 circle: './videos/thumbnails/brenda_circle.mp4',
                 poster: './stories/story-brenda-poster.jpg',
