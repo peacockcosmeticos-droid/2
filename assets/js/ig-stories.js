@@ -1786,6 +1786,19 @@ export function initInstagramStories(options = {}) {
     const compareText = document.querySelector('.compare-price')?.textContent || '';
     const m2 = compareText.match(/R\$\s*[\d.,]+/);
     if (m2) priceOld = m2[0];
+
+    // Atualiza o texto "à vista" para o formato de desconto sem alterar layout/estrutura
+    try {
+      const b2 = document.querySelector('#price-highlight-block');
+      const vistaDiv2 = Array.from(b2?.querySelectorAll('div') || []).find(d => /à vista/i.test(d.textContent||''));
+      if (vistaDiv2) {
+        const oldTxt = priceOld || 'R$ 315,80';
+        const nowTxt = priceNow || 'R$ 157,90';
+        // Formato desejado: De <s>R$ 315,80</s> por R$ 157,90 (50% OFF)
+        vistaDiv2.innerHTML = `De <s>${oldTxt}</s> por ${nowTxt} (50% OFF)`;
+      }
+    } catch(e) {}
+
     return { title, thumb, priceNow: priceNow || 'R$ 157,90', priceOld };
   }
   function getDefaultStories() {
