@@ -109,6 +109,19 @@ export function initInstagramStories(options = {}) {
     }catch(_){/* silencioso */}
   }
 
+
+	  // Pré-busca parcial do MP4 (apenas os primeiros bytes) para acelerar o start
+	  async function prefetchMp4Head(url, bytes = 524288) {
+	    try {
+	      if (!url || !/\.mp4(\?|$)/i.test(url)) return;
+	      await fetch(url, {
+	        headers: { 'Range': `bytes=0-${bytes-1}` },
+	        credentials: 'same-origin',
+	        cache: 'default'
+	      });
+	    } catch (_) { /* silencioso */ }
+	  }
+
   // Build modal once
   let state = {
     storyIndex: 0,
@@ -138,12 +151,36 @@ export function initInstagramStories(options = {}) {
     const idx = parseInt(btn.getAttribute('data-story-index') || '0', 10);
     if (seenSet.has(idx)) btn.setAttribute('data-viewed', 'true');
 
-    // Warmup HLS no primeiro toque (antes do clique)
+    // Warmup de mídia no primeiro toque (antes do clique)
     btn.addEventListener('pointerdown', () => {
       try {
         const story = cfg.stories[idx];
-        const firstVid = story?.items?.find(it => it?.type === 'video' && (it.mobileHls || it.hls));
-        if (firstVid) prefetchHlsWarmup(firstVid.mobileHls || firstVid.hls);
+        const firstVid = story?.items?.find(it => it?.type === 'video');
+        if (!firstVid) return;
+        // Decidir a melhor fonte para este device
+        const mediaSize = deviceDetection.getOptimalMediaSize?.() || 'mobile';
+        const optimal = firstVid.optimal
+          || (mediaSize === 'mobile' ? (firstVid.mobile || firstVid.src) : (firstVid.desktop || firstVid.src));
+        if (optimal && /\.mp4(\?|$)/i.test(optimal)) {
+          // Pré-busca apenas do início do MP4 (cabeçalho + primeiros KB) para start instantâneo
+          prefetchMp4Head(optimal, 524288);
+          // Pré-aquecer com um elemento <video> real e reutilizá-lo no modal
+          try {
+            window.__igPrewarm = window.__igPrewarm || {};
+            const key = `story-${idx}-item-0`;
+            if (!window.__igPrewarm[key]) {
+              const v = document.createElement('video');
+              v.preload = 'auto'; v.muted = true; v.playsInline = true; v.setAttribute('playsinline','');
+              v.src = optimal;
+              v.addEventListener('canplay', () => { try { v.pause(); } catch {} }, { once: true });
+              try { v.play().then(()=>{ try { v.pause(); } catch {} }).catch(()=>{}); } catch {}
+              window.__igPrewarm[key] = v;
+            }
+          } catch {}
+        } else if (firstVid.mobileHls || firstVid.hls) {
+          // Caso HLS, aquece o manifest + primeiros segmentos
+          prefetchHlsWarmup(firstVid.mobileHls || firstVid.hls);
+        }
       } catch {}
     }, { passive: true });
 
@@ -882,9 +919,8 @@ export function initInstagramStories(options = {}) {
     } else {
       const optimalSrc = getOptimalMediaSrc(item);
 
-      // Para vídeos: preferir HLS (stream em pedaços) no mobile, com fallback para MP4
-      const v = document.createElement('video');
-      v.preload = 'metadata';
+      // Para vídeos: preferir MP4 web-optimized; HLS como fallback quando necessário
+      let v = (window.__igPrewarm && window.__igPrewarm[`story-${state.storyIndex}-item-${state.itemIndex}`]) || document.createElement('video');
       v.playsInline = true;
       v.setAttribute('playsinline', '');
       v.muted = false; // iniciar com áudio habilitado após clique do usuário
@@ -893,9 +929,19 @@ export function initInstagramStories(options = {}) {
       v.style.height = '100%';
       v.style.objectFit = 'contain';
       v.style.background = '#000';
+      // Preload mais agressivo apenas quando for MP4 (após gesto do usuário)
+      try { v.preload = (optimalSrc && /\.mp4$/i.test(optimalSrc)) ? 'auto' : 'metadata'; } catch { v.preload = 'metadata'; }
+
+      // Se for um vídeo pré-aquecido, garantir que não esteja mudo e pronto para tocar
+      try { if (window.__igPrewarm && window.__igPrewarm[`story-${state.storyIndex}-item-${state.itemIndex}`]) { v.muted = false; } } catch {}
 
       // Poster para primeiro frame imediato
       try { v.poster = item.poster || item.thumbnail || ''; } catch {}
+
+      // Forçar decodificação do primeiro frame assim que metadados chegarem (reduz TTVF)
+      v.addEventListener('loadedmetadata', () => {
+        try { if (v.currentTime === 0) v.currentTime = 0.01; } catch {}
+      }, { once: true });
 
 
       let desiredHls = (deviceDetection.getOptimalMediaSize?.() === 'mobile')
