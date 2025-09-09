@@ -1795,7 +1795,7 @@ export function initInstagramStories(options = {}) {
         const oldTxt = priceOld || 'R$ 315,80';
         const nowTxt = priceNow || 'R$ 157,90';
         // Formato desejado: De <s>R$ 315,80</s> por R$ 157,90 (50% OFF)
-        vistaDiv2.innerHTML = `De <s>${oldTxt}</s> por ${nowTxt} (50% OFF)`;
+        vistaDiv2.innerHTML = ``;
       }
     } catch(e) {}
 
