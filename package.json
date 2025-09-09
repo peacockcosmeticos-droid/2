@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx playwright test tests/swiper-images.test.js",
     "build": "npm run build:css && npm run optimize:images && npm run optimize:svgs && npm run minify:html",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --minify",
     "watch:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/tailwind.css --watch",
     "optimize:images": "node ./scripts/optimize-images.js",
+    "optimize:new-images": "node ./scripts/optimize-new-images.js",
     "optimize:svgs": "node ./scripts/minify-svgs.js",
-    "minify:html": "node ./scripts/minify-html.js"
+    "minify:html": "node ./scripts/minify-html.js",
+    "performance:analyze": "node ./tests/performance-analysis.js",
+    "serve": "node test-server.js",
+    "test:swiper": "npx playwright test tests/swiper-images.test.js",
+    "backup:images": "node -e \"const fs=require('fs'); const d=new Date(); const backup='imagens/antesedepois/backup_'+d.toISOString().slice(0,19).replace(/[:-]/g,''); fs.mkdirSync(backup, {recursive:true}); console.log('Backup criado:', backup);\""
   },
   "repository": {
     "type": "git",
@@ -26,6 +31,7 @@
   "devDependencies": {
     "@fontsource/inter": "^5.2.6",
     "@fontsource/poppins": "^5.2.6",
+    "@playwright/test": "^1.55.0",
     "autoprefixer": "^10.4.21",
     "html-minifier-terser": "^7.2.0",
     "postcss": "^8.5.6",
